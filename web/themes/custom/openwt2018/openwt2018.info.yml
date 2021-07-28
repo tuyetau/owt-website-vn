@@ -1,0 +1,16 @@
+name: OpenWT 2018 Theme
+description: A brand new OWT theme
+core: 8.x
+type: theme
+package: Swisscom Digital Technology SA
+
+# Libraries
+libraries:
+  - openwt2018/base
+  - openwt2018/js-footer
+
+# Regions
+regions:
+  navigation: Navigation
+  content: Content
+  footer: Footer

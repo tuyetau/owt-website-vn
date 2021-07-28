@@ -1,0 +1,21 @@
+{%
+  set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished'
+]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      <article class="case case--highlighted" style='background-image: linear-gradient(180deg, rgba(228, 25, 25, 0.248132) 2.96%, rgba(228, 25, 25, 0.836249) 100%), url("{{ file_url(content.field_story_background_image['#items'].entity.uri.value) }}")'>
+        <figure class="case__illustration" alt="{{ content.field_short_text|render|striptags }}"></figure>
+        <a class="case-link" href="{{ content.field_link_to_story[0]['#url']|render }}">
+          <div class="pride">{{ content.field_title|render|striptags }}</div>
+          <h4 class="case__title">{{ content.field_short_text|render|striptags }}</h4>
+        </a>
+      </article>
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

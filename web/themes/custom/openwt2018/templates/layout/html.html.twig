@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html {{ html_attributes }}>
+    <head>
+        <head-placeholder token="{{ placeholder_token|raw }}">
+        <title>{{ head_title|safe_join(' | ') }}</title>
+        <css-placeholder token="{{ placeholder_token|raw }}">
+        <js-placeholder token="{{ placeholder_token|raw }}">
+        <link rel="preload" href="/themes/custom/openwt2018/dist/fonts/proximanova/proximanova-light-webfont.woff" as="font" type="font/woff" crossorigin>
+        <link rel="preload" href="/themes/custom/openwt2018/dist/fonts/proximanova/proximanova-bold-webfont.woff" as="font" type="font/woff" crossorigin>
+     </head>
+    <body {{ attributes }}>
+        {{ page_top }}
+        {{ page }}
+        {{ page_bottom }}
+        <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+    </body>
+</html>

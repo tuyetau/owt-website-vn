@@ -1,0 +1,607 @@
+.page-node-457 #block-pagetitle {
+  z-index: 1;
+  .page-title {
+    z-index: 1;
+  }
+}
+
+.discover-subtitle {
+		font-family: ProximaNova;
+		font-size: 22px;
+		line-height: 1.8;
+		color: $text;
+    padding: 110px 0 40px;
+    margin-bottom: 100px;
+    margin-top: -120px;
+}
+
+.mission-wrapper {
+  display: flex;
+  margin-bottom: 100px;
+
+  div:first-child {
+    z-index: 1;
+  }
+
+  &.right {
+    flex-direction: row;
+  }
+
+  &.left {
+    flex-direction: row-reverse;
+  }
+}
+
+.mission {
+  @include xs {
+    text-align: center;
+  }
+  &__illustration {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    @include xs {
+      width: 80%;
+    }
+  }
+}
+
+.activity {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: white;
+  &.right {
+    margin-left: -100px;
+    padding: 50px 40px 50px 130px;
+    @include xs {
+      margin-left: 0;
+      padding: 30px 40px 40px 7%;
+      margin-top: 20px;
+    }
+  }
+  &.left {
+    padding: 50px 130px 50px 40px;
+    margin-right: -100px;
+    @include xs {
+      margin-right: 0;
+      padding: 30px 40px 40px 7%;
+      margin-top: 20px;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+
+  &__description {
+    color: $text;
+    font-size: 18px;
+    line-height: 30px;
+    margin-bottom: 35px;
+  }
+
+  a {
+    padding-left: 10px;
+
+    &::before {
+      content: "";
+      height: 105%;
+      width: 3px;
+      top: -1px;
+      background: red;
+      left: 0;
+      position: absolute;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.methodology {
+  background: white;
+  padding-top: 50px;
+  padding-bottom: 20px;
+
+  &__title {
+    margin-bottom: 40px;
+    font-size: 40px;
+    padding-top: 70px;
+    @include xs {
+      padding-left: 3%;
+      font-size: 30px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__subtitle {
+    font-size: 22px;
+    line-height: 32px;
+    @include xs {
+      padding-left: 3%;
+    }
+  }
+
+  &__steps {
+    margin-top: 40px;
+  }
+}
+
+.methodology-steps {
+  margin-bottom: 70px;
+  @include xs {
+    text-align: center;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-bottom: 35px;
+  }
+
+  &__title {
+    font-size: 26px;
+    color: $secondary;
+    margin-top: 25px;
+    @include xs {
+      margin-top: 0;
+      font-size: 19px;
+    }
+  }
+
+  p:last-child {
+    line-height: 30px;
+    font-size: 18px;
+    @include xs {
+      display: none;
+    }
+  }
+
+  &__link {
+    @include xs {
+    margin-left: 10px;
+    .closed {
+      .vertical {
+        transition: all 0.3s ease-in-out;
+        transform: rotate(-90deg);
+        top: 72%;
+      }
+      .horizontal {
+        transition: all 0.3s ease-in-out;
+        transform: rotate(-90deg);
+        opacity: 1;
+        top: 60%;
+      }
+    }
+
+    .opened {
+      opacity: 1;
+      .vertical {
+        transition: all 0.3s ease-in-out;
+        transform: rotate(90deg);
+      }
+      .horizontal {
+        transition: all 0.3s ease-in-out;
+        transform: rotate(90deg);
+        opacity: 0;
+      }
+    }
+
+    .circle-plus {
+      height: 35px;
+      width: 40px;
+      cursor: pointer;
+    }
+
+    .circle-plus .circle {
+      position: relative;
+      width: 2.55em;
+      height: 2.5em;
+      border-radius: 100%;
+    }
+    .circle-plus .circle .horizontal {
+      position: absolute;
+      background-color: $red-light;
+      width: 20px;
+      height: 5px;
+      left: 50%;
+      margin-left: -15px;
+      top: 50%;
+      margin-top: -2.5px;
+    }
+    .circle-plus .circle .vertical {
+      position: absolute;
+      background-color: $red-light;
+      width: 5px;
+      height: 20px;
+      left: 50%;
+      margin-left: -7px;
+      top: 62%;
+      margin-top: -15px;
+    }
+  }
+  }
+}
+
+.methodology-steps-wrapper {
+  @include xs {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 5px;
+  }
+}
+
+.expertise-fields {
+  padding-top: 80px;
+  padding-bottom: 60px;
+
+  &__title {
+    font-size: 40px;
+    color: $secondary;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    @include xs {
+      margin-top: 0;
+      font-size: 30px;
+      padding-left: 3%;
+    }
+  }
+
+  &__subtitle {
+    font-size: 22px;
+    line-height: 32px;
+    @include xs {
+      padding-left: 3%;
+    }
+  }
+
+  &__solutions {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    @include md {
+      height: auto;
+      flex-direction: column;
+    }
+  }
+}
+
+.expertise-card {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  background-color: $light-grey;
+  border-radius: 10px;
+  padding: 20px 20px;
+  overflow: hidden;
+  width: 30%;
+  &__left-block, &__right-block, &__bottom-block{
+    z-index: 1;
+  }
+  &__left-block{
+    display: flex;
+    flex-flow: column;
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__right-block{
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    height: 0;
+    width: 0;
+  }
+  &__bottom-block{
+    display: none;
+  }
+  &__background{
+    position: absolute;
+    top: 0;
+    right:0;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+    height: 0;
+  }
+  &__icon{
+    position: relative;
+    width: 100%;
+    height: auto;
+    > div{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -20px;
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__title, &__description{
+    word-break: break-word;
+    hyphens: auto;
+  }
+  &__title{
+    font-size: 24px;
+    line-height: 29px;
+    color: $blue-marine;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  &__description{
+    margin: 0 0 10px 0;
+    line-height: 23px;
+    font-size: 20px;
+    color: $white;
+    transition: none;
+  }
+  &__link{
+    a, a:focus, a:hover, a:visited, a:active{
+      color: $white !important;
+    }
+  }
+  &.opened{
+    box-shadow: 0 7px 21px rgba(38, 61, 108, 0.342221);
+    .expertise-card{
+      &__background{
+        height: 100%;
+      }
+      &__title{
+        color: $white;
+      }
+      &__right-block{
+        opacity: 1;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  //responsive
+  @include xs{
+    &__right-block{
+      .opened & {
+        align-items: center !important;
+      }
+    }
+    &__bottom-block {
+      .opened & {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+   @include md {
+    width: 100%;
+    flex-flow: column;
+    transition: height 0.4s ease-in-out;
+    margin: 10px;
+    &:not(.opened){
+      .expertise-card__title{
+        margin-bottom: 0;
+      }
+    }
+    &__icon{
+      display: none;
+    }
+    &__bottom-block{
+      .opened & {
+        display: flex;
+        img{
+          width: 200px;
+          height: auto;
+        }
+      }
+    }
+    &__right-block{
+      .opened & {
+        width: 100%;
+        height: auto;
+      }
+    }
+    &__background{
+      transition: height .4s ease-in-out;
+    }
+  }
+  @include sm {
+    margin: 0 0 10px 0;
+  }  
+  @media (min-width: #{$bp-lg}) {
+    flex-flow: row;
+    min-height: 300px;
+    transition: width 0.4s ease-in-out;
+    margin: 20px 10px;
+    &.opened{
+      width: 35%;
+      min-height: 340px;
+      margin-top: 0;
+    }
+    &__left-block{
+      width: fit-content;
+    }
+    &__right-block{
+      width: 57%;
+      padding-left: 15px;
+      .opened & {
+        height: auto;
+      }
+    }
+  }
+}
+
+.history {
+  padding: 60px 0 180px 0;
+  @include md {
+    padding-bottom: 250px;
+  }
+  @include sm {
+    padding-bottom: 380px;
+  }
+  @media (max-width: 460px) {
+    padding-bottom: 470px;
+  }
+  @media (max-width: 375px) {
+    padding-bottom: 560px;
+  }
+  @media (max-width: 320px) {
+    padding-bottom: 650px;
+  }
+
+  &__title {
+    font-size: 40px;
+    color: $secondary;
+    margin-bottom: 50px;
+    @include xs {
+      font-size: 30px;
+      padding-left: 3%;
+    }
+  }
+}
+
+.history-content.highlighted {
+   .history-content__year{
+     color: $primary;
+     font-size: 50px;
+     @include xs {
+       font-size: 25px;
+     }
+   }
+   .history-content__line {
+     display: block;
+   }
+   .story-wrapper
+   {
+     display: block;
+     padding-top: 15px;
+     padding-left: 20px;
+   }
+ }
+
+.history-content {
+  display: flex;
+  padding-left: 11%;
+  height: 50px;
+  @include xs {
+    padding-left: 18%;
+  }
+  &__year {
+    font-size: 25px;
+    color: #D5D5D5;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-size: 25px;
+    font-weight: bold;
+    color: $secondary;
+  }
+
+  &__line {
+    width: 75px;
+    height: 2px;
+    background: $primary;
+    position: relative;
+    top: 27px;
+    @include xs {
+      width: 25px;
+    }
+  }
+  .history-content__line {
+    display: none;
+  }
+  .story-wrapper
+  {
+    display: none;
+
+    p:last-child {
+      line-height: 32px;
+      font-size: 20px;
+    }
+  }
+}
+
+.mission-banner-wrapper {
+    height: 220px;
+    border-radius: 10px 0 0 10px;
+    width: 100%;
+    background-position: center!important;
+    margin-top: 50px;
+    margin-left: 8%;
+  @media (max-width: 1057px){
+    height: 330px;
+  }
+
+  &__item {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 8%;
+    justify-content: space-evenly;
+
+    @media (max-width: 1185px) {
+      padding-left: 0%;
+      justify-content: space-evenly;
+    }
+
+    @media (max-width: 1057px){
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 5%;
+  }
+}
+}
+
+.mission-banner-item {
+  color: white;
+  height: 90px;
+  display: table;
+  @media (min-width: 1057px) {
+    &:not(:first-child) {
+      border-left: 2px solid $primary;
+      padding-left: 25px;
+    }
+  }
+  @media (max-width: 1057px) {
+    border-left: 2px solid $primary;
+    padding-left: 25px;
+    height: auto;
+  }
+
+  &__title {
+    font-size: 26px;
+    margin: 0;
+    @include xs {
+      font-size: 20px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    border-bottom: 1px solid white;
+  }
+
+  a {
+    font-size: 20px;
+    color: white;
+    margin-top: 10px;
+    margin-right: 5px;
+    @include xs {
+      font-size: 16px;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.mission-banner-item-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}

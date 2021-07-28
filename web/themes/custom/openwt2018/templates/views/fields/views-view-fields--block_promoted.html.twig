@@ -1,0 +1,45 @@
+{% import directory ~ '/templates/macros/generate_tags.html.twig' as macros %}
+
+
+{% if fields.field_industry_tags.content is not empty %}
+  {% set page_tags = fields.field_industry_tags.content|split(',') %}
+{% else %}
+  {% set page_tags = [] %}
+{% endif %}
+
+{% if fields.term_node_tid.content is not empty %}
+  {% set blog_tags = fields.term_node_tid.content|split(',') %}
+{% else %}
+  {% set blog_tags = [] %}
+{% endif %}
+{% set all_tags = page_tags|merge(blog_tags) %}
+{% set max_shown_divs = 2 %}
+{% set fieldnid = fields.nid.content|render|number_format %}
+{% set path_to_case = path('entity.node.canonical', {'node':  fieldnid	}) %}
+{% set main_illustration = fields.field_illustration.content|split(',')[0] %}
+
+{% if main_illustration is not empty %}
+	{% set illustration = main_illustration %}
+{% else %}
+	{% set illustration = fields.field_header_background_img.content %}
+{% endif %}
+
+<a class="case-link" href="{{ path_to_case }}">
+    <article class="case case--highlighted" style='background-image: linear-gradient( rgba(38, 61, 108, 0.8), rgba(38, 61, 108, 0.8) ), url("{{ illustration }}")'>
+        <figure class="case__illustration" alt="{{ fields.title.content }}"></figure>
+        <div class="pride">{{ fields.nothing.content }}</div>
+        <h4 class="case__title">{{ fields.title.content }}</h4>
+        <div class="case__subtitle">{{ fields.field_sub_heading.content }}</div>
+
+        {% if project.shares|trim is not empty and project.shares|trim != '0' %}
+        <div class="case__shares">
+            {{ project.shares|trim }}
+            <img src="/{{ directory }}/dist/images/svg/share.svg" alt="shares">
+        </div>
+        {% endif %}
+
+        <div class="case__tags">
+            {{ macros.generate_tags(all_tags, project.tags, max_shown_divs) }}
+        </div>
+    </article>
+</a>

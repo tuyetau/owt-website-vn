@@ -1,0 +1,55 @@
+{%
+    set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+]
+%}
+
+<article{{ attributes.addClass(classes) }}>
+  <div{{ content_attributes.addClass('node__content', 'node__content__cases', 'clearfix') }}>
+		{{ content.field_paragraph }}
+		
+		<div class="container contact-infos">
+			<h2>Your contact</h2>
+			<div class="contact-form-block row">
+				<div class="col-lg-3">
+					<img class="contact-image" src="{{ content.field_contact_picture }}" />
+				</div>
+				<div class="new-client-case-webform col-lg-9">
+					<h2>{{ content.field_contact_name }}</h2>
+					<p>{{ content.field_contact_title }}</p>
+					<p>{{ content.field_contact_email }}</p>
+					<div>
+						{% if content.field_contact_linkedin.0['#url'] is not empty %}
+						<a href="{{ content.field_contact_linkedin.0['#url'] }}">
+							<img class="logo-image" src="/{{ directory }}/dist/images/svg/linkedin.svg" alt="LinkedIn logo">
+						</a>
+						{% endif %}
+
+						{% if content.field_contact_skype.0['#url'] is not empty %}
+						<a href="{{ content.field_contact_skype.0['#url'] }}">
+							<img class="logo-image" src="/{{ directory }}/dist/images/svg/skype.svg" alt="Skype logo">
+						</a>
+						{% endif %}
+
+						{% if content.field_contact_twitter.0['#url'] is not empty %}
+						<a href="{{ content.field_contact_twitter.0['#url'] }}">
+							<img class="logo-image" src="/{{ directory }}/dist/images/svg/twitter.svg" alt="Twitter logo">
+						</a>
+						{% endif %}
+					</div>
+					{{ content.field_form }}
+				</div>
+			</div>
+		</div>
+		<div class="related-cases container">
+			<h2>{{ content.field_related_cases_title }}</h2>
+			{{ content.field_related_cases }}
+		</div>
+  </div>
+</article>

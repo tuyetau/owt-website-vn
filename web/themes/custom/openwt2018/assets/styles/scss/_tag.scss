@@ -1,0 +1,182 @@
+.tag {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  padding: 7px 12px;
+  margin-top: 5px;
+  &--nocolor {
+    color: $disabledtxt;
+    background: lighten($disabledtxt, 30%);
+    &:hover {
+      background: lighten($disabledtxt, 30%);
+      cursor: default;
+    }
+  }
+  &--yellow {
+    color: $yellow;
+    background: lighten($yellow, 30%);
+    &:hover {
+      background: lighten($yellow, 25%);
+    }
+  }
+  &--yellow-deep {
+    color: $yellow-deep;
+    background: lighten($yellow-deep, 30%);
+    &:hover {
+      background: lighten($yellow-deep, 25%);
+    }
+  }
+  &--purple {
+    color: $purple;
+    background: lighten($purple, 30%);
+    &:hover {
+      background: lighten($purple, 25%);
+    }
+  }
+  &--purple-deep {
+    color: $purple-deep;
+    background: lighten($purple-deep, 30%);
+    &:hover {
+      background: lighten($purple-deep, 25%);
+    }
+  }
+  &--green {
+    color: $green;
+    background: lighten($green, 30%);
+    &:hover {
+      background: lighten($green, 25%);
+    }
+  }
+  &--green-deep {
+    color: $green-deep;
+    background: lighten($green-deep, 30%);
+    &:hover {
+      background: lighten($green-deep, 25%);
+    }
+  }
+  &--blue {
+    color: $blue;
+    background: lighten($blue, 30%);
+    &:hover {
+      background: lighten($blue, 25%);
+    }
+  }
+  &--blue-deep {
+    color: $blue-deep;
+    background: lighten($blue-deep, 30%);
+    &:hover {
+      background: lighten($blue-deep, 25%);
+    }
+  }
+  &--brown {
+    color: $brown;
+    background: lighten($brown, 30%);
+    &:hover {
+      background: lighten($brown, 25%);
+    }
+  }
+  &--more {
+    position: relative;
+    color: $red;
+    background: lighten($red, 30%);
+    &:hover {
+      background: lighten($red, 25%);
+    }
+    &__content {
+      visibility: hidden;
+      opacity: 0;
+      z-index: 9;
+      position: absolute;
+      right: 8px;
+      top: 20px;
+      transition: all 200ms;
+      padding: 15px;
+      background-color: white;
+      border-radius: 10px;
+      text-align: right;
+      @extend %box-shadow-default;
+      .tag {
+        margin-right: 0;
+        white-space: nowrap;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    &:hover &__content {
+      visibility: visible;
+      opacity: 1;
+      top: 30px
+    }
+  }
+}
+
+.case--highlighted .tag {
+  color: white;
+  &--nocolor {
+    background: $blue-gray;
+    &:hover {
+      background: lighten($blue-gray, 5%);
+    }
+  }
+  &--yellow {
+    background: $yellow;
+    &:hover {
+      background: lighten($yellow, 5%);
+    }
+  }
+  &--yellow-deep {
+    background: $yellow-deep;
+    &:hover {
+      background: darken($yellow-deep, 5%);
+    }
+  }
+  &--purple {
+    background: $purple;
+    &:hover {
+      background: darken($purple, 5%);
+    }
+  }
+  &--purple-deep {
+    background: $purple-deep;
+    &:hover {
+      background: darken($purple-deep, 5%);
+    }
+  }
+  &--green {
+    background: $green;
+    &:hover {
+      background: darken($green, 5%);
+    }
+  }
+  &--green-deep {
+    background: $green-deep;
+    &:hover {
+      background: darken($green-deep, 5%);
+    }
+  }
+  &--blue {
+    background: $blue;
+    &:hover {
+      background: darken($blue, 5%);
+    }
+  }
+  &--blue-deep {
+    background: $blue-deep;
+    &:hover {
+      background: darken($blue-deep, 5%);
+    }
+  }
+  &--brown {
+    background: $brown;
+    &:hover {
+      background: darken($brown, 5%);
+    }
+  }
+  &--more {
+    background: $red;
+    &:hover {
+      background: darken($red, 5%);
+    }
+  }
+}

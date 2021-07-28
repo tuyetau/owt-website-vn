@@ -1,0 +1,47 @@
+{{ attach_library('openwt2018/page') }}
+{%
+  set classe = [
+  'layout-main-wrapper',
+  'layout-container',
+  'page',
+  'clearfix',
+  notify_untranslated is not empty ? 'notify_untranslated',
+]
+%}
+<div id="page">
+    {# Menu #}
+    <nav class="nav">
+        <div class="container-fluid-header nav__content">
+            <div>
+                <a href="{{ front_page }}" title="{{ 'Home' |t }}" rel="home" class="no-link">
+                  <div class="nav__logo"></div>
+                </a>
+            </div>
+            <div class="nav__right">
+                <div class="nav__menu">
+                    {{ page.navigation }}
+                </div>
+                <div class="nav__hamburger"><span></span></div>
+            </div>
+        </div>
+    </nav>
+
+    {# Page #}
+    <div id="page-wrapper"{{ attributes.addClass(classe) }}>
+        <div id="main" class="layout-main clearfix">
+            <main id="content" class="column main-content" role="main">
+              {% if notify_untranslated is not empty %}
+                <p class="not-translated-notification container">{{ notify_untranslated }}</p>
+              {% endif %}
+
+              {{ page.content }}
+                {{ page.footer }}
+                <div class="remodal remodal__newsletter" data-remodal-id="modal-newsletter">
+                    <button data-remodal-action="close" class="remodal-close"></button>
+                    <p class="remodal__title remodal__newsletter__title">{% trans %}Subcrible to our newsletter{% endtrans %}</p>
+                    {{ block_webform_newsletter }}
+                </div>
+            </main>
+        </div>
+    </div>
+</div>

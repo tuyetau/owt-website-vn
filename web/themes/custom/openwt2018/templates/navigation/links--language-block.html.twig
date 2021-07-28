@@ -1,0 +1,18 @@
+{% if links %}
+  <ul class="nav__menu__inner language-switcher-locale-url">
+    <li>
+      {% for key, item in links %}
+        {% if key is same as("activeLink") %}
+          <a class="main-language" href="#">{{ item | capitalize }}</a>
+        {% endif %}
+      {% endfor %}
+      <ul>
+      {% for key, item in links %}
+        {% if key is not same as("activeLink") %}
+          <li>{{ item.link }}</li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+    </li>
+  </ul>
+{% endif %}

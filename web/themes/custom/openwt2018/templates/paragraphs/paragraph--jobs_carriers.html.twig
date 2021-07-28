@@ -1,0 +1,135 @@
+<section class="jobs-offer">
+  <div class="container">
+    <div class="row">
+      <a class="btn btn--primary no-link" href="#career-path">{{ content.field_career_path_link_text }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="career-path remodal" data-remodal-id="career-path">
+<div class="career-path">
+<button data-remodal-action="close" class="remodal-close"></button>
+    <h1>{{ content.field_carriers_career_path_title }}</h1>
+
+    <div class="row">
+      <div class="col">
+        <h3>{{ content.field_carriers_consult_cp_title }}</h3>
+
+        {{ content.field_careers_consult_cp_item1 }}
+        {{ content.field_careers_consult_cp_item2 }}
+        {{ content.field_careers_consult_cp_item3 }}
+        {{ content.field_careers_consult_cp_item4 }}
+        {{ content.field_careers_consult_cp_item5 }}
+        <div class="responsive-small">
+        {{ content.field_common_final_cp_item }}
+      </div>
+      </div>
+      <div class="col">
+        <h3>{{ content.field_carriers_program_cp_title }}</h3>
+
+        {{ content.field_careers_program_cp_item1 }}
+        {{ content.field_careers_program_cp_item2 }}
+        {{ content.field_careers_program_cp_item3 }}
+        {{ content.field_careers_program_cp_item4 }}
+        {{ content.field_careers_program_cp_item5 }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        {{ content.field_common_final_cp_item }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="job-advertisements">
+  <div class="container">
+    <div class="jobs-openings">
+        <h1>{{ content.field_all_open_positions }}</h1>
+        <div>
+          <input type="text" id="searchByTitle" placeholder="{{ 'Search by job title..'|t }}" title="{{ 'Type in a title'|t }}">
+        </div>
+        <div class="filter open-jobs">
+          <div class="select select--h3">
+            <input type="hidden" class="select__input" id="" name="" value=""/>
+            <span class="select__value">{{ everything.jobs.all_skills }}</span>
+            <span class='select__arrow'>
+              <i class="arrow arrow--down"></i>
+            </span>
+            <ul id="select-skill">
+              {% for skill in everything.jobs.skills %}
+                <li id="{{ loop.index - 1 }}">{{ skill }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="select select--h3">
+            <input type="hidden" class="select__input" id="" name="" value=""/>
+            <span class="select__value">{{ everything.jobs.all_locations }}</span>
+            <span class='select__arrow'>
+              <i class="arrow arrow--down"></i>
+            </span>
+            <ul id="select-city">
+              {% for location in everything.jobs.locations %}
+                <li id="{{ loop.index - 1 }}">{{ location }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <p class="no-offer" style="display: none;">{{ 'No offer available for this location.'|t }}</p>
+        <div class="open-positions">
+          {% for job in everything.jobs.all_unencoded %}
+            {% if job.department %}
+              <a class="job-offer no-link on-fire" department="{{ job.department }}" skills="{{ job.skills }}" city="{{ job.city }}" href="{{ redirect_url }}?url={{ job.url }}" target="_blank">
+                <div class="job-container">
+                  <div class="job-icon">
+                    {% if ((job.skills|lower) == 'development' or (job.skills|lower) == 'programming') %}
+                    {{ content.field_programming_position_icon }}
+                    {% else %}
+                    {{ content.field_consulting_position_icon }}
+                    {% endif %}
+                  </div>
+                  <div class="job-description">
+                    <p class="title">{{ job.title }}</p>
+                    <p class="location">{{ job.city }}</p>
+                  </div>
+                </div>
+                <span class='select__arrow'>
+                  <i class="arrow arrow--right"></i>
+                </span>
+              </a>
+            {% endif %}
+          {% endfor %}
+          {% for job in everything.jobs.all_unencoded %}
+            {% if not job.department %}
+              <a class="job-offer no-link" department="{{ job.department }}" skills="{{ job.skills }}" city="{{ job.city }}" href="{{ redirect_url }}?url={{ job.url }}" target="_blank">
+                <div class="job-container">
+                  <div class="job-icon">
+                    {% if ((job.skills|lower) == 'development' or (job.skills|lower) == 'programming') %}
+                    {{ content.field_programming_position_icon }}
+                    {% else %}
+                    {{ content.field_consulting_position_icon }}
+                    {% endif %}
+                  </div>
+                  <div class="job-description">
+                    <p class="title">{{ job.title }}</p>
+                    <p class="location">{{ job.city }}</p>
+                  </div>
+                </div>
+                <span class='select__arrow'>
+                  <i class="arrow arrow--right"></i>
+                </span>
+              </a>
+            {% endif %}
+          {% endfor %}
+          <a class="spontaneous-application no-link" href="mailto:{{ content.field_spontaneous_application_em }}?subject={{ content.field_spontaneous_application_su }}" target="_blank">
+              <p class="title">{{ content.field_spontaneous_application_ti }}</p>
+              <p class="location">{{ content.field_spontaneous_application_te }} - {{ content.field_spontaneous_application_em }}</p>
+              <span class='select__arrow'>
+                <i class="arrow arrow--right"></i>
+              </span>
+            </a>
+        </div>
+    </div>
+  </div>
+</section>

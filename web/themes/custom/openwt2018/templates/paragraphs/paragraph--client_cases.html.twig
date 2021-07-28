@@ -1,0 +1,16 @@
+<section class="cases">
+    <div class="container-fluid">
+        <div class="container">
+            <span class="title--huge">{{ content.field_title }}</span>
+        </div>
+        <div class="container-fluid slider-container items">
+            <div class="slider {{ content.field_highlight_story|render|striptags|trim ? 'has-highlight' : '' }}">
+              {{ content.field_highlight_story }}
+              {{ content.client_cases_whitepaper_banner }}
+              {{ content.field_client_cases }}
+            </div>
+        </div>
+
+        <span class="cases__more">{{ content.field_it_s_not_over }} {{ content.field_more_about_our_projects }}</span>
+    </div>
+</section>

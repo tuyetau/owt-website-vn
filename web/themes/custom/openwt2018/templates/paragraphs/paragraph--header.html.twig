@@ -1,0 +1,78 @@
+{% if content.field_banner_background_image.0['#item'].entity.uri.value|render|trim is not empty and paragraph.field_background_video.entity.uri.value|render|trim is empty %}
+<section class="header" style="background: url({{ file_url(content.field_banner_background_image.0['#item'].entity.uri.value) }}) no-repeat center center; background-size: cover">
+{% else %}
+<section class="header">
+{% endif %}
+	<div class="video video--fullscreen">
+		{% if paragraph.field_mobile_background_video.entity.uri.value|render|trim is not empty %}
+			<div class="video__inner desktop-video">
+				<video autoplay loop muted playsinline>
+				<source src="{{ file_url(paragraph.field_background_video.entity.uri.value) }}#t=0.1" type="video/mp4">
+				Your browser does not support the video tag.
+				</video>
+			</div>
+			<div class="video__inner mobile-video">
+				<video autoplay loop muted playsinline>
+				<source src="{{ file_url(paragraph.field_mobile_background_video.entity.uri.value) }}#t=0.1" type="video/mp4">
+				Your browser does not support the video tag.
+				</video>
+			</div>
+		{% else %}
+			<div class="video__inner">
+				<video autoplay loop muted playsinline>
+				<source src="{{ file_url(paragraph.field_background_video.entity.uri.value) }}#t=0.1" type="video/mp4">
+				Your browser does not support the video tag.
+				</video>
+			</div>
+		{% endif %}
+	</div>
+	<div class="container">
+		<div class="header__title animated fadeIn">
+			<span class="title--huge">{{ content.field_header_title }}</span>
+			<div class="rocket">
+			<div class="rocket__wrapper animated fadeInLeftUp">
+				<img class="rocket__body" src="/{{ directory }}/dist/images/svg/rocket.svg" alt="rocket" width="498" height="499">
+				<div class="rocket__trace animated fadeInBottom">
+				</div>
+			</div>
+			</div>
+		</div>
+
+		<div class="row header__content animated fadeIn">
+			<div class="col-12 col-md-9 col-lg-8 hidden-sm">
+				{{ content.field_header_text }}
+				<div class="highlight-wrapper">
+					<span class="highlight" data-typer="{{ content.field_header_highlight }}"></span>
+				</div>
+			</div>
+			{% if content.field_learn_more_link is not empty %}
+				<div class="learn-more-link col-12">
+					<a class="btn btn--secondary" href="{{ content.field_learn_more_link.0['#url'] }}">
+						{{ content.field_learn_more_link.0['#title'] }}
+					</a>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+	<div class="container-fluid-header container-news-feed">
+		<div class="row">
+			<div class="col-12 col-md-6 col-lg-6 offset-md-6 banner-news-feeds">
+        		<div class="header-news-feed">
+					{{ content.field_header_news_feed }}
+					<div class="more-link">
+						{{ content.field_header_see_more_link }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="mouse">
+		<div class="roll"></div>
+		<div class="rollshadow"></div>
+	</div>
+</section>
+<div class="container">
+	<div class="arrow-down">
+		<img src="/{{ directory }}/dist/images/svg/arrow-down.svg" alt="arrow-down" width="26" height="43">
+	</div>
+</div>

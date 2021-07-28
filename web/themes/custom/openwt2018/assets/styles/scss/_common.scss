@@ -1,0 +1,143 @@
+// section
+
+.section{
+  &--fluid{
+    &-right{
+      margin-left: 15px;
+      margin-right: 15px;
+     
+      @include medium-device-range{
+        margin-left: calc(50vw - 720px / 2);
+        margin-right: 0;
+      }
+
+      @include medium-desktop{
+        margin-left: calc(50vw - 920px / 2);
+        margin-right: 0;
+      }
+      @include large-desktop{
+        margin-left: calc(50vw - 1140px / 2);
+        margin-right: 0;
+      }
+    }
+    &-center{
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  }
+}
+
+// title 
+.title-block{
+  margin-bottom: 15px;
+  margin-left: 30px;
+  &__text{
+    font-weight: 400;
+    font-size: rem(40px);
+    color: $secondary;
+  }
+  &__line{
+    border-left: 3px solid;
+    height: 48px;
+    margin-left: 10px;
+    margin-top: 5px;
+    &--red{
+      border-left-color: $primary;
+    }
+  }
+}
+
+.bold-title{
+  font-weight: 700;
+  &--smaller{
+    font-size: rem(18px);
+  }
+  &--small{
+    font-size: rem(25px);
+  }
+  &--medium{
+    font-size: rem(36px);
+  }
+  &__highlight{
+    color: $primary;
+    display: inline-block;
+  }
+}
+
+
+.hidden-md-up{
+  @include desktop{
+    display: none !important;
+  }
+}
+.hidden-sm-down{
+  @include sm{
+    display: none;
+  }
+}
+
+.icon-toggle{
+  position: relative;
+  width: 30px;
+  height: 40px;
+  display: inline-block;
+  &__horizontal{
+    position: absolute;
+    background-color: $primary;
+    width: 15px;
+    height: 4px;
+    left: 43%;
+    margin-left: -6px;
+    top: 50%;
+    margin-top: -2px;
+    transition: all .3s ease-in-out;
+    transform: rotate(-90deg);
+  }
+  &__vertical{
+    position: absolute;
+    background-color: $primary;
+    width: 4px;
+    height: 15px;
+    left: 43%;
+    margin-left: 0;
+    top: 62%;
+    margin-top: -12px;
+    transition: all .3s ease-in-out;
+    transform: rotate(-90deg);
+  }
+
+}
+a.opened{
+  .icon-toggle__horizontal{
+    top: 60%;
+    opacity: 0;
+  }
+  .icon-toggle__vertical{
+    transform: rotate(90deg);
+    top: 67%;
+  }
+  
+}
+.mb-30{
+  margin-bottom: 30px;
+}
+.mt-60{
+  margin-top: 60px;
+}
+.mt-120{
+  margin-top: 120px;
+}
+.list-emtpy{
+  padding: 15px;
+  text-align: center;
+  color: $grey;
+  font-weight: normal;
+}
+.pos-left{
+  float: left;
+  padding: 0 15px 0 0;
+}
+.pos-right{
+  float: right;
+  padding: 0 0 0 15px;
+}

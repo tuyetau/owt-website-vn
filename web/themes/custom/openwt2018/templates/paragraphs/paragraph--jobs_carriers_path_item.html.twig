@@ -1,0 +1,9 @@
+<div class="career-path-item">
+  <p>{{ content.field_carrier_path_item_name }}</p>
+  <span>{{ content.field_carrier_path_item_years }}</span>
+</div>
+{% if 'On' in content.field_carier_path_arrow.0 %}
+  <div class="path-transition">
+    <img class="arrow-path" src="/{{ directory }}/dist/images/svg/arrow-path.svg" alt="arrow-path">
+  </div>
+{% endif %}

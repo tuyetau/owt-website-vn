@@ -1,0 +1,28 @@
+{
+  "name": "openwt2018",
+  "version": "0.0.1",
+  "description": "Open Web Technology Theme 2018",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gponthus@openwt.com",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-terser": "^1.2.0",
+    "gulp-terser-js": "^5.1.2",
+    "run-sequence": "^2.2.1"
+  },
+  "dependencies": {
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^3.9.3",
+    "natives": "^1.1.6",
+    "nvm": "0.0.4"
+  }
+}

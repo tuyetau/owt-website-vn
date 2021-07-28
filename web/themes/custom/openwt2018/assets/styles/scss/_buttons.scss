@@ -1,0 +1,85 @@
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding: 16px 45px;
+  border-radius: 50px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  font-weight: bold;
+  transition: all 0.2s;
+  &:after {
+    content: "";
+    display: block;
+    height: 13px;
+    width: 13px;
+    position: absolute;
+    top: calc(50% - 6px);
+    right: 35px;
+    transition: all 0.2s;
+    opacity: 0;
+  }
+  &:disabled {
+    color: $disabledtxt;
+    background-color: $disabledbgd;
+    cursor: unset;
+  }
+  &:hover:not([disabled]) {
+    @extend %box-shadow-default;
+    transform: translateY(-5px);
+    &:after {
+      right: 20px;
+      opacity: 1;
+    }
+  }
+  &:active {
+    transition: none;
+    transform: translateY(0);
+  }
+  &--primary {
+    background: white;
+    color: $primary;
+    &:after {
+      background-image: url(../images/svg/arrow.svg);
+    }
+  }
+  &--secondary {
+    background: $primary;
+    color: $white;
+    &:after {
+      background-image: url(../images/svg/arrow_white.svg);
+    }
+  }
+  &--outlined {
+    border: 1px solid $blue-gray;
+  }
+  &--grey{
+    background: $light-blue;
+    color: $secondary;
+    font-weight: bold;
+    font-size: rem(16px);
+    span{
+      display: inline-block;
+      vertical-align: middle;
+    }
+   
+  }
+  &--inverted-primary {
+    background: $secondary;
+    color: $white;
+  }
+  &--sm{
+    padding: 0 20px;
+  }
+  &--upload{
+    padding: 10px 25px;
+    border: 1px solid $blue-gray;
+    border-radius: 2px;
+    color: darken($blue-gray, 2);
+    font-weight: normal;
+   
+  }
+  
+}

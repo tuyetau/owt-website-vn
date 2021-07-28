@@ -1,0 +1,119 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a single Drupal page while offline.
+ *
+ * All available variables are mirrored in page.html.twig.
+ * Some may be blank but they are provided for consistency.
+ *
+ * @see template_preprocess_maintenance_page()
+ *
+ * @ingroup themeable
+ */
+#}
+<style>
+  body {
+    font-family: ProximaNova;
+    font-size: 16px;
+    color: #3b3b3b;
+    background: url("/themes/custom/openwt2018/dist/images/svg/pattern.svg");
+    overflow-x: hidden;
+  }
+  body:before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(white, rgba(255, 255, 255, 0));
+  }
+  header img {
+    height: 80px;
+    margin-left: 15px;
+    margin-bottom: 60px;
+  }
+  .page-homepage .header {
+    margin-top: 0;
+  }
+
+  .flex {
+    background-color: #fff;
+    display: flex;
+    flex-flow: wrap;
+    padding: 75px 0 60px 55px;
+    font-family: ProximaNova;
+    font-size: 30px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    color: #263d6c;
+  }
+  .flex div:first-child {
+    margin-right: 7%;
+    max-width: 43%;
+  }
+  .flex div:first-child img {
+    width: 100%;
+    height: auto;
+  }
+  .flex div:last-child {
+    max-width: 50%;
+    padding-top: 30px;
+  }
+  .flex div:last-child p {
+    margin: 0.4em;
+  }
+  .flex div:last-child p:first-child {
+    font-weight: bold;
+    font-size: 50px;
+  }
+  .flex div:last-child p .red {
+    color: #E41919;
+  }
+  @media only screen and (max-width: 1200px) {
+    .flex {
+      font-size: 30px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .flex div:first-child {
+      margin-right: 20%;
+      max-width: 80%;
+    }
+    .flex div:first-child img {
+      margin: 0;
+    }
+    .flex div:last-child {
+      max-width: 100%;
+      padding-right: 30px;
+      font-size: 25px;
+    }
+  }
+  @media only screen and (max-width: 476px) {
+    .flex div:last-child {
+      max-width: 100%;
+      padding-right: 15px;
+    }
+  }
+</style>
+<div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+  <header role="banner" class="header">
+    <img src="/{{ directory }}/dist/images/svg/logo.svg" alt="Open Web Technology"/>
+  </header>
+  <main id="block-pagetitle" role="main" class="container container-fluid">
+    <div class="flex">
+      <div>
+        <img width="25" height="25" alt="Rocket factory" title="Rocket factory" src="/{{ directory }}/dist/images/svg/illustrations-deliver.svg">
+      </div>
+      <div>
+        <p>Open Web Technology is currently<br><span class="red">under maintenance</span>.</p>
+        <p>We should be back shortly,</p>
+        <p>Thank you for your patience.</p>
+      </div>
+    </div>
+  </main>
+</div>

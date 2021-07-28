@@ -1,0 +1,46 @@
+.footer {
+  position: absolute;
+  margin-top: 88px;
+  text-align: center;
+  background-color: $blue-footer;
+  width: 100vw;
+  padding: 0 15px;
+  &__title {
+    padding-top: 45px;
+    padding-bottom: 15px;
+    font-weight: 400 !important;
+    color: $white;
+  }
+  &__social {
+    margin-top: 10px;
+    &__item {
+      margin: 0 12px;
+      @include xs {
+        margin: 0 5px;
+      }
+    }
+    &__image {
+      width: 31px;
+      height: 30px;
+      @include xs {
+        width: 31px;
+        height: 30px;
+      }
+    }
+  }
+  &__copyright {
+    color: $white;
+    padding: 40px 0;
+    margin-top: 30px;
+    a {
+      color: $white;
+      font-weight: unset;
+      font-style: normal;
+      text-underline: $white;
+      &:after {
+        height: 1px!important;
+        background: $white!important;
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{% import directory ~ '/templates/macros/generate_tags.html.twig' as macros %}
+{% set max_shown_divs = 2 %}
+
+<div id="page" class="page__cases-detail">
+    <div id="page-header">
+        {# Menu #}
+        <nav class="nav">
+            <div class="container-fluid-header nav__content">
+                <div>
+                    <a href="{{ front_page }}" title="{{ 'Home' |t }}" rel="home" class="no-link">
+                      <div class="nav__logo"></div>
+                    </a>
+                </div>
+                <div class="nav__right">
+                    <div class="nav__menu">
+                        {{ page.navigation }}
+                    </div>
+                    <div class="nav__hamburger"><span></span></div>
+                </div>
+            </div>
+        </nav>
+        <div class="banner banner__cases container">
+          {% if notify_untranslated is not empty %}
+            <p class="not-translated-notification">{{ notify_untranslated }}</p>
+          {% endif %}
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <h1 class="cases-title">{{ page['#title'] }}</h1>
+
+                        <div class="case__tags">
+                          <a class="tag tag--blue-deep no-href" href="/cases">{{ 'See all client cases' |t }}</a>
+                          {% if blog_tags_name is not empty %}
+                            {{ macros.generate_tags(blog_tags_name, project.tags, max_shown_divs) }}
+                          {% endif %}
+
+                        </div>
+
+                </div>
+                <div class="col-lg-6 col-md-12 banner__cases__right">
+                    {% if file_url(node.field_illustration.entity.fileuri) | length > 5 %}
+                        <div class="image-illustration cases" style="background-image: url('{{ file_url(node.field_illustration.entity.fileuri) }}')"></div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Page #}
+    <div id="page-wrapper" class="layout-main-wrapper layout-container container page clearfix">
+        <div id="main" class="layout-main clearfix">
+            <main id="content" class="column main-content" role="main">
+                <div class="cases-content">
+                    {{ page.content }}
+                </div>
+                {{ page.footer }}
+                <div class="remodal remodal__newsletter" data-remodal-id="modal-newsletter">
+                    <button data-remodal-action="close" class="remodal-close"></button>
+                    <p class="remodal__title remodal__newsletter__title">{% trans %}Subcrible to our newsletter{% endtrans %}</p>
+                    {{ block_webform_newsletter }}
+                </div>
+            </main>
+        </div>
+    </div>
+</div>

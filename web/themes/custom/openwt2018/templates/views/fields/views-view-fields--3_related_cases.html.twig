@@ -1,0 +1,15 @@
+<div class="row related-case">
+  <div class="col-4">
+    <a class="no-link" href="{{ fields.view_node.content }}">
+    {% if fields.field_header_background_img.content %}
+    <img src="{{ fields.field_header_background_img.content }}"/>
+    {% else %}
+    <img src="{{ fields.field_illustration.content }}"/>
+    {% endif %}
+    </a>
+  </div>
+  <div class="col-8">
+    <p class="title"><a class="no-link" href="{{ fields.view_node.content }}">{{ fields.title.content }}</a></p>
+    <p class="learn-more"><a href="{{ fields.view_node.content }}">{{ 'Learn more'|t }}</a></p>
+  </div>
+</div>

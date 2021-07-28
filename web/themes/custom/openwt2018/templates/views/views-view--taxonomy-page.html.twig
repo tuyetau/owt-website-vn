@@ -1,0 +1,52 @@
+{%
+  set classes = [
+  dom_id ? 'js-view-dom-id-' ~ dom_id,
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {{ title }}
+  {{ title_suffix }}
+
+  {{ exposed }}
+  {{ attachment_before }}
+
+   {% if description %}
+    <div class="description taxonomy-description container">
+        {{ description | raw }}
+    </div>
+  {% endif %}
+
+  <div class="container" id="client-cases-page">
+    {{ rows }}
+    {{ empty }}
+    {{ pager }}
+
+  </div>
+
+  {{ attachment_after }}
+  {{ more }}
+
+  {% if footer %}
+    <footer>
+      {{ footer }}
+    </footer>
+  {% endif %}
+
+  {{ feed_icons }}
+
+  {% if term_text_title or term_text_description %}
+    <div>
+      <section class="client-case-text">
+        <div class="container text">
+          {% if term_text_title %}
+            <h3 class="bold-title bold-title--medium">{{ term_text_title.0.value | raw }}</h3>
+          {% endif %}
+          {% if term_text_description %}
+            <div class="bg-white header__des header__des--blue">{{ term_text_description.0.value | raw }}</div>
+          {% endif %}
+        </div>
+      </section>
+    </div>
+  {% endif %}
+</div>

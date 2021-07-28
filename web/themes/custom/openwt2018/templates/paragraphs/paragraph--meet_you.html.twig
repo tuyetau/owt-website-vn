@@ -1,0 +1,42 @@
+{{ attach_library('openwt2018/meet-you') }}
+<section class="meet">
+  <div class="container">
+    <h2 class="title--huge">{{ content.field_meet_you }}</h2>
+    <div class="row">
+    <input type="hidden" class="select__input" id="open-positions-jobs" name="open-positions-jobs" value="{{ jobs.all|replace('&quot;', '') }}" />
+	  <input type="hidden" class="select__input" id="no-open-positions" name="no-open-positions" value="{{ jobs.no_jobs }}" />
+	  <input type="hidden" class="select__input" id="open-positions-button" name="open-positions-button" value="{{ jobs.button }}" />
+      <div class="col-12 col-md-6 secondary">
+        <div class="meet__content">
+          <div class="meet__icon"></div>
+          <span class="meet__title">{{ content.field_project }}</span>
+        </div>
+        <div class="meet__cta">
+          <a class="btn btn--inverted-primary" href="#project">{{ content.field_contact_us }}</a>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 primary">
+        <div class="meet__content">
+          <div class="meet__icon"></div>
+          <span class="meet__title">{{ content.field_job }}</span>
+        </div>
+        <div class="meet__cta">
+            <form action="{{ content.field_open_positions_link|render|trim }}#open-positions" method="POST">
+              <input type="hidden" class="select__input" id="open-positions-skill" name="open-positions-skill" value="" />
+              <input type="hidden" class="select__input" id="open-positions-city" name="open-positions-city" value="" />
+              <button type="submit" id="see-open-positions" class="btn btn--secondary">See open positions</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="remodal" data-remodal-id="project">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <div class="remodal__content">
+          <div class="remodal__project__form">
+            {{ content.field_project_webform }}
+          </div>
+        </div>
+      </div>
+    </section>

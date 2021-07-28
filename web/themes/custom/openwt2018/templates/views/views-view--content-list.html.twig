@@ -1,0 +1,125 @@
+{#
+/**
+ * @file
+ * Theme override for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A css-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   Javascript.
+ *
+ * @see template_preprocess_views_view()
+ */
+#}
+{% set classes = [
+dom_id ? 'view-content-list-trend view-container-simple js-view-dom-id-' ~ dom_id,
+] %}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {{ title }}
+  {{ title_suffix }}
+
+  {% if header %}
+    <header>
+      {{ header }}
+    </header>
+  {% endif %}
+
+  {{ exposed }}
+  {{ attachment_before }}
+  <div class="view-news">
+
+    {% if viewName == 'page_client_cases' %}
+      <input class="hidden" id="current-language" value="{{ language }}" />
+      <div class="filter--container">
+        <div class="mb--2 input--container dropdown--container col-xs-12 col-md-4">
+          <div class="input">{{ 'Search by business solution'|t }}</div>
+          <div class="dropdown--selected-items"></div>
+          <div tabindex="0" class="dropdown">
+            <ul>
+              {% if blogTags|length > 10 %}
+                <li class="input--container"><input  placeholder="{{ 'Type here to filter options...'|t }}"><i class="fa fa-search"></i></li>
+              {% endif %}
+              {% for term in blogTags %}
+                {% if term.name %}
+                  <li class="item" cat-id="{{ term.id }}">{{ term.name }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="mb--2 input--container dropdown--container col-xs-12 col-md-4">
+          <div class="input">{{ 'Search by industry'|t }}</div>
+          <div class="dropdown--selected-items"></div>
+          <div tabindex="0" class="dropdown">
+            <ul>
+              {% if industryTags|length > 10 %}
+                <li class="input--container"><input  placeholder="{{ 'Type here to filter options...'|t }}"><i class="fa fa-search"></i></li>
+              {% endif %}
+              {% for term in industryTags %}
+                {% if term.name %}
+                  <li class="item"  cat-id="{{ term.id }}">{{ term.name }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="mb--2 input--container dropdown--container col-xs-12 col-md-4">
+          <div class="input">{{ 'Search by project type'|t }}</div>
+          <div class="dropdown--selected-items"></div>
+          <div tabindex="0" class="dropdown">
+            <ul>
+              {% if projectTypeTags|length > 10 %}
+                <li class="input--container"><input  placeholder="{{ 'Type here to filter options...'|t }}"><i class="fa fa-search"></i></li>
+              {% endif %}
+              {% for term in projectTypeTags %}
+                {% if term.name %}
+                  <li class="item" cat-id="{{ term.id }}">{{ term.name }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+
+      </div>
+    {% endif %}
+    <div class="view-content row">
+      {{ rows }}
+    </div>
+  </div>
+  {{ empty }}
+  {{ pager }}
+
+  {{ attachment_after }}
+  {{ more }}
+
+  {% if footer %}
+    <footer>
+      {{ footer }}
+    </footer>
+  {% endif %}
+
+  {{ feed_icons }}
+</div>

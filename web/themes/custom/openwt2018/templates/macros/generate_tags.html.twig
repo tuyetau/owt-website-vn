@@ -1,0 +1,60 @@
+{% macro generate_tags(all_tags, tags_colors, max_shown_divs) %}
+    {% set buttons = [] %}
+
+    {# Loop in all tags #}
+    {% for tag in all_tags %}
+        {# Remove spaces for comparison #}
+        {% set case_tag = tag|render|lower|replace({'&amp;': '&', ' ':''}) %}
+
+        {% set color = "nocolor" %}
+        {% set url = "#" %}
+
+        {# Loop in colors array #}
+        {% for tag_color in tags_colors %}
+            {# Remove spaces for comparison #}
+            {% set array_tag = tag_color.name|render|lower|replace({' ': ''}) %}
+
+            {# Compare current tag with current color #}
+            {% if case_tag == array_tag %}
+                {% set color = tag_color.color %}
+                {% set url = tag_color.url %}
+            {% endif %}
+        {% endfor %}
+
+        {% if case_tag is not empty %}
+            {%
+                set buttons = buttons|merge([{
+                    'tag': tag,
+                    'color': color,
+                    'url': url
+                }])
+            %}
+        {% endif %}
+    {% endfor %}
+
+    {% set more_tag_start = false %}
+    {% set more_tag_end = false %}
+    {% set allTags = all_tags|length %}
+    {% set extra_divs = allTags - max_shown_divs %}
+
+    {% for button in buttons %}
+        {# Create "more" box #}
+        {% if loop.index > max_shown_divs %}
+            {% if extra_divs > 0 and more_tag_start == false %}
+                {% set more_tag_start = true %}
+                <div class="tag tag--more">
+                +{{ extra_divs }}
+                <div class="tag tag--more__content">
+            {% endif %}
+        {% endif %}
+
+        <a class="tag tag--{{ button.color }} no-href" href="{{ button.url }}">{{ button.tag | raw }}</a>
+
+    {% endfor %}
+
+    {% if more_tag_start == true and more_tag_end == false %}
+        </div>
+        </div>
+    {% endif %}
+
+{% endmacro %}

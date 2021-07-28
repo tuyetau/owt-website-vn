@@ -1,0 +1,1019 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\openwt_seo_for_page\Seo;
+use Drupal\Component\Utility\Html;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\Core\Url;
+/**
+ * Preprocess HTML
+ */
+
+
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function openwt2018_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  /**
+   * 404 template suggestion.
+   */
+  if (!is_null(Drupal::requestStack()
+    ->getCurrentRequest()->attributes->get('exception'))) {
+    $status_code = Drupal::requestStack()
+      ->getCurrentRequest()->attributes->get('exception')->getStatusCode();
+    switch ($status_code) {
+      case 404:
+        {
+          $suggestions[] = 'page__' . (string) $status_code;
+          break;
+        }
+      default:
+        break;
+    }
+  }
+  /**
+   * Add template suggestions based on the current view mode.
+   */
+  $node = \Drupal::routeMatch()->getParameter('node');
+  $type = (!is_null($node)) ? $node->getType() : FALSE;
+
+  if (!is_null($node) && $node->hasField('field_blog_type')) {
+    $metatag_kw = $node->get('field_blog_type')->value;
+    if ($metatag_kw == 'cases' || $metatag_kw == 'news' || $metatag_kw == 'trends') {
+      $suggestions[] = 'page__node__' . $metatag_kw;
+    }
+  }
+
+  if ($type === 'new_client_case') {
+    $suggestions[] = 'page__node__new_client_cases';
+  }
+  if ($type === 'event') {
+    $suggestions[] = 'page__node__event';
+  }
+  if ($type === 'white_paper') {
+    $suggestions[] = 'page__node__white_paper';
+    $variables['test'] = 'huhu';
+  }
+
+}
+
+function openwt2018_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+    // Add template suggestions based on the current view mode.
+    $node = \Drupal::routeMatch()->getParameter('node');
+  $type = (!is_null($node)) ? $node->getType() : FALSE;
+    if ($node->hasField('field_blog_type')) {
+        $metatag_kw = $node->get('field_blog_type')->value;
+        if ($metatag_kw == 'cases' || $metatag_kw == 'news' || $metatag_kw == 'trends') {
+            $suggestions[] = 'node__blog__' . $metatag_kw;
+        }
+
+    }
+  if ($type === 'new_client_case') {
+    $suggestions[] = 'node__new_client_case';
+  }
+  if ($type === 'event') {
+    $suggestions[] = 'node__event';
+  }
+  if ($type === 'white_paper') {
+    $suggestions[] = 'node__white_paper';
+  }
+
+}
+
+/**
+ * Preprocess page
+ */
+function openwt2018_preprocess_page(&$variables) {
+  if (isset($variables['node'])) {
+    $taxoId = $variables['node']->hasField('field_theming') ? $variables['node']->get('field_theming')->target_id : FALSE;
+    $taxoName = (!!$taxoId) ? Term::load($taxoId)->getName() : '';
+    $library = FALSE;
+    $langcode = strtolower(\Drupal::languageManager()
+      ->getCurrentLanguage()
+      ->getId());
+
+    //set caching
+    $variables['page']['#cache']['contexts'][] = 'route';
+
+    if ($variables['is_front']) {
+      $library = 'openwt2018/homepage';
+
+    }
+    else {
+      $node = \Drupal::routeMatch()->getParameter('node');
+      $type = (!is_null($node)) ? $node->getType() : FALSE;
+
+      switch ($taxoName) {
+        case 'Methodology':
+          //Hand over the submenu "services" to JS
+          $menu = [];
+          $tree = \Drupal::menuTree()
+            ->load('methodology-header', new \Drupal\Core\Menu\MenuTreeParameters());
+          foreach ($tree as $item) {
+            $title = $item->link->getTitle();
+            $url_obj = $item->link->getUrlObject();
+            $path = $url_obj->getInternalPath();
+            $is_active = 'node/' . $variables['node']->id() === $path ? TRUE : FALSE;
+            $menu[] = [
+              'title' => $title,
+              'url' => "/" . $langcode . \Drupal::service('path.alias_manager')
+                  ->getAliasByPath('/' . $path),
+              'is_active' => $is_active,
+            ];
+          }
+          $variables['#attached']['drupalSettings']['menu'] = $menu;
+          $library = 'openwt2018/methodology';
+          break;
+        case 'ClientCases':
+          $library = 'openwt2018/clientcases';
+          break;
+        case 'Jobs':
+          $library = 'openwt2018/jobs';
+          break;
+        case 'Team':
+          $library = 'openwt2018/team';
+          break;
+        case 'News':
+          $library = 'openwt2018/news';
+          break;
+        case 'Discover':
+          $library = 'openwt2018/discover';
+          break;
+				case 'Redirect':
+					$library = 'openwt2018/redirect';
+          break;
+        case 'Health':
+					$library = 'openwt2018/health';
+					break;
+        case 'Menu':
+					$library = 'openwt2018/menu';
+        case 'Page':
+					$library = 'openwt2018/page';
+					break;
+				default:
+					break;
+      }
+
+      if($type == 'new_client_case') {
+        $library = 'openwt2018/newclientcase';
+      }
+      if($type == 'white_paper') {
+        $library = 'openwt2018/white-paper';
+      }
+    }
+
+    if ($library) {
+      $variables['#attached']['library'][] = $library;
+    }
+  }
+
+  $block_webform_newsletter = \Drupal\block\Entity\Block::load('webform_newsletter');
+  if ($block_webform_newsletter) {
+    $block_content_webform_newsletter = \Drupal::entityTypeManager()
+      ->getViewBuilder('block')
+      ->view($block_webform_newsletter);
+    $variables['block_webform_newsletter'] = $block_content_webform_newsletter;
+  }
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  $type = (!is_null($node)) ? $node->getType() : FALSE;
+
+  if($type == 'new_client_case') {
+	$blog_tags = [];
+    foreach ($node->get('field_blog_tags')->getValue() as $val) {
+        $term = Term::load($val['target_id']);
+        $blog_tags[] = $term->getName();
+    }
+    $variables['blog_tags_name'] = $blog_tags;
+		setTaxonomyTerms($variables);
+  }
+
+  if($type == 'blog') {
+      $val = $node->get('field_news_tag')->getValue()[0];
+      if ($val !== null) {
+      $term = Term::load($val['target_id']);
+      $variables['news_tag'] = $term->getName();
+    }
+  }
+
+  if (!is_null($node) && $node->hasField('field_blog_type')) {
+    $metatag_kw = $node->get('field_blog_type')->value;
+    if ($metatag_kw == 'cases') {
+      $blog_tags = [];
+      foreach ($node->get('field_blog_tags')->getValue() as $val) {
+          $term = Term::load($val['target_id']);
+          $blog_tags[] = $term->getName();
+      }
+      $variables['blog_tags_name'] = $blog_tags;
+      setTaxonomyTerms($variables);
+    }
+  }
+  //Notify the end-user if a content has not been translated yet
+  if (!is_null($node) && $langcode != 'en') {
+    switch ($node->bundle()) {
+      case 'page':
+        $test_field = (!$node->get('field_summary')->isEmpty()) ? 'field_summary' : 'body';
+        break;
+      case  'blog':
+        $test_field = (!$node->get('field_approach')->isEmpty()) ? 'field_approach' : 'field_result';
+        break;
+      case  'new_client_case':
+        $test_field = 'title';
+        break;
+      default:
+        $test_field = null;
+    }
+    if (!is_null($test_field)) {
+      $test_field_value = $node->get($test_field)->value;
+      $original_value = $node->getTranslation('en')->get($test_field)->value;
+      if ($test_field_value === $original_value) {
+        $variables['notify_untranslated'] = t('Unfortunately, this page is not available in your language.');
+      }
+    }
+  }
+
+  //render responsive img for the new client case template
+  if (!is_null($node) && $node->hasField('field_header_background_img')) {
+    $display_options = [
+      'label'    => 'hidden',
+      'type'     => 'responsive_image',
+      'settings' => [
+        'responsive_image_style' => 'client_case_header',
+      ],
+		];
+		$element =  $node->get('field_header_background_img')->view($display_options);
+    $variables['new_client_case_header_img'] = render($element);
+    $variables['event_header_img'] = render($element);
+
+  }
+}
+
+function openwt2018_preprocess_node(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof \Drupal\node\NodeInterface) {
+    if ($node->bundle() == 'event') {
+      $date = $node->field_date->value;
+      if (!empty($date)) {
+        $variables['date_event'] = owtFormateDateOnContext($date, 'j F Y');
+      }
+    }
+  }
+}
+
+function owtFormateDateOnContext($date, $format) {
+  $dateObject = $date;
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  if ($langcode === "de" && strpos($format, "S") !== false) {
+    $format = str_replace("S", "", $format);
+  }
+  $formattedDate = \Drupal::service('date.formatter')->format(strtotime($dateObject), "custom", $format, $langcode);
+  return $formattedDate;
+}
+
+function filterSelectOptions(&$form, $sql, $arg, $selectId, $selectAll, $hideLabel) {
+  $connect = \Drupal::database();
+
+  $arg[':lang'] = 'en';
+
+  // Get base lang filters
+  $query = $connect->query($sql, $arg);
+  $results_base = $query->fetchAll();
+  $results_curr = FALSE;
+
+  //Get translation
+  $langcode = strtolower(\Drupal::languageManager()
+    ->getCurrentLanguage()
+    ->getId());
+  if ($langcode !== 'en') {
+    $arg[':lang'] = $langcode;
+    $query = $connect->query($sql, $arg);
+    $results_curr = $query->fetchAll();
+  }
+
+  $filters = [];
+  $filters['All'] = t($selectAll);
+
+  // Generate list (current lang if exists, else default)
+  foreach ($results_base as $basefilter) {
+    $trad = $basefilter;
+    if ($results_curr) {
+      foreach ($results_curr as $currfilter) {
+        if ($basefilter->tid == $currfilter->tid) {
+          $trad = $currfilter;
+        }
+      }
+    }
+    $filters[$trad->tid] = $trad->name;
+  }
+
+  $form[$selectId]['#options'] = $filters;
+
+  if ($hideLabel) {
+    $form[$selectId]['#title_display'] = 'invisible';
+  }
+}
+
+/**
+ * Preprocess forms
+ */
+function openwt2018_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $terms = [];
+  setTaxonomyTerms($terms);
+
+  // Remove filters having 0 items
+
+  if ($form['#id'] == 'views-exposed-form-client-cases-client-cases-block') {
+
+    $sql = "select distinct taxonomy_term_field_data.tid as tid,
+                taxonomy_term_field_data.name as name,
+                taxonomy_term_field_data.langcode
+            from taxonomy_term_field_data
+            inner join
+                taxonomy_index on taxonomy_term_field_data.tid = taxonomy_index.tid
+            inner join
+                node_field_data on node_field_data.nid = taxonomy_index.nid
+            where taxonomy_term_field_data.vid = 'industry'
+                and node_field_data.type = 'blog'
+                and node_field_data.status = 1
+                and taxonomy_term_field_data.langcode = :lang";
+
+    filterSelectOptions($form, $sql, [], 'industry', 'all industries', FALSE);
+
+  }
+  elseif ($form['#id'] == 'views-exposed-form-client-cases-client-cases-page') {
+    //remove filters having 0 items, but take into account the ones already selected
+    $industry = Html::escape($form_state->getUserInput()['industry']);
+    $projectType = Html::escape($form_state->getUserInput()['project_type']);
+    $businessSolutions = Html::escape($form_state->getUserInput()['business_solutions']);
+    $selecteds = [
+      'industry' => [
+        'value' => $industry,
+        'all' => 'industry',
+        'reset' => 'all industries',
+      ],
+      'project_type' => [
+        'value' => $projectType,
+        'all' => 'project type',
+        'reset' => 'all project types',
+      ],
+      'business_solutions' => [
+        'value' => $businessSolutions,
+        'all' => 'business solutions',
+        'reset' => 'all business solutions',
+      ],
+    ];
+    $selecteds2 = $selecteds;
+
+
+    foreach ($selecteds as $voc => $termId) {
+      $queryCount = 0;
+      $innerSelect = "node_field_data on node_field_data.nid";
+      $where = '';
+      $innerisBlog = '';
+      $arg = [];
+      $selectAll = ($termId['value'] === 'All') ? $termId['all'] : $termId['reset'];
+      reset($selecteds2);
+
+      foreach ($selecteds2 as $voc2 => $termId2) {
+        if ($termId2['value'] !== 'All' && $voc !== $voc2) {
+          $queryCount++;
+          if ($queryCount === 1) {
+            $innerSelect = "(
+                SELECT node_field_data.nid
+                FROM node_field_data
+                INNER JOIN taxonomy_index ON node_field_data.nid = taxonomy_index.nid
+                INNER JOIN node__field_blog_type ON node__field_blog_type.entity_id = node_field_data.nid ";
+            $where = " WHERE (((taxonomy_index.tid = :valuea))";
+            $arg[':valuea'] = $termId2['value'];
+
+            $innerisBlog = " AND ((node_field_data.status = '1') AND (node_field_data.type IN ('blog')) AND (node__field_blog_type.field_blog_type_value IN ('cases')))) as node_field_data on node_field_data.nid ";
+          }
+          else {
+            if ($queryCount === 2) {
+              $innerSelect .= " LEFT JOIN taxonomy_index AS taxonomy_index2 ON node_field_data.nid = taxonomy_index2.nid AND taxonomy_index2.tid != :valuea ";
+              $where .= " AND ((taxonomy_index2.tid = :valueb))";
+              $arg[':valueb'] = $termId2['value'];
+            }
+            else {
+              if ($queryCount === 3) {
+                $innerSelect .= " LEFT JOIN taxonomy_index AS taxonomy_index3 ON node_field_data.nid = taxonomy_index3.nid AND taxonomy_index3.tid != :valueb ";
+                $where .= " AND ((taxonomy_index3.tid = :valuec))";
+                $arg[':valuec'] = $termId2['value'];
+              }
+            }
+          }
+        }
+      }
+
+      if ($queryCount > 0) {
+        $where .= ") ";
+      }
+
+      $sql = "SELECT DISTINCT taxonomy_term_field_data.tid AS tid,
+                taxonomy_term_field_data.name AS name,
+                taxonomy_term_field_data.langcode
+            FROM taxonomy_term_field_data
+            INNER JOIN
+                taxonomy_index ON taxonomy_term_field_data.tid = taxonomy_index.tid
+            INNER JOIN
+                " . $innerSelect . $where . $innerisBlog . " = taxonomy_index.nid
+            INNER JOIN
+				node__field_blog_type ON node__field_blog_type.entity_id = taxonomy_index.nid
+            WHERE taxonomy_term_field_data.vid = :voc
+                AND taxonomy_term_field_data.langcode = :lang
+                AND node__field_blog_type.field_blog_type_value IN ('cases')";
+      $arg[':voc'] = $voc;
+      filterSelectOptions($form, $sql, $arg, $voc, $selectAll, TRUE);
+    }
+
+    $form['#title'] = t('Search by ');
+
+  }
+
+
+  // Add dropdowns in modal generic element
+  if (strpos($form['#id'], 'webform-submission-project-form') !== FALSE) {
+    $html = '<div style="margin-bottom: 12px;">';
+
+    // Project types
+    $html .= '<div class="select" style="margin-right: 6px;">';
+    $html .= '<span class="select__value" id="modal-type-value">' . $terms['project']['all_types'] . '</span>';
+    $html .= '<span class="select__arrow"><i class="arrow arrow--down"></i></span>';
+    $html .= '<ul id="select-type-modal">';
+
+    foreach ($terms['project']['types'] as $type) {
+      $html .= '<li>' . $type . '</li>';
+    }
+
+    $html .= '</ul>';
+    $html .= '</div>';
+
+    // Project durations
+    $html .= '<div class="select" style="margin-left: 6px;">';
+    $html .= '<span class="select__value" id="modal-duration-value">' . $terms['project']['all_durations'] . '</span>';
+    $html .= '<span class="select__arrow"><i class="arrow arrow--down"></i></span>';
+    $html .= '<ul id="select-type-modal">';
+
+    foreach ($terms['project']['durations'] as $duration) {
+      $html .= '<li>' . $duration . '</li>';
+    }
+
+    $html .= '</ul>';
+    $html .= '</div>';
+
+    $html .= '</div>';
+
+    // Add dropdowns to form
+    $form['elements']['selects']['#text'] = $html;
+  }
+
+  if ($form['#id'] == 'views-exposed-form-news-feeds-news-page') {
+    $form['field_news_tag_target_id']['#options']['All'] = t('All');
+  }
+
+}
+
+/**
+ * Preprocess fields
+ */
+function openwt2018_preprocess_field(&$variables) {
+  $element = $variables['element'];
+
+  // Add button classes to "Contact us" link
+  if ($element['#field_name'] == 'field_contact_link' || $element['#field_name'] == 'field_team_hiring_link' || $element['#field_name'] == 'field_talents_contact_us') {
+      $variables['items'][0]['content']['#options']['attributes']['class'][] = 'btn';
+      $variables['items'][0]['content']['#options']['attributes']['class'][] = 'btn--primary';
+  }
+
+  // Preprocess field_case for choosable_related_cases
+  if ($element['#field_name'] == 'field_case') {
+    foreach ($variables['items'] as $key => $reference) {
+      if (is_int($key)) {
+        $nodes[] = $reference;
+         $ids[] = $nodes[$key]['content']['#node']->id();
+      }
+    }
+    $variables['related_ids_field'] = $ids;
+  }
+}
+
+/**
+ * Preprocess language switcher links
+ */
+function openwt2018_preprocess_links__language_block(&$variables) {
+  $currentLanguageCode = \Drupal::languageManager()
+    ->getCurrentLanguage()
+    ->getId();
+
+  // replace key of active language with 'activeLink'
+  foreach ($variables['links'] as $i => $link) {
+    $linkLanguage = $link['link']['#options']['language'];
+    $id = $linkLanguage->get('id');
+
+    $variables['links'][$i]['link']['#title'] = ucfirst($id);
+
+    if ($currentLanguageCode == $id) {
+      $variables['links']['activeLink'] = $currentLanguageCode;
+      unset($variables['links'][$i]);
+    }
+  }
+
+  // if there is only 2 languages remove active one
+  if (sizeof($variables['links']) == 2) {
+    unset($variables['links']['activeLink']);
+    $alternate = current($variables['links']);
+    $variables['links'] = [$alternate];
+  }
+}
+
+/**
+ * Preprocess "event form" webform
+ */
+function openwt2018_preprocess_webform__event_webform(array &$variables) {
+  $variables['#attached']['library'][] = 'openwt2018/event-webform';
+}
+/**
+ * Preprocess "Project form" webform
+ */
+function openwt2018_preprocess_webform__project_form(array &$variables) {
+  // Set taxonomy terms
+  setTaxonomyTerms($variables);
+}
+
+/**
+ * Preprocess Client cases "Client cases" view
+ */
+function openwt2018_preprocess_views_view_fields__client_cases_block(&$variables) {
+  setTaxonomyTerms($variables);
+
+  // Set page's shares number (ShareThis)
+  $base_url = "https://openwt.com";
+
+  $shares = getShares($base_url . $variables['fields']['path']->content);
+  $variables['project']['shares'] = $shares;
+
+}
+
+/**
+ * Preprocess Client cases "Promoted client cases" view field
+ */
+function openwt2018_preprocess_views_view_fields__block_promoted(&$variables) {
+  setTaxonomyTerms($variables);
+
+  // Set page's shares number (ShareThis)
+  $base_url = "https://openwt.com";
+
+  $shares = getShares($base_url . $variables['fields']['path']->content);
+  $variables['project']['shares'] = $shares;
+}
+/**
+ * Preprocess Taxonomy page view field
+ */
+function openwt2018_preprocess_views_view_fields__taxonomy_page(&$variables) {
+  setTaxonomyTerms($variables);
+}
+/**
+ * Preprocess Event related cases block view field
+ */
+function openwt2018_preprocess_views_view_fields__event_3_cases_block(&$variables) {
+  setTaxonomyTerms($variables);
+}
+/**
+ * Preprocess Client cases "Specific content" view field
+ */
+function openwt2018_preprocess_views_view_fields__block_specific_content(&$variables) {
+  setTaxonomyTerms($variables);
+
+  // Set page's shares number (ShareThis)
+  $base_url = "https://openwt.com";
+
+  $shares = getShares($base_url . $variables['fields']['path']->content);
+  $variables['project']['shares'] = $shares;
+}
+/**
+ * Preprocess Health related cases block view field
+ */
+function openwt2018_preprocess_views_view_fields__health_3_cases_block(&$variables) {
+  setTaxonomyTerms($variables);
+}
+
+/**
+ * Preprocess Client cases "Page (block within paragraph page)" view field
+ */
+function openwt2018_preprocess_views_view_fields__client_cases_page(&$variables) {
+  setTaxonomyTerms($variables);
+
+  // Set page's shares number (ShareThis)
+  $base_url = "https://openwt.com";
+
+  $shares = getShares($base_url . $variables['fields']['path']->content);
+  $variables['project']['shares'] = $shares;
+}
+
+/**
+ * Preprocess News "Page (block within paragraph page)" view field
+ */
+function openwt2018_preprocess_views_view_fields__news_page(&$variables) {
+  // Set page's shares number (ShareThis)
+  $base_url = "https://openwt.com";
+
+  $shares = getShares($base_url . $variables['fields']['view_node']->content);
+  $variables['project']['shares'] = $shares;
+
+  $node_id = $variables['fields']['nid']->content;
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $path = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$node_id);
+  if (strpos($path, '/node/') !== FALSE) {
+    $alias = '/en' . \Drupal::service('path.alias_manager')->getAliasByPath('/node/' . $node_id, 'en');
+  }else {
+    $alias = '/' . $language . $path;
+  }
+  $variables['path_to_news'] = $alias;
+
+}
+
+/**
+ * Preprocess Client cases "Page (block within paragraph page)"
+ * views_infinite_scroll
+ */
+function openwt2018_preprocess_views_view(&$vars) {
+  if (isset($vars['rows'])) {
+    if (isset($vars['rows']['#theme_wrappers']['container']['#attributes'])) {
+      if ($vars['rows']['#theme_wrappers']['container']['#attributes']['data-drupal-views-infinite-scroll-content-wrapper'] && count($vars['rows']['#theme_wrappers']['container']['#attributes']['class'])) {
+        $vars['rows']['#theme_wrappers']['container']['#attributes']['class'][] = 'row';
+        $vars['rows']['#theme_wrappers']['container']['#attributes']['class'][] = 'case-columns';
+        $vars['rows']['#theme_wrappers']['container']['#attributes']['class'][] = 'test';
+      }
+    }
+  }
+}
+
+/**
+ * Preprocess Taxonomy view "Taxonomy page"
+ * views_infinite_scroll
+ */
+function openwt2018_preprocess_views_view__taxonomy_page(&$vars) {
+  $description = $vars['header']['entity_taxonomy_term']['#taxonomy_term']->getDescription();
+  $term_text_title = $vars['header']['entity_taxonomy_term']['#taxonomy_term']->get('field_term_text_title')->getValue();
+  $term_text_description = $vars['header']['entity_taxonomy_term']['#taxonomy_term']->get('field_term_text_description')->getValue();
+  $vars['description'] = $description;
+  $vars['term_text_title'] = $term_text_title;
+  $vars['term_text_description'] = $term_text_description;
+  $vars['#attached']['library'][] = 'openwt2018/taxonomy';
+
+}
+
+/**
+ * Preprocess Client cases "Page (block within paragraph page)"
+ * views_infinite_scroll
+ */
+function openwt2018_preprocess_views_view_unformatted__client_cases_page(&$vars) {
+  //grab the header and prepend it to the first row (see /themes/custom/openwt2018/templates/views/views-view-unformatted--client_cases_page.html.twig)
+  $view = $vars['view'];
+  $page = $view->pager->current_page;
+  if ($page == 0) {
+    if ($view->header['entity_paragraph']) {
+      $header = $view->header['entity_paragraph'];
+      $vars['header'] = $header->render();
+    }
+  }
+}
+
+/**
+ * Preprocess Client cases "Related cases block" view field
+ */
+function openwt2018_preprocess_views_view_fields__related_cases_block(&$variables) {
+	setTaxonomyTerms($variables);
+}
+
+/**
+ * Preprocess "Meet you" paragraph
+ */
+function openwt2018_preprocess_paragraph__meet_you(&$variables) {
+  setWorkableData($variables);
+  setTaxonomyTerms($variables);
+}
+
+/**
+ * Preprocess "Jobs offers" paragraph
+ */
+function openwt2018_preprocess_paragraph__jobs_offers(&$variables) {
+	setWorkableData($variables, NULL, TRUE);
+}
+
+/**
+ * Preprocess "Mission pictograms" paragraph
+ */
+function openwt2018_preprocess_paragraph__mission_pictograms(&$variables) {
+	  $variables['#attached']['library'][] = 'openwt2018/expertise';
+}
+
+/**
+ * Preprocess "Jobs types" paragraph
+ */
+function openwt2018_preprocess_paragraph__jobs_type(&$variables) {
+  $skill_filter = $variables['content']['field_job_type_type'][0]['#context']['value'];
+
+	$url = \Drupal::request()->getSchemeAndHttpHost();
+
+	$paragraph = $variables['paragraph'];
+  $parent_paragraph = $paragraph->getParentEntity();
+
+  if((isset($parent_paragraph)) && ($parent_paragraph->hasField('field_redirection_page'))) {
+		$field_content = $parent_paragraph->get('field_redirection_page')->getValue();
+
+		$node_id = $field_content[0]['target_id'];
+		$url = Url::fromRoute('entity.node.canonical', ['node' => $node_id], ['absolute' => TRUE])->toString();
+    $variables['redirect_url'] = $url;
+	}
+
+  setWorkableData($variables, $skill_filter);
+}
+
+function openwt2018_preprocess_paragraph__jobs_carriers(&$variables) {
+  if($variables['paragraph']->hasField('field_redirection_page')) {
+		$field_content = $variables['paragraph']->get('field_redirection_page')->getValue();
+
+		$node_id = $field_content[0]['target_id'];
+		$url = Url::fromRoute('entity.node.canonical', ['node' => $node_id], ['absolute' => TRUE])->toString();
+    $variables['redirect_url'] = $url;
+	}
+
+  setWorkableData($variables['consulting'], 'Consulting');
+  setWorkableData($variables['programming'], 'Programming');
+  setWorkableData($variables['development'], 'Development');
+  setWorkableData($variables['everything'], NULL);
+}
+
+function openwt2018_preprocess_paragraph__redirect_button(&$variables) {
+	$url = \Drupal::request()->query->get('url');
+  if (substr(strtolower($url), 0, 33) !== 'https://openwt.workable.com/jobs/' || $url === "") {
+    throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+  } else {
+    $variables['redirect_url'] = Html::escape($url);
+  }
+	$variables['#cache']['max-age'] = 0;
+}
+
+function openwt2018_preprocess_paragraph__new_client_case_tabs(&$variables) {
+	$langcode = strtolower(\Drupal::languageManager()
+      ->getCurrentLanguage()
+      ->getId());
+	$tabs = [];
+
+	foreach($variables['content']['field_tabs']['#items'] as $key => $value) {
+		$paragraph = Paragraph::load($value->target_id);
+
+		if($langcode != 'en' && $paragraph->hasTranslation($langcode)) {
+			$tab_title = $paragraph->getTranslation($langcode)->field_tab_tab_title->value;
+
+			$title = $paragraph->getTranslation($langcode)->field_tab_title->value;
+			$text = $paragraph->getTranslation($langcode)->field_tab_text->value;
+		} else {
+			$tab_title = $paragraph->field_tab_tab_title->value;
+
+			$title = $paragraph->field_tab_title->value;
+			$text = $paragraph->field_tab_text->value;
+		}
+
+		$display_options = [
+      'label'    => 'hidden',
+      'type'     => 'responsive_image',
+      'settings' => [
+        'responsive_image_style' => 'tabs',
+      ],
+		];
+		$element =  $paragraph->field_tab_image->view($display_options);
+		$image = render($element);
+
+		$tab = [
+			'tab_title' => $tab_title,
+			'title' => $title,
+			'text' => $text,
+			'image' => $image
+		];
+
+		array_push($tabs, $tab);
+	}
+
+	$variables['tabs'] = $tabs;
+}
+
+/**
+ * Returns the number of time a given URL has been shared
+ * @param $url
+ *
+ * @return bool|int
+ */
+function getShares($url) {
+  $API = "http://count-server.sharethis.com/v2.0/get_counts?url=";
+  $shares = 0;
+
+  try {
+    $response = \Drupal::httpClient()->get($API . $url);
+    $data = json_decode((string) $response->getBody(), TRUE);
+
+    if (isset($data['total'])) {
+      $shares = $data['total'];
+    }
+  } catch (RequestException $e) {
+    return FALSE;
+  }
+
+  return $shares;
+}
+
+/**
+ *  Add selected Taxonomy Terms in the given variable
+ * @param $variables
+ */
+function setTaxonomyTerms(&$variables) {
+  $curr_langcode = \Drupal::languageManager()
+    ->getCurrentLanguage(\Drupal\Core\Language\LanguageInterface::TYPE_CONTENT)
+    ->getId();
+
+  // Project types
+  $terms_types = \Drupal::service('entity_type.manager')
+    ->getStorage('taxonomy_term')
+    ->loadTree('project_type');
+  $project_types = [];
+  $project_types[0] = t("all types");
+  foreach ($terms_types as $term) {
+    $taxonomy_term = \Drupal\taxonomy\Entity\Term::load($term->tid);
+    $taxonomy_term_trans = \Drupal::service('entity.repository')
+      ->getTranslationFromContext($taxonomy_term, $curr_langcode);
+    array_push($project_types, $taxonomy_term_trans->name->value);
+  }
+  $variables['project']['types'] = $project_types;
+  $variables['project']['all_types'] = t("all types");
+
+  // Project durations
+  $terms_durations = \Drupal::service('entity_type.manager')
+    ->getStorage('taxonomy_term')
+    ->loadTree('project_durations');
+  $project_durations = [];
+  $project_durations[0] = t("all durations");
+  foreach ($terms_durations as $term) {
+    $taxonomy_term = \Drupal\taxonomy\Entity\Term::load($term->tid);
+    $taxonomy_term_trans = \Drupal::service('entity.repository')
+      ->getTranslationFromContext($taxonomy_term, $curr_langcode);
+    array_push($project_durations, $taxonomy_term_trans->name->value);
+  }
+  $variables['project']['durations'] = $project_durations;
+  $variables['project']['all_durations'] = t("all durations");
+
+  // Tags colors
+  $terms_colors = \Drupal::service('entity_type.manager')
+    ->getStorage('taxonomy_term')
+    ->loadTree('tags_colors');
+
+  $tags_colors = [];
+  foreach ($terms_colors as $term) {
+    $tags_colors[$term->tid] = $term->name;
+  }
+
+	$taxonomy_names = ['industry', 'business_solutions', 'project_type'];
+	$project_blog = [];
+
+	foreach($taxonomy_names as $name) {
+		$terms_blog = \Drupal::service('entity_type.manager')
+			->getStorage('taxonomy_term')
+			->loadTree($name);
+
+		foreach ($terms_blog as $blog) {
+		  $blog_tid =  \Drupal::service('entity_type.manager')
+				->getStorage('taxonomy_term')
+				->load($blog->tid);
+		  if ($blog_tid->hasField('field_color')) {
+        $color = $blog_tid->get('field_color')
+          ->getValue();
+        $url = \Drupal\Core\Url::fromUri('internal:/taxonomy/term/' . $blog->tid)
+          ->toString();
+
+        $blog_item = [];
+        $blog_item['name'] = $blog->name;
+        $blog_item['url'] = $url;
+        $blog_item['color'] = (count($color) > 0 ? $tags_colors[$color[0]['target_id']] : '');
+
+        array_push($project_blog, $blog_item);
+      }
+
+		}
+	}
+
+	$variables['project']['tags'] = $project_blog;
+}
+
+/**
+ * Set available jobs from Workable API in the given variable
+ * @param $variables
+ * @param null $skill_filter - if set, filters jobs accordingly
+ * @param bool $just_location - if true, sets only the list of locations
+ */
+function setWorkableData(&$variables, $skill_filter = NULL, $just_location = FALSE) {
+
+  $moduleHandler = \Drupal::service('module_handler');
+  $cache_data = [];
+
+
+  // Load jobs from workable
+  if ($moduleHandler->moduleExists('google_workable_connector')) {
+    try{
+      $arr = \Drupal\google_workable_connector\Controller\WorkableController::workableRetrieveJobsFromWorkable('published');
+    }catch(Exception $e){
+      \Drupal::logger('workable')->error( 'Workable did throw an error. Skip it to avoid crash.' . $e);
+      $arr = [];
+    }
+
+    $skills_array = [t('all domains')];
+    $locations_array = [t('all locations')];
+    $jobs = [];
+    $count = 1;
+    $variables['#attached']['drupalSettings']['jobs'] = [];
+    $variables['#attached']['drupalSettings']['jobs']['selected_skill']  = Html::escape(\Drupal::request()->request->get('open-positions-skill'));
+    $variables['#attached']['drupalSettings']['jobs']['selected_city']  = Html::escape(\Drupal::request()->request->get('open-positions-city'));
+    $variables['#attached']['drupalSettings']['jobs']['selected_department']  = Html::escape(\Drupal::request()->request->get('open-positions-department'));
+
+
+    foreach ($arr as $key => $valjob) {
+      $skills = trim($valjob->code);
+      $location = trim($valjob->location->city);
+      $department = trim($valjob->department);
+
+      if (!empty($skills) && !empty($location)) {
+        if (!empty($valjob->location->region_code)) {
+         if ($valjob->location->region_code == 'VD') {
+           array_push($locations_array, t('Lausanne / EPFL'));
+         }
+         else {
+           array_push($locations_array, trim($valjob->location->city));
+         }
+        }
+
+        $skills_list = array_unique(explode(",", $skills));
+
+        foreach ($skills_list as $skill) {
+          if (strtolower($skill) != 'none') {
+            array_push($skills_array, trim($skill));
+          }
+
+        }
+        $job = [];
+        $job['num'] = $count++;
+        $job['title'] = $valjob->title;
+        $job['skills'] = $skills;
+        $job['city'] = $location;
+        $job['department'] = $department;
+        $job['url'] = $valjob->url;
+
+        array_push($jobs, $job);
+      }
+    }
+
+	foreach ($locations_array as $i => $job_name) {
+        if ($job_name == 'Geneva or Lausanne' || $job_name == 'Lausanne or Geneva') {
+            unset($locations_array[$i]);
+        }
+    }
+
+    $cache_data['skills'] = array_unique($skills_array);
+    $cache_data['locations'] = array_unique($locations_array);
+    $cache_data['all'] = json_encode($jobs, JSON_UNESCAPED_UNICODE);
+    $cache_data['all_unencoded'] = $jobs;
+  }
+
+
+  if (!is_null($skill_filter)) {
+    $jobs = [];
+    foreach ($cache_data['all_unencoded'] as $job) {
+      $skills_list = array_unique(explode(",", $job['skills']));
+      foreach ($skills_list as $skill) {
+        if (strtolower($skill_filter) == strtolower($skill)) {
+          $jobs[] = $job;
+          break;
+        }
+      }
+    }
+    $variables['jobs']['all'] = json_encode($jobs, JSON_UNESCAPED_UNICODE);
+    $variables['jobs']['all_unencoded'] = $jobs;
+  }
+  else {
+    if (!$just_location) {
+      $variables['jobs']['all'] = $cache_data['all'];
+      $variables['jobs']['all_unencoded'] = $cache_data['all_unencoded'];
+    }
+  }
+  if (!$just_location) {
+    $variables['jobs']['skills'] = $cache_data['skills'];
+    $variables['jobs']['all_skills'] = t("all domains");
+    $variables['jobs']['button'] = t('See our %num% open position(s)');
+    $variables['jobs']['no_jobs'] = t('No position exists for the selected criteria');
+  }
+  $variables['jobs']['locations'] = $cache_data['locations'];
+  $variables['jobs']['all_locations'] = t("all locations");
+  $variables['jobs']['#cache'] = ['tags' => ['WORKABLE_SKILLS']];
+}
+
+?>

@@ -1,0 +1,293 @@
+.paragraph.missions {
+  @extend %transition;
+  margin-top: 90px;
+  .four_missions, .three_missions {
+    display: flex;
+    align-items: stretch;
+    height: 470px;
+    @media (min-width: 1200px) {
+      height: 450px;
+    }
+    @include md{
+      height: auto;
+      flex-direction: column;
+      .paragraph.mission {
+        margin: 10px 0px;
+        .left_block {
+          width: 100%;
+          text-align: left;
+        }
+        .summary {
+          width: 0px;
+        ;
+        }
+        &.opened_mission {
+          flex-direction: column;
+          .summary {
+            position: relative;
+            margin-left: 0;
+            width: auto;
+            height: auto;
+          }
+        }
+      }
+      .mission_icon {
+        display: none;
+      }
+    }
+  }
+  .four_missions .paragraph.mission {
+    width: 20%;
+    &.opened_mission{
+      width: 40%
+    }
+    @include md{
+      width: 100%;
+      &.opened_mission{
+        width: 100%;
+      }
+    }
+  }
+  .three_missions .paragraph.mission {
+    width: 30%;
+    &.opened_mission{
+      width: 40%
+    }
+    @include md{
+      width: 100%;
+      &.opened_mission{
+        width: 100%
+      }
+    }
+  }
+  .missions_title {
+    margin-bottom: 40px;
+  }
+}
+.paragraph.mission {
+  @extend %transition;
+  cursor: pointer;
+  background-color: $light-grey;
+  border-radius: 10px;
+  padding: 20px 20px;
+  margin: 20px 10px;
+  max-height: 300px;
+  display: flex;
+  position: relative;
+
+  .left_block {
+    margin-right: 30%;
+    padding: 0px 10px;
+    width: 30%;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: stretch;
+    display: flex;
+
+    .mission_icon {
+      &_light {
+        @extend %transition;
+        position: absolute;
+        height: 0;
+        opacity: 0;
+      }
+      &_dark {
+        @extend %transition;
+        position: absolute;
+        height: auto;
+        opacity: 1;
+      }
+      width: 40%;
+      margin-left: -20px;
+      @media (min-width: 768px) {
+        margin-left: -30px;
+      }
+      img {
+        width: 148px;
+        height: 145px;
+      }
+    }
+    @include md {
+      padding: 0;
+      .mission_icon_dark {
+        display: none;
+      }
+    }
+  }
+  .mission_title {
+    font-family: ProximaNova;
+    font-size: 25px;
+    line-height: 29px;
+    color: $blue-marine;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .summary {
+    width: 0px;
+    height: 0px;
+    visibility: hidden;
+    opacity: 0;
+    color: $white;
+    p {
+      margin: 0;
+      line-height: 23px;
+      font-size: 20px;
+    }
+  }
+  .bottom_block {
+    display: none;
+  }
+  &.opened_mission {
+    padding: 40px 20px;
+    margin: 0px 10px;
+    @include md {
+      max-height: none;
+      height: fit-content;
+    }
+    @media (max-width: 1199px) and (min-width: 992px)  {
+      max-height: none;
+      height: 470px;
+    }
+    @media (min-width: 1200px)  {
+      max-height: none;
+      height: 400px;
+    }
+    background-color: $primary;
+    box-shadow: 0px 7px 21px rgba(137, 14, 14, 0.342221);
+    .mission_title {
+      color: $white;
+    }
+    .left_block {
+      @include md {
+      .mission_icon_light {
+          opacity: 0.4 !important;
+        }
+      }
+      .mission_icon_light {
+        @extend %transition;
+        position: absolute;
+        height: auto;
+        opacity: 1;
+      }
+      .mission_icon_dark {
+        @extend %transition;
+        position: absolute;
+        height: 0;
+        opacity: 0;
+      }
+      margin-right: 0;
+    }
+    .summary {
+      @extend %transition;
+      position: absolute;
+      width: 45%;
+      margin-left: 48%;
+      height: auto;
+      visibility: visible;
+      opacity: 1;
+      @media (min-width: 1200px) {
+        width: 47.5%;
+        margin-left: 41%;
+      }
+    }
+    a {
+      color: $white;
+      &:not(.btn):not(.tag):not(.no-link):not(.case-link):not(.atlwdg-trigger):after {
+        background: $white;
+      }
+    }
+    .bottom_block {
+      @extend %transition;
+      @include md {
+        display: block;
+      }
+      margin-top: 20px;
+      .mission_icon_light  img {
+        height: 200px;
+        width: 204px;
+      }
+    }
+  }
+  &:not(.opened_mission){
+    .left_block {
+      .mission_title {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+#openwt-mission-video button {
+  background: #E41919;
+  border-radius: 42px;
+  font-family: ProximaNova;
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+  color: #FFFFFF;
+  font-weight: 600;
+  margin: 30px auto;
+  display: flex;
+  padding: 5px 25px;
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0px 5px 15px rgba(71, 99, 112, 0.274541);
+}
+%transition {
+  -webkit-transition: all 0.4s ease-in-out, visibility 0.6s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out, visibility 0.6s ease-in-out;
+  -o-transition: all 0.4s ease-in-out, visibility 0.6s ease-in-out;
+  transition: all 0.4s ease-in-out, visibility 0.6s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out, opacity 0.6s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out, opacity 0.6s ease-in-out;
+  -o-transition: all 0.4s ease-in-out, opacity 0.6s ease-in-out;
+  transition: all 0.4s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+// Language specific CSS
+html[lang="fr"], html[lang="de"] {
+  .paragraph.missions {
+    .four_missions, .three_missions {
+      @media (min-width: 992px) {
+        height: 640px;
+      }
+      @media (min-width: 1200px) {
+        height: 500px;
+      }
+
+      .paragraph.mission {
+        &.opened_mission {
+          @media (min-width: 992px) {
+            height: 630px;
+          }
+          @media (min-width: 1200px) {
+            height: 480px;
+          }
+        }
+      }
+    }
+  }
+}
+
+html[lang="de"] {
+  .paragraph.missions {
+    .four_missions, .three_missions {
+      .paragraph.mission {
+        &.opened_mission {
+          .summary {
+            @media (min-width: 992px) {
+              margin-left: 50%;
+              width: 43%;
+              word-break: break-word;
+              hyphens: auto;
+            }
+            @media (min-width: 1200px) {
+              margin-left: 42%;
+              width: 47%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

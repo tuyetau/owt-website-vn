@@ -1,0 +1,20 @@
+{%
+    set itemClasses = [
+       'blog-item',
+       'trend',
+        fields.field_highlighted.content == '1' ? 'highlighted col-md-8':'col-md-4'
+    ]  
+%}
+{% set fieldnid = fields.nid.content|render|number_format %}
+{% set path_to_case = path('entity.node.canonical', {'node':  fieldnid	}) %}
+<div class="{{ itemClasses |join(' ') }}">
+    <a href="{{ path_to_case }}" class="item-new">
+      <div class="cover-img2">{{ fields.field_illustration.content }}</div>
+      <div class="padding">
+            <div class="title-new trend-title"><h4>{{ fields.title.content }}</h4></div>
+        <div class="type-new trend-subtitle">{{ fields.field_sub_heading.content }}</div>
+        <div class="date-new">{{ fields.created.content }}</div>
+           <div class="arrow"></div>
+      </div>
+    </a>
+</div>

@@ -1,0 +1,25 @@
+{%
+    set classes = [
+    'paragraph mission',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class
+]
+%}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="left_block">
+    <h2 class="mission_title animated fadeIn">
+        {{ content.field_mission_title }}
+    </h2>
+    <div class="mission_icon">
+      {{ content.field_mission_light_icon }}
+      {{ content.field_mission_dark_icon }}
+    </div>
+  </div>
+  <div class="summary">
+    {{ content.field_mission_summary }}
+  </div>
+  <div class="bottom_block">
+    {{ content.field_mission_light_icon }}
+  </div>
+</div>

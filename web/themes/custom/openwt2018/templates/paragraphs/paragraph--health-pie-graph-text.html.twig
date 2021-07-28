@@ -1,0 +1,77 @@
+{%
+    set classes = [
+    'paragraph pie-graph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+
+<div {{ attributes.addClass(classes) }}>
+    
+    <div class="graph-object__list">
+        <div class="graph-object pie-graph__object">
+            <svg width="286" height="279" xmlns="http://www.w3.org/2000/svg" id="pieObject"><g id="Page-1" fill="none" fill-rule="evenodd"><g id="pie" transform="translate(1)"><g id="donut" transform="translate(40 26)" fill-rule="nonzero"><path class="path" data-show="lbVr" d="M102.291 1.008a4 4 0 1 1 .498 7.984 109.465 109.465 0 0 0-15.956 2.176 4 4 0 1 1-1.664-7.825 117.465 117.465 0 0 1 17.122-2.335z" id="path-vr" fill="#FDC0C0"/><path class="path" data-show="lbBlockchain" d="M71.926 8.247a4 4 0 1 1 2.759 7.509A101.891 101.891 0 0 0 52.26 27.33a4 4 0 1 1-4.52-6.6A109.891 109.891 0 0 1 71.926 8.246v.001z" id="path-blockchain" fill="#FC9898"/><path class="path" data-show="lbAi" d="M36.118 30.041A4 4 0 1 1 41.5 35.96c-10.06 9.154-18.194 20.225-23.867 32.544a4 4 0 0 1-7.266-3.346c6.123-13.298 14.898-25.242 25.75-35.116l.001-.001z" id="path-ai" fill="#F76263"/><path class="path" data-show="lbPrinting" d="M4.186 80.91a4 4 0 1 1 7.697 2.182A102.89 102.89 0 0 0 8 111.182c0 24.828 8.822 48.272 24.599 66.7a4 4 0 1 1-6.077 5.203C9.515 163.22 0 137.935 0 111.182A110.89 110.89 0 0 1 4.186 80.91z" id="path-printing" fill="#E41B1D"/><path class="path" data-show="lbIot" d="M37.355 193.901a4 4 0 0 1 5.29-6.001c18.495 16.3 42.25 25.448 67.438 25.448 32.078 0 61.68-14.883 80.862-39.789a4 4 0 1 1 6.338 4.882c-20.682 26.852-52.614 42.907-87.2 42.907-27.154 0-52.784-9.87-72.728-27.447z" id="path-iot" fill="#981314"/><path class="path" data-show="lbRobotics" d="M206.873 162.52a4 4 0 1 1-7.036-3.806c7.937-14.67 12.149-31.093 12.149-48.13 0-53.92-42.317-98.41-96.222-101.59a4 4 0 0 1 .472-7.987c58.117 3.43 103.75 51.406 103.75 109.578 0 18.374-4.548 36.103-13.113 51.935z" id="path-robotics" fill="#600B0B"/></g><g id="printing" class="path-icon" transform="translate(0 153)" fill="#E41B1D" fill-rule="nonzero" stroke="#E41B1D"><path d="M9.112 16.162a.695.695 0 1 0-.791 1.144c.037.024.065.059.097.088.867.867.859 2.286-.018 3.162-.418.42-.987.657-1.58.657h-.007c-.594 0-1.15-.23-1.568-.646a2.226 2.226 0 0 1-.641-1.802.696.696 0 0 0-.76-.759 2.23 2.23 0 0 1-1.8-.641 2.207 2.207 0 0 1-.65-1.577 2.243 2.243 0 0 1 3.822-1.594c.029.028.058.054.078.081a.694.694 0 0 0 1.072.108l5.207-5.208a.696.696 0 0 0-.983-.983l-4.725 4.723a3.638 3.638 0 0 0-5.862 2.872 3.614 3.614 0 0 0 3.22 3.601c.089.813.45 1.576 1.04 2.165a3.58 3.58 0 0 0 2.551 1.054h.01c.963 0 1.885-.384 2.562-1.067 1.419-1.418 1.427-3.718.017-5.128-.077-.074-.168-.165-.291-.251z" id="Path"/><path d="M21.205 4.607a3.599 3.599 0 0 0-2.167-1.037 3.584 3.584 0 0 0-1.036-2.167c-1.412-1.412-3.715-1.407-5.134.012-1.418 1.418-1.425 3.721-.011 5.134.076.076.17.17.294.251a.697.697 0 0 0 1.07-.712.694.694 0 0 0-.294-.442 2.24 2.24 0 0 1-.073-3.247 2.243 2.243 0 0 1 3.166-.011c.474.474.706 1.132.637 1.802a.696.696 0 0 0 .763.764 2.217 2.217 0 0 1 1.803.637c.867.867.86 2.286-.017 3.161-.875.876-2.294.883-3.16.017-.032-.032-.066-.06-.091-.098a.694.694 0 0 0-1.065-.095l-5.207 5.207a.696.696 0 0 0 .984.984l4.724-4.724a3.636 3.636 0 0 0 4.8-.308c1.416-1.417 1.424-3.718.014-5.127z" id="Path"/></g><g id="robotics" class="path-icon" transform="translate(261 55)" fill="#600B0B" fill-rule="nonzero"><path d="M8.108 16.387h-.147L5.066 7.742a3.688 3.688 0 0 1-2.557 1.047c-.268 0-.536-.024-.803-.097l2.58 7.695c-1.655.17-2.97 1.557-2.97 3.262 0 .39.318.705.706.705h8.619c.39 0 .706-.316.706-.705.05-1.802-1.437-3.263-3.238-3.263zM6.135 5.21c0 .634-.17 1.242-.487 1.778h6.306V3.506H5.697a3.68 3.68 0 0 1 .44 1.704h-.002zm-1.192 0a2.411 2.411 0 1 1-4.822 0 2.411 2.411 0 0 1 4.822 0zm16.63 1.559l-2.874 1.095-1.948-1.582V4.309L18.7 2.727l2.874 1.095a1.25 1.25 0 0 0 1.607-.705 1.251 1.251 0 0 0-.706-1.607L18.918.17a1.282 1.282 0 0 0-1.217.195L15.17 2.41h-1.34a.681.681 0 0 0-.681.681v4.432a.68.68 0 0 0 .681.682h1.34L17.7 10.25c.218.17.511.268.779.268.146 0 .292-.025.438-.073l3.53-1.364c.634-.244.95-.949.707-1.608-.22-.63-.95-.947-1.582-.704z" id="Shape"/></g><g id="vr" class="path-icon" transform="translate(119)" fill="#FDC0C0" fill-rule="nonzero"><path d="M.247 6.188V0h10.636l.266.269c.212.213.322.296.54.403.62.306 1.25.306 1.868 0 .219-.107.328-.19.54-.403L14.363 0H25v12.376h-6.977l-.139-.225a6.218 6.218 0 0 0-5.26-2.932 6.218 6.218 0 0 0-5.26 2.932l-.139.225H.246l.001-6.188zM6.96 9.234a2.997 2.997 0 0 0 1.654-.867 3.05 3.05 0 0 0 .722-3.252c-.293-.81-1.018-1.534-1.827-1.827a3.105 3.105 0 0 0-2.147 0c-.81.293-1.533 1.018-1.826 1.827a3.05 3.05 0 0 0 .721 3.252 3.034 3.034 0 0 0 2.704.867zm12.377 0a2.997 2.997 0 0 0 1.653-.867 3.05 3.05 0 0 0 .722-3.252c-.293-.81-1.018-1.534-1.827-1.827a3.105 3.105 0 0 0-2.146 0c-.81.293-1.533 1.018-1.827 1.827a3.05 3.05 0 0 0 .722 3.252 3.031 3.031 0 0 0 2.703.867z" id="Shape"/></g><g id="iot" class="path-icon" transform="translate(187 256)" fill="#981314" fill-rule="nonzero"><path d="M10.333 10.763L1.165 5.557a.679.679 0 0 0-1.015.591v10.363a.68.68 0 0 0 .347.592l9.168 5.119a.679.679 0 0 0 1.01-.593V11.354a.679.679 0 0 0-.343-.59h.001z" id="Path"/><path d="M10.93 20.472l7.808-4.36V7.315l-7.808 4.434v8.723zm-1.015-9.708l9.167-5.207a.679.679 0 0 1 1.015.591v10.363a.678.678 0 0 1-.348.592l-9.168 5.119a.679.679 0 0 1-1.01-.593V11.354c0-.244.131-.47.344-.59z" id="Shape"/><path d="M10.116 10.78l7.892-4.653-7.896-4.555L2.218 6.12l7.897 4.66zm-9.6-5.264L9.767.187a.685.685 0 0 1 .685 0l9.26 5.34a.686.686 0 0 1 .005 1.185l-9.252 5.454a.685.685 0 0 1-.697 0L.509 6.7a.685.685 0 0 1 .006-1.184z" id="Shape"/></g><g id="ai" class="path-icon" transform="translate(23 48)" fill-rule="nonzero"><g id="Group" transform="matrix(-1 0 0 1 21 0)"><path d="M1.26 5.445L8.55.519a2.864 2.864 0 0 1 3.206 0l7.29 4.926a2.864 2.864 0 0 1 1.26 2.373v8.228c0 .951-.473 1.84-1.26 2.373l-7.29 4.925a2.864 2.864 0 0 1-3.207 0L1.26 18.42A2.864 2.864 0 0 1 0 16.046V7.818c0-.951.472-1.84 1.26-2.373z" id="Path" fill="#F76263"/><rect id="Rectangle" fill="#FFF" x="2.343" y="9.588" width="2.343" height="5.467" rx="1.172"/><rect id="Rectangle" fill="#FFF" x="11.715" y="9.588" width="2.343" height="5.467" rx="1.172"/><path d="M6.119 18.18c-.36 0-.652-.35-.652-.782 0-.431.292-.78.652-.78H9.5c.36 0 .652.349.652.78 0 .432-.292.781-.652.781H6.119z" id="Path" fill="#FFF"/><path d="M15.273 7.53c-.116.388-.473.591-.798.454-.325-.137-.497-.561-.382-.949L15.968.713c.114-.387.471-.59.797-.453.325.136.496.56.381.948L15.272 7.53zm-11.801 0c.114.388.471.591.797.454.325-.137.496-.561.382-.949L2.776.713C2.66.326 2.304.123 1.979.26c-.325.136-.497.56-.382.948L3.472 7.53z" id="Shape" fill="#F76263"/></g></g><g id="blockchain" class="path-icon" stroke-linejoin="round" transform="translate(65 10)" stroke="#FC9898" stroke-width="3"><path id="Path" d="M13.499 2.773L16.192.08l7.716 7.714-7.716 7.715-7.714-7.715L11.172 5.1"/><path id="Path" d="M11.172 12.806L8.478 15.5.762 7.784 8.477.07l7.715 7.714-2.693 2.695"/></g></g></g></svg>
+             <span class="pie-description">
+                <span class="bold-title bold-title--medium bold-title__highlight">$41.8B</span>
+                <span class="object-description">{{ content.field_label_description }}</span></span>
+            </span>
+            <span id="lbRobotics" class="object__label object__label--robotics">
+
+                <img class="object__icon" src="/{{ directory }}/dist/images/svg/robotics.svg" />
+                <span class="object__text">
+                    <span class="object__label__number">$14.1B</span>
+                    <span>{{ content.field_label_robotics}}</span>
+                </span>
+            </span> 
+            <span id="lbIot" class="object__label object__label--iot">
+                <img class="object__icon" src="/{{ directory }}/dist/images/svg/iot.svg" />
+                <span class="object__text">
+                    <span class="object__label__number">$12B</span>
+                    <span>{{ content.field_label_iot}}</span>
+                </span>
+            </span> 
+            <span id="lbPrinting" class="object__label object__label--printing">
+                <img class="object__icon" src="/{{ directory }}/dist/images/svg/printing.svg" />
+                <span class="object__text">
+                     <span class="object__label__number">$7.9B</span>
+                     <span>{{ content.field_label_printing}}</span>
+                </span>
+            </span>
+            <span id="lbAi" class="object__label object__label--ai">
+                <img class="object__icon" src="/{{ directory }}/dist/images/svg/ai.svg" />
+                <span class="object__text">
+                    <span class="object__label__number">$3.5B</span>
+                    <span>{{ content.field_label_ai}}</span>
+                </span>
+               
+            </span>
+            <span id="lbBlockchain" class="object__label object__label--blockchain">
+                <img class="object__icon" src="/{{ directory }}/dist/images/svg/blockchain.svg" />
+                <span class="object__text">
+                    <span class="object__label__number">$2.3B</span>
+                    <span>{{ content.field_label_blockchain }}</span>
+                </span>
+            </span>
+            <span id="lbVr" class="object__label object__label--vr">
+                <img class="object__icon" src="/{{ directory }}/dist/images/svg/vr.svg" /> 
+                <span class="object__text">
+                    <span class="object__label__number">$2B</span>
+                    <span>{{ content.field_label_vr_ar }}</span>
+                </span>
+            </span>
+           
+        
+         </div>  
+        
+        
+    </div>
+    <div class="object__button hidden-md-up">
+            <a id="toogleLabel" class="object__button__toggle btn btn--grey btn--sm btn--outlined" href="javascript:;">
+                <span class="">{{ content.field_link_show.0['#title'] }}</span>
+                <span class="icon-toggle">
+                    <span class="icon-toggle__horizontal"></span>
+                    <span class="icon-toggle__vertical"></span>
+                </span>
+            </a>
+    </div>
+</div>

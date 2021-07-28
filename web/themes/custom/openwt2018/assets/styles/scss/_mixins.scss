@@ -1,0 +1,133 @@
+%box-shadow-default {
+  box-shadow: 0px 5px 15px 0px rgba(71,99,112,0.3);
+}
+
+@mixin xs {
+  @media (max-width: #{$bp-sm - 1px}) {
+    @content;
+  }
+}
+@mixin sm {
+  @media (max-width: #{$bp-md - 1px}) {
+    @content;
+  }
+}
+@mixin md {
+  @media (max-width: #{$bp-lg - 1px}) {
+    @content;
+  }
+}
+@mixin lg {
+  @media (max-width: #{$bp-xl - 1px}) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (min-width: #{$bp-xl}) {
+    @content;
+  }
+}
+
+@mixin bp-nav {
+  @media (max-width: #{$bp-lg - 1px}) {
+    @content;
+  }
+}
+
+@mixin object-fit($fit: fill, $position: null) {
+  -o-object-fit: $fit;
+  object-fit: $fit;
+  @if $position {
+    -o-object-position: $position;
+    object-position: $position;
+    font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+  } @else {
+    font-family: 'object-fit: #{$fit}';
+  }
+}
+
+@mixin display-flex($direction: row, $justify: flex-start, $align: flex-start){
+  display: flex;
+  flex-flow: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+@function rem($pixels, $context: $base-font-size) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}
+
+@mixin ellipsis ($max-width){
+  display: inline-block;
+  max-width: $max-width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin not-mobile {
+  @media (min-width: #{$bp-sm}) {
+    @content;
+  }
+}
+@mixin tablet-range {
+  @media (min-width: #{$bp-sm}) and (max-width: #{$bp-md - 1px}) {
+    @content;
+  }
+}
+@mixin medium-device-range {
+  @media (min-width: #{$bp-md}) and (max-width: #{$bp-lg - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$bp-md}) {
+    @content;
+  }
+}
+
+@mixin medium-desktop {
+  @media (min-width: #{$bp-lg}) {
+    @content;
+  }
+}
+@mixin large-desktop{
+  @media (min-width: #{$bp-xl}) {
+    @content;
+  }
+}
+
+@mixin quote-block($border-radius: 10px, $color: $white, $font-size: 25px, $min-height: 310px, $padding: 30px 83px 30px 9px){
+  border-radius: $border-radius;
+  color: $color;
+  font-size: rem($font-size);
+  min-height: $min-height;
+  padding: $padding;
+  overflow: hidden;
+  list-style-type: none;
+  width: 100%;
+  z-index: -1;
+}
+
+@mixin pie-label($top, $right, $bottom, $left, $color){
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  color: $color;
+}

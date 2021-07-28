@@ -1,0 +1,44 @@
+{% import directory ~ '/templates/macros/generate_tags.html.twig' as macros %}
+{% set max_shown_divs = 2 %}
+
+<div id="page">
+    <div id="page-header">
+        {# Menu #}
+        <nav class="nav">
+            <div class="container-fluid-header nav__content">
+                <div>
+                    <a href="{{ front_page }}" title="{{ 'Home' |t }}" rel="home" class="no-link">
+                      <div class="nav__logo"></div>
+                    </a>
+                </div>
+                <div class="nav__right">
+                    <div class="nav__menu">
+                        {{ page.navigation }}
+                    </div>
+                    <div class="nav__hamburger"><span></span></div>
+                </div>
+            </div>
+        </nav>
+      </div>
+    {# Page #}
+    <div id="page-wrapper" class="layout-main-wrapper layout-container page clearfix">
+        <div id="block-pagetitle" class="container">
+            <h1 class="cases-title">{{ page['#title'] | raw }}</h1>
+        </div>
+        <div id="main" class="layout-main clearfix">
+            <main id="content" class="column main-content" role="main">
+                <section class="cases">
+                    <div class="container-fluid">
+                    {{ page.content }}
+                    </div>
+                </section>
+                {{ page.footer }}
+                <div class="remodal remodal__newsletter" data-remodal-id="modal-newsletter">
+                    <button data-remodal-action="close" class="remodal-close"></button>
+                    <p class="remodal__title remodal__newsletter__title">{% trans %}Subcrible to our newsletter{% endtrans %}</p>
+                    {{ block_webform_newsletter }}
+                </div>
+            </main>
+        </div>
+    </div>
+</div>

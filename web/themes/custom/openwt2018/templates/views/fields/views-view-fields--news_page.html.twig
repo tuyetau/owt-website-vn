@@ -1,0 +1,27 @@
+{% set main_illustration = fields.field_illustration.content|split(',')[0] %}
+
+{% if main_illustration is not empty %}
+	{% set illustration = main_illustration %}
+{% else %}
+	{% set illustration = fields.field_header_background_img.content %}
+{% endif %}
+
+<div class="news-wrapper col-12 col-md-6 col-lg-4">
+    <article class="news grid-item">
+        <a class="no-link" href="{{ path_to_news }}">
+        <figure class="news__illustration">
+          <img src="{{ illustration }}" alt="News illustration"/>
+        </figure>
+        </a>
+        <div class="news__content">
+          <p class="news__tag">{{ fields.field_news_tag.content }}</p>
+          <h4 class="news__title">{{ fields.title.content }}</h4>
+          <div class="excerpt">
+            <span class="news__date">{{ fields.created.content }}</span>
+            <span class="news__summary"> - {{ fields.field_summary.content }}</span>
+            <span><a class="no-link news__link" href="{{ path_to_news }}">[...]</a></span>
+          </div>
+        </div>
+        <a class="no-link tile-link" href="{{ path_to_news }}"></a>
+    </article>
+</div>

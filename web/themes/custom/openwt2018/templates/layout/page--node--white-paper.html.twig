@@ -1,0 +1,99 @@
+<div id="page" class="page__news-detail">
+  <div id="page-header">
+    {# Menu #}
+    <nav class="nav">
+      <div class="container-fluid-header nav__content">
+        <div>
+          <a href="{{ front_page }}" title="{{ 'Home' |t }}" rel="home" class="no-link">
+            <div class="nav__logo"></div>
+          </a>
+        </div>
+        <div class="nav__right">
+          <div class="nav__menu">
+            {{ page.navigation }}
+          </div>
+          <div class="nav__hamburger"><span></span></div>
+        </div>
+      </div>
+    </nav>
+    <div class="mt-120 hidden-sm-down"></div>
+    <div class="banner banner__news container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <div class="case__tags">
+            <p>
+              {{ node.field_topic.0.value|striptags }}
+            </p>
+          </div>
+          <h1 class="cases-title">{{ page['#title'] }}</h1>
+        </div>
+        <div class="col-lg-6 col-md-12 banner__news__right">
+          {% if file_url(node.field_image.entity.fileuri) | length > 5 %}
+          <div class="image-illustration news" style="background-image: url('{{ file_url(node.field_image.entity.fileuri) }}')"></div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# Page #}
+  <div id="page-wrapper" class="layout-main-wrapper layout-container container page clearfix">
+    <div id="main" class="layout-main clearfix">
+      <main id="content" class="column main-content" role="main">
+        <div class="news-content row">
+          <div class="content-wrapper col-lg-8 col-md-12 col-sm-12">
+            {{ page.content }}
+          </div>
+          <div class="right-panel col-lg-4 col-md-7 col-sm-12">
+            <div class="share">
+              <p>{{ 'Share this article'|trans }}</p>
+              <div class="icons a2a_kit a2a_kit_size_32 a2a_default_style">
+                <a class="no-link a2a_button_twitter">
+                  <img src="/themes/custom/openwt2018/assets/images/svg/twitter-black.svg" alt="Twitter">
+                </a>
+                <a class="no-link a2a_button_facebook">
+                  <img src="/themes/custom/openwt2018/assets/images/svg/facebook-black.svg" alt="Facebook">
+                </a>
+                <a class="no-link a2a_button_linkedin">
+                  <img src="/themes/custom/openwt2018/assets/images/svg/linkedin-black.svg" alt="Linkedin">
+                </a>
+                <a class="no-link a2a_button_email">
+                  <img src="/themes/custom/openwt2018/assets/images/svg/mail.svg" alt="Mail">
+                </a>
+              </div>
+            </div>
+            <div class="related-cases">
+              <p>{{ 'Related client cases'|trans }}</p>
+                   {% if node.field_choose_related_cases.isEmpty() != true %}
+                  {{ drupal_entity('node', node.field_choose_related_cases.0.target_id, 'related_cases') }}
+                  {{ drupal_entity('node', node.field_choose_related_cases.1.target_id, 'related_cases') }}
+                  {{ drupal_entity('node', node.field_choose_related_cases.2.target_id, 'related_cases') }}
+                  {% else %}
+                    <div class="list-emtpy">
+                      {{ 'No related cases'|trans }}
+                    </div>
+                  {% endif %}
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+<div class="container contact-news-title">
+    <h2>{{ 'Get in touch with us !'|trans }}</h2>
+    <div class="red-line"></div>
+  </div>
+  <div class="webform container">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-10 contact-form">
+        {{ drupal_entity('webform', 'news_article_contact_form_webfor') }}
+      </div>
+    </div>
+  </div>
+  {{ page.footer }}
+  <div class="remodal remodal__newsletter" data-remodal-id="modal-newsletter">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <p class="remodal__title remodal__newsletter__title">{% trans %}Subcrible to our newsletter{% endtrans %}</p>
+    {{ block_webform_newsletter }}
+  </div>
+</div>

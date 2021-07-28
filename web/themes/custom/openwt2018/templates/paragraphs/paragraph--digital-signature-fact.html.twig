@@ -1,0 +1,18 @@
+{%
+    set classes = [
+    'container paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<div{{ attributes.addClass(classes) }}>
+<div class="row mission-wrapper {{ content.field_fact_descr_position }}">
+  <div class="mission col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12">
+    <img class="mission__illustration" src="{{ content.field_fact_image }}" />
+  </div>
+  <div class="activity {{ content.field_fact_descr_position }} col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+  <h2 class="activity__title">{{ content.field_fact_title }}</h2>
+  {{ content.field_fact_description }}
+  </div>
+  </div>
+</div>

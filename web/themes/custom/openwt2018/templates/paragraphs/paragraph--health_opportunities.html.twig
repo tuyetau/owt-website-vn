@@ -1,0 +1,19 @@
+{%
+    set classes = [
+    'paragraph opportunities section-health',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+
+<section {{ attributes.addClass(classes) }}>
+ <div class="container">
+  <h3 class="opportunities__title bold-title bold-title--medium"><span class="bold-title__highlight">{{ content.field_opportunity['#items']|length }}</span> {{ content.field_title }}</h3>
+  <div>
+      {{ content.field_opportunity }}
+  </div>
+  {# <div id="opportunitySlider" class="hidden-md-up">
+      {{ content.field_opportunity }}
+  </div> #}
+ </div>
+</section>

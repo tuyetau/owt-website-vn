@@ -1,0 +1,25 @@
+<footer>
+  <div class="container">
+    <div class="footer">
+      <h3 class="footer__title">{{ content.field_keep_in_touch }}</h3>
+      <div class="footer__social">
+        <a class="no-link" href="{{ content.field_linkedin_link|render|trim }}" target="_blank">
+          <span class="footer__social__item">
+            <img class="footer__social__image" src="/{{ directory }}/dist/images/svg/linkedin.svg" alt="LinkedIn logo" width="31" height="30">
+          </span>
+        </a>
+        <a class="no-link" href="{{ content.field_facebook_link|render|trim }}" target="_blank">
+          <span class="footer__social__item">
+            <img class="footer__social__image" src="/{{ directory }}/dist/images/svg/facebook.svg" alt="Facebook logo" width="31" height="30">
+          </span>
+        </a>
+        <a class="no-link" href="{{ content.field_twitter_link|render|trim }}" target="_blank">
+          <span class="footer__social__item">
+            <img class="footer__social__image" src="/{{ directory }}/dist/images/svg/twitter.svg" alt="Twitter logo" width="31" height="30">
+          </span>
+        </a>
+        <div class="footer__copyright">{{ content.field_copyright }} {{ "now"|date("Y") }} - {{ content.field_privacy_link }}</div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,150 @@
+.case {
+  position: relative;
+  top: 0;
+  border-radius: 10px;
+  padding-bottom: 40px;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+
+  .case__illustration {
+    margin: 0;
+  }
+  &__title {
+    display: block;
+    margin: 20px 0;
+    font-weight: bold;
+    a {
+      font-weight: normal;
+    }
+  }
+  &__tags {
+    margin-top: 10px;
+    font-weight: bold;
+    @include sm {
+      margin-top: 5px;
+    }
+
+    p {
+      margin-bottom: 6px;
+    }
+  }
+  &:not(&--highlighted) {
+    display: inline-block;
+    background: white;
+    border: 1px solid $tertiary;
+    height: auto;
+
+    .case__illustration {
+      display: inline-block;
+      width: 100%;
+      height: 215px;
+      border-radius: 10px 10px 0 0;
+      overflow: hidden;
+      background-repeat: no-repeat !important;
+      background-position: center center !important;
+      -webkit-background-size: cover !important;
+      -moz-background-size: cover !important;
+      -o-background-size: cover !important;
+      background-size: cover !important;
+      cursor: pointer;
+    }
+    &:hover {
+      @extend %box-shadow-default;
+      top: -10px;
+    }
+  }//not highlighted
+  &--highlighted {
+    color: white;
+    margin-bottom: 30px;
+    background-position: center;
+    background-size: cover;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding: 30px;
+    @include md {
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+    .pride {
+      font-weight: bold;
+      padding: 45px 0;
+      background: url("../images/svg/firework.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .case__illustration {
+      z-index: -2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    .case__title {
+      color: white;
+      font-weight: bold;
+      font-size: 25px;
+    }
+    .case__subtitle {
+      margin-bottom: 20px;
+    }
+    .case__shares {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 30px;
+      background: white;
+    }
+    a {
+      color: white;
+    }
+  }//highlighted
+}
+
+.case-wrapper {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.case-description-wrapper {
+  padding: 15px 20px 0 20px;
+}
+
+.major-tag {
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    width: 25px;
+    height: 100%;
+  }
+
+  &__tag {
+    color: $primary;
+    margin-left: 15px;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}
+
+.node {
+  &__content__cases, &__content__news {
+    h2 {
+      color: $blue-marine;
+    }
+  	h4 {
+		font-weight: 700;
+	}
+    p {
+      line-height: 2;
+      img {
+        max-width: 80%;
+      }
+    }
+    .node-case-item {
+      margin-top: 60px;
+    }
+  }
+}

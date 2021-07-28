@@ -1,0 +1,52 @@
+<div id="page" class="page__news-detail">
+  <div id="page-header">
+    {# Menu #}
+    <nav class="nav">
+      <div class="container-fluid-header nav__content">
+        <div>
+          <a href="{{ front_page }}" title="{{ 'Home' |t }}" rel="home" class="no-link">
+            <div class="nav__logo"></div>
+          </a>
+        </div>
+        <div class="nav__right">
+          <div class="nav__menu">
+            {{ page.navigation }}
+          </div>
+          <div class="nav__hamburger"><span></span></div>
+        </div>
+      </div>
+    </nav>
+    <div class="banner banner__news trends container">
+      {% if notify_untranslated is not empty %}
+        <p class="not-translated-notification">{{ notify_untranslated }}</p>
+      {% endif %}
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <h1 class="cases-title">{{ page['#title'] }}</h1>
+        </div>
+        <div class="col-lg-6 col-md-12 banner__news__right">
+          {% if file_url(node.field_illustration.entity.fileuri) | length > 5 %}
+            <div class="image-illustration trends" style="background-image: url('{{ file_url(node.field_illustration.entity.fileuri) }}')"></div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# Page #}
+  <div id="page-wrapper" class="layout-main-wrapper layout-container container page clearfix">
+    <div id="main" class="layout-main clearfix">
+      <main id="content" class="column main-content" role="main">
+        <div class="news-content">
+          {{ page.content }}
+        </div>
+        {{ page.footer }}
+        <div class="remodal remodal__newsletter" data-remodal-id="modal-newsletter">
+          <button data-remodal-action="close" class="remodal-close"></button>
+          <p class="remodal__title remodal__newsletter__title">{% trans %}Subcrible to our newsletter{% endtrans %}</p>
+          {{ block_webform_newsletter }}
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+.paragraph.text-with-red-bg {
+  background-color: $white;
+  padding: 48px 0;
+
+  @media (max-width: 767px) {
+    margin-bottom: 70px;
+    .row {
+      padding: 0 15px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 110px;
+  }
+
+  .left {
+    &__title {
+      font-size: 2.25em;
+      font-weight: 700;
+      color: $secondary;
+    }
+
+    &__explanation {
+      p {
+        font-size: 1.125em;
+        line-height: 30px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      padding-bottom: 30px;
+    }
+  }
+
+  .right {
+    background-color: $primary;
+    color: $white;
+    border-radius: 10px;
+    padding: 37px 30px 29px 30px;
+
+    &__title {
+      font-size: rem(25px);
+      font-weight: 600;
+    }
+
+    &__explanation {
+      p {
+        font-size: 1.125em;
+        line-height: 30px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

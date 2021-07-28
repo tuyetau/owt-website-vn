@@ -1,0 +1,30 @@
+openwt2018.xs:
+  label: extrasmall
+  mediaQuery: ''
+  weight: 0
+  multipliers:
+    - 1x
+openwt2018.sm:
+  label: small
+  mediaQuery: 'all and (min-width: 575px) and (max-width: 767px)'
+  weight: 1
+  multipliers:
+    - 1x
+openwt2018.md:
+  label: normal
+  mediaQuery: 'all and (min-width: 768px) and (max-width: 991px)'
+  weight: 2
+  multipliers:
+    - 1x
+openwt2018.lg:
+  label: large
+  mediaQuery: 'all and (min-width: 992px) and (max-width: 1199px)'
+  weight: 3
+  multipliers:
+    - 1x
+openwt2018.xl:
+  label: extralarge
+  mediaQuery: 'all and (min-width: 1200px)'
+  weight: 4
+  multipliers:
+    - 1x

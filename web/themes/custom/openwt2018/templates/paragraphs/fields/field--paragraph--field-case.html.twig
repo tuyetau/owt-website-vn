@@ -1,0 +1,33 @@
+{% if label_hidden %}
+  {% if multiple %}
+      {% for item in items %}
+        {% set path_to_case = path('entity.node.canonical', {'node':  related_ids_field[loop.index0]	}) %}
+        <div class="case-wrapper col-12 col-md-6 col-lg-4 col-sm-6">
+          <a href="{{ path_to_case }}" class="case-link">
+            {{ item.content }}
+          </a>
+        </div>
+      {% endfor %}
+  {% else %}
+    {% for item in items %}
+      {% set path_to_case = path('entity.node.canonical', {'node':  related_ids_field[loop.index0]	}) %}
+        <div class="case-wrapper col-12 col-md-6 col-lg-4 col-sm-6">
+          <a href="{{ path_to_case }}" class="case-link">
+            {{ item.content }}
+          </a>
+        </div>    {% endfor %}
+  {% endif %}
+{% else %}
+    <div{{ title_attributes }}>{{ label }}</div>
+    {% if multiple %}
+    {% endif %}
+    {% for item in items %}
+      {% set path_to_case = path('entity.node.canonical', {'node':  related_ids_field[loop.index0]	}) %}
+        <div class="case-wrapper col-12 col-md-6 col-lg-4 col-sm-6">
+          <a href="{{ path_to_case }}" class="case-link">
+            {{ item.content }}
+          </a>
+        </div>    {% endfor %}
+    {% if multiple %}
+    {% endif %}
+{% endif %}

@@ -1,0 +1,33 @@
+{%
+    set classes = [
+    'paragraph expertise-card',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="expertise-card__background"
+       style='background: linear-gradient( rgba(38, 61, 108, 0.8), rgba(38, 61, 108, 0.8) ),
+         url({{ file_url(content.field_pictogram_background_image.0['#item'].entity.uri.value) }}) no-repeat center/cover'>
+  </div>
+  <div class="expertise-card__left-block">
+    <h2 class="expertise-card__title animated fadeIn">
+      {{ content.field_expertise_title }}
+    </h2>
+    <div class="expertise-card__icon">
+      {{ content.field_pictogram_icon }}
+    </div>
+  </div>
+  <div class="expertise-card__right-block">
+    <div class="expertise-card__description">
+      {{ content.field_pictogram_description }}
+    </div>
+    <div class="expertise-card__link">
+      {{ content.field_expertise_link }}
+    </div>
+  </div>
+  <div class="expertise-card__bottom-block">
+    {{ content.field_pictogram_icon }}
+  </div>
+</div>

@@ -1,0 +1,415 @@
+html {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  @include lg {
+    overflow-x: hidden;
+  }
+}
+
+body {
+  font-family: ProximaNova;
+  font-size: 16px;
+  color: $text;
+  background: url("../images/svg/pattern.svg");
+  overflow-x: hidden;
+  max-width: 100%;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(white, rgba(255, 255, 255, 0));
+  }
+
+  #block-pagetitle {
+    margin-top: 90px;
+    margin-bottom: 15px;
+
+    @include md {
+      margin-top: 60px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+  }
+}
+
+a {
+  color: $primary;
+  outline: none;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:not(.btn):not(.tag):not(.no-link):not(.case-link):not(.atlwdg-trigger):not(.toolbar-icon) {
+    display: inline-block;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: $primary;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      transform: translateY(10px);
+    }
+
+    &:hover {
+      &:after {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    }
+
+    &:focus {
+      color: $text;
+
+      &:after {
+        background-color: $primary;
+      }
+    }
+  }
+
+  .case-link {
+    display: block;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+.title--huge {
+  a {
+    color: $secondary;
+    text-decoration: none;
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+h1,
+.title--huge {
+  font-size: 50px;
+  line-height: 60px;
+  color: $secondary;
+
+  @include sm {
+    font-size: 40px;
+    line-height: 50px;
+  }
+}
+
+h3,
+h4,
+.title--big {
+  font-size: 25px;
+  font-weight: normal;
+  color: $secondary;
+
+  @include sm {
+    font-size: 20px;
+  }
+}
+
+h4 {
+  font-size: 20px;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+.page {
+  &__new-cases-detail, &__one-column {
+    .overlap {
+      position: relative;
+      top: -100px;
+      margin-bottom: -100px;
+      border-radius: 12px 12px 0 0;
+      background-color: white;
+
+      @include sm {
+        width: 90%;
+      }
+
+      .banner__cases {
+        padding: 12px 34px 0px 34px;
+
+        h1.cases-title {
+          position: relative;
+          padding-top: 30px;
+        }
+
+        img {
+          position: absolute;
+          top: 114px;
+          left: 0;
+          height: 396px;
+          width: 100%;
+          object-fit: cover;
+
+          &.client-logo {
+            position: relative;
+            top: unset;
+            left: unset;
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+
+  &__cases-detail,
+  &__news-detail{
+    #page-header {
+      nav {
+        ul.nav__menu__inner {
+          >li>a {
+            @media (min-width: #{$bp-lg}) {
+              color: $blue-marine;
+            }
+          }
+        }
+      }
+
+      .back-button {
+        .button-container {
+          margin-top: 100px;
+        }
+      }
+
+      .banner {
+
+        &__cases,
+        &__news {
+          @include md {
+            margin-top: 0;
+          }
+
+          background-color: white;
+          border-radius: 10px 10px 0 0;
+          margin-top: 40px;
+          min-height: 240px;
+          padding: 40px 40px 10px;
+
+          &.trends {
+            padding: 40px 40px 200px;
+          }
+
+          .news-time {
+            font-style: italic;
+          }
+
+          h1.cases-title {
+            position: relative;
+            padding-bottom: 20px;
+          }
+
+          &__right {
+            position: relative;
+
+            @media (max-width: #{$bp-lg - 1px}) {
+              margin-top: 30px;
+            }
+
+            .image-illustration {
+              height: 314px;
+              width: 100%;
+              background-position: center;
+              background-size: cover;
+              border-radius: 10px;
+
+              @media (max-width: 1320px) and (min-width: 1025px) {
+                right: -40px !important;
+              }
+
+              @media (min-width: #{$bp-lg}) {
+                position: absolute;
+                right: -10px;
+                top: -115px;
+              }
+
+              @media (min-width: 1025px) {
+                position: absolute;
+                right: -100px;
+                top: -115px;
+              }
+            }
+            .image-illustration.cases, .image-illustration.trends {
+              @media (min-width: #{$bp-lg}) {
+                position: absolute;
+                right: -20px;
+                top: -55px;
+              }
+
+              @media (min-width: 1025px) {
+                position: absolute;
+                right: -40px;
+                top: -55px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .back-button {
+      @include xs {
+        display: none;
+      }
+
+      .button-container {
+        align-items: center;
+        display: flex;
+        margin-top: 20px;
+        padding: 0;
+        width: fit-content;
+
+        img {
+          width: 40px;
+          height: 100%;
+          margin-right: 10px;
+        }
+
+        p {
+          color: $secondary;
+          font-weight: 400;
+        }
+      }
+    }
+
+    #page-wrapper {
+      background-color: white;
+      padding-bottom: 40px;
+      padding-left: 40px;
+
+      .cases-content,
+      .news-content {
+        background-color: white;
+
+        .content-wrapper {
+          margin-top: 40px;
+        }
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        .right-panel {
+          color: $secondary;
+          font-weight: 700;
+          padding-left: 40px;
+
+          @media (max-width: 768px) {
+            padding-left: 15px;
+          }
+
+          .share {
+            margin-bottom: 40px;
+            margin-top: 60px;
+
+            @include sm {
+              margin-top: 0;
+            }
+
+            img {
+              margin-right: 5px;
+              width: 24px;
+              height: 24px;
+            }
+          }
+
+          .related-cases {
+            article {
+              &:not(:first-child) {
+                margin-top: 20px;
+              }
+            }
+
+            .related-case {
+              &:not(:first-child) {
+                margin-top: 20px;
+              }
+
+              img {
+                border-radius: 6px;
+              }
+            }
+
+            .title {
+              margin: 0px;
+
+              a {
+                color: $secondary;
+              }
+            }
+
+            .learn-more {
+              margin-top: 10px;
+
+              a {
+                color: $grey;
+                font-weight: 400;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.contact-news-title {
+  margin-bottom: -15px;
+  margin-top: 80px;
+  position: relative;
+
+  h2 {
+    font-weight: normal;
+    font-size: 40px;
+    color: $blue-marine;
+
+    @include xs {
+      font-size: 30px;
+    }
+  }
+
+  .red-line {
+    border-left: 3px #e41919 solid;
+    height: 48px;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+}
+
+.webform {
+  background-color: white;
+  padding: 40px 40px 30px;
+
+  .contact-form {
+    margin: auto;
+    width: 100%;
+  }
+}
+
+.container-fluid-header {
+  width: 90%;
+  margin: 0 auto;
+}

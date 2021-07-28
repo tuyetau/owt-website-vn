@@ -1,0 +1,68 @@
+{% import directory ~ '/templates/macros/generate_tags.html.twig' as macros %}
+
+<div id="page" class="page__new-cases-detail">
+  <div id="page-header">
+		{# Menu #}
+		<nav class="nav">
+			<div class="container-fluid-header nav__content">
+				<div>
+					<a href="{{ front_page }}" title="{{ 'Home' |t }}" rel="home" class="no-link">
+            <div class="nav__logo"></div>
+					</a>
+				</div>
+				<div class="nav__right">
+					<div class="nav__menu">
+						{{ page.navigation }}
+					</div>
+					<div class="nav__hamburger"><span></span></div>
+				</div>
+			</div>
+		</nav>
+	</div>
+	{# Page #}
+	<div id="page-wrapper" class="layout-main-wrapper layout-container page clearfix">
+			<div id="main" class="layout-main clearfix">
+					<div class="client-case-page-header">
+						<div class="header-image">
+							{{ new_client_case_header_img }}
+						</div>
+						<div class="overlap container">
+							<div class="banner banner__cases">
+								{% if notify_untranslated is not empty %}
+									<p class="not-translated-notification">{{ notify_untranslated }}</p>
+								{% endif %}
+								<div class="title">
+									<h1 class="cases-title">{{ page['#title'] }}</h1>
+								</div>
+							</div>
+
+							{% if file_url(node.field_client_logo_svg_.entity.fileuri) | length > 5 %}
+								<img alt="{{ file_url(node.field_client_logo_svg_.entity.alt) }}" class="client-logo" src="{{ file_url(node.field_client_logo_svg_.entity.fileuri) }}">
+							{% elseif file_url(node.field_client_logo.entity.fileuri) | length > 5 %}
+								<img alt="{{ file_url(node.field_client_logo.entity.alt) }}" class="client-logo" src="{{ file_url(node.field_client_logo.entity.fileuri) }}">
+							{% endif %}
+						</div>
+					</div>
+
+					<main id="content" class="column main-content" role="main">
+						<div class="tags-white-bg">
+							<div class="case__tags container">
+								<a class="tag tag--blue-deep no-href" href="/cases">{{ 'See all client cases' |t }}</a>
+								{% if blog_tags_name is not empty %}
+									{{ macros.generate_tags(blog_tags_name, project.tags, project.tags | length ) }}
+								{% endif %}
+							</div>
+						</div>
+						<div class="cases-content">
+								{{ page.content }}
+						</div>
+						{{ page.footer }}
+						<div class="remodal remodal__newsletter" data-remodal-id="modal-newsletter">
+								<button data-remodal-action="close" class="remodal-close"></button>
+								<p class="remodal__title remodal__newsletter__title">{% trans %}Subcrible to our newsletter{% endtrans %}</p>
+								{{ block_webform_newsletter }}
+						</div>
+					</main>
+			</div>
+	</div>
+</div>

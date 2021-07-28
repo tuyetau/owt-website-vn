@@ -1,0 +1,22 @@
+<section class="numbers">
+    <div class="container-fluid">
+        <ul class="numbers__wrapper">
+            <li>
+                <span class="numbers__number">{{ content.field_offices_number|render|trim }}</span>
+                {{ content.field_offices }}
+            </li>
+            <li>
+                <span class="numbers__number">{{ content.field_avg_employees_age_number|render|trim }}</span>
+                {{ content.field_avg_employees_age }}
+            </li>
+            <li>
+                <span class="numbers__number">{{ content.field_projects_number|render|trim }}</span>
+                {{ content.field_projects }}
+            </li>
+            <li>
+                <span id="open-jobs-numbers" class="numbers__number">{{ content.field_open_positions_number|render|trim }}</span>
+                {{ content.field_open_positions }}
+            </li>
+        </ul>
+    </div>
+</section>

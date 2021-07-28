@@ -1,0 +1,21 @@
+{%
+    set classes = [
+    'paragraph section-health health-contact',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+<section {{ attributes.addClass(classes) }}>
+	  <div class="container">
+    <div class="title-block">
+			<h3 class="title-block__text">{{ content.field_title}}</h2>
+			<div class="title-block__line title-block__line--red"></div>
+		</div>
+		<div class="health-contact__form webform">
+      <div class="contact-form">
+        {{ content.field_contact_form }}
+      </div>
+      
+    </div>
+    </div>
+</section>

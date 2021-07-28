@@ -1,0 +1,40 @@
+{%
+    set classes = [
+    'paragraph missions',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+{% if content.field_mission_paragraph['#items']|length == 4 %}
+  {% set block_class = 'four_missions' %}
+{% else %}
+  {% set block_class = 'three_missions' %}
+{% endif %}
+<div {{ attributes.addClass(classes) }}>
+  <div class="container">
+    <div class="missions_title animated fadeIn">
+      <h1>
+        {{ content.field_missions_title }}
+      </h1>
+    </div>
+    <div class="{{ block_class }}">
+      {{ content.field_mission_paragraph }}
+    </div>
+    <a id="openwt-mission-video" class="no-link" href="#play-video" style="width: 100%;">
+      <button type="button" name="play" class="btn secondary">{{ content.field_button_text }} <img alt='Small triangle right' src='/themes/custom/openwt2018/dist/images/icons/small_triangle_right.png' width="23" height="23"></button>
+    </a>
+  </div>
+</div>
+<div class="remodal remodal-video" data-remodal-id="play-video">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <div class="remodal__content">
+    <div class="media-player">
+      <div class="mpwr">
+        <div class="icon-part video-bt-play"><a href="#intro-video"><i class="fa"></i></a></div>
+        <video id="intro-video" preload="metadata" src="/sites/default/files/videos/OWT.mp4" controls>
+          <source class="mp4" src="/sites/default/files/videos/OWT.mp4" type="video/mp4"/>
+        </video>
+      </div>
+    </div>
+  </div>
+</div>

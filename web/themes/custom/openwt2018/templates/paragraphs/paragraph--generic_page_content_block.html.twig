@@ -1,0 +1,39 @@
+{{ attach_library('openwt2018/hover') }}
+{%
+    set classes = [
+    'container paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+{% set illustration = file_url(content.field_generic_page_image['#items'].entity.uri.value) %}
+<div{{ attributes.addClass(classes) }}>
+<div class="row mission-wrapper {{ content.field_generic_page_des_position }}">
+  <div class="content-block col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+    {% if 'On' in content.field_generic_page_zoomed_image.0 %}
+      <a class="illustration no-link" href="#image_{{ paragraph.id() }}">
+        <img class="main-img" src={{ illustration }}>
+        <div class="border-image">
+          <img class="zoom-img" alt='Zoom' src='/{{ directory }}/dist/images/svg/zoom-blue.svg'>
+          <img class="zoom-hover-img" alt='Zoom' src='/{{ directory }}/dist/images/svg/zoom-white.svg'>
+        </div>
+      </a>
+    {% else %}  
+      <img class="main-img" src={{ illustration }}>
+    {% endif %}
+  </div>  
+  <div class="activity {{ content.field_generic_page_des_position	}} col-xl-7 col-lg-7 col-md-7 col-sm-7 col-12">
+    <h2 class="activity__title">{{ content.field_generic_page_title }}</h2>
+    {{ content.field_generic_page_description }}
+    <div>{{ content.field_generic_page_link }}</div>
+  </div>
+  </div>
+</div>
+{% if 'On' in content.field_generic_page_zoomed_image.0 %}
+  <div class="remodal" data-remodal-id="image_{{ paragraph.id() }}">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <div class="remodal__content">
+      <img class="full_image" src={{ illustration }}>
+    </div>
+  </div>
+{% endif %}

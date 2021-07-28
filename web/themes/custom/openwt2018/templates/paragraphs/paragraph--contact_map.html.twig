@@ -1,0 +1,22 @@
+<section class="container contact contact__wrapper">
+  <div class=" row">
+    <div class="col-md-4 bg-white">
+      <h2>{{ content.field_location_title }}</h2>
+      <div class="address">
+        <img src="/{{ directory }}/dist/images/map.png" srcset="/{{ directory }}/dist/images/map@2x.png 2x, /{{ directory }}/dist/images/map@3x.png 3x" class="icon-map">
+        <div> {{ content.field_address }}</div>
+      </div>
+      <div class="tel">
+        <img src="/{{ directory }}/dist/images/phone.png" srcset="/{{ directory }}/dist/images/phone@2x.png 2x, /{{ directory }}/dist/images/phone@3x.png 3x" class="icon-phone">
+        <div>{{ content.field_telephone }}</div>
+      </div>
+      <div class="email">
+        <img src="/{{ directory }}/dist/images/email.png" srcset="/{{ directory }}/dist/images/email@2x.png 2x, /{{ directory }}/dist/images/email@3x.png 3x" class="icon-email">
+        <div>{{ content.field_email }}</div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <iframe frameborder="0" height="388" src="{{ content.field_googlemap }}" style="border: 0px currentColor; border-image: none;" width="100%"></iframe>
+    </div>
+  </div>
+</section>
