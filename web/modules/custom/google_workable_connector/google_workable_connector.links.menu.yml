@@ -1,5 +1,0 @@
-google_workable_connector.config:
-  title: Google Workable API
-  description: 'Configure Workable Module. Set api access, jobs state and cache lifetime'
-  route_name: google_workable_connector.config
-  parent: system.admin_config_services
