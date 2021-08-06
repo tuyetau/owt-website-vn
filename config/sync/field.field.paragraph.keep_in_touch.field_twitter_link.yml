@@ -1,0 +1,19 @@
+uuid: 935f3109-56d9-4f7b-86c8-7ae5498de0a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_twitter_link
+    - paragraphs.paragraphs_type.keep_in_touch
+id: paragraph.keep_in_touch.field_twitter_link
+field_name: field_twitter_link
+entity_type: paragraph
+bundle: keep_in_touch
+label: 'Twitter link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

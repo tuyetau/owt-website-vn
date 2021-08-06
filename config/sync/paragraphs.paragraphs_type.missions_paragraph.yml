@@ -1,0 +1,10 @@
+uuid: 55f31763-aa87-47f8-acf3-989d5632a664
+langcode: en
+status: true
+dependencies: {  }
+id: missions_paragraph
+label: 'Missions paragraph'
+icon_uuid: null
+icon_default: null
+description: 'Paragraph for big red mission block containement'
+behavior_plugins: {  }

@@ -8,7 +8,7 @@
 	  <input type="hidden" class="select__input" id="open-positions-button" name="open-positions-button" value="{{ jobs.button }}" />
       <div class="col-12 col-md-6 secondary">
         <div class="meet__content">
-          <div class="meet__icon"></div>
+          <div class="meet__icon home_icon"></div>
           <span class="meet__title">{{ content.field_project }}</span>
         </div>
         <div class="meet__cta">
@@ -18,14 +18,16 @@
 
       <div class="col-12 col-md-6 primary">
         <div class="meet__content">
-          <div class="meet__icon"></div>
+          <div class="meet__icon home_icon"></div>
           <span class="meet__title">{{ content.field_job }}</span>
         </div>
         <div class="meet__cta">
             <form action="{{ content.field_open_positions_link|render|trim }}#open-positions" method="POST">
               <input type="hidden" class="select__input" id="open-positions-skill" name="open-positions-skill" value="" />
               <input type="hidden" class="select__input" id="open-positions-city" name="open-positions-city" value="" />
-              <button type="submit" id="see-open-positions" class="btn btn--secondary">See open positions</button>
+              <a type="submit" id="see-open-positions" class="btn btn--secondary" href="{{ content.field_open_positions_link.0['#url'] }}">
+                {{ content.field_open_positions_link.0['#title'] }}
+              </a>
             </form>
           </div>
         </div>

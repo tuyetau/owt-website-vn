@@ -1,0 +1,27 @@
+uuid: 37e48a60-bc2f-445c-9161-41cf50e2caf2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.job_responsibilities.field_j_responsibilities_content
+    - paragraphs.paragraphs_type.job_responsibilities
+  module:
+    - text
+id: paragraph.job_responsibilities.default
+targetEntityType: paragraph
+bundle: job_responsibilities
+mode: default
+content:
+  field_j_responsibilities_content:
+    weight: 0
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+    region: content
+hidden:
+  created: true
+  status: true

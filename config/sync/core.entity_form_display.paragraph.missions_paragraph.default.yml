@@ -1,0 +1,47 @@
+uuid: 8f41ed28-e41a-4a16-90b8-e51d28c438c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.missions_paragraph.field_button_text
+    - field.field.paragraph.missions_paragraph.field_mission_paragraph
+    - field.field.paragraph.missions_paragraph.field_missions_title
+    - paragraphs.paragraphs_type.missions_paragraph
+  module:
+    - paragraphs
+id: paragraph.missions_paragraph.default
+targetEntityType: paragraph
+bundle: missions_paragraph
+mode: default
+content:
+  field_button_text:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_mission_paragraph:
+    type: entity_reference_paragraphs
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_missions_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

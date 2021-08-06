@@ -1,0 +1,21 @@
+uuid: c331e04d-417e-43ac-b336-52d45bfa1093
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_telephone
+    - paragraphs.paragraphs_type.contact_map
+  module:
+    - text
+id: paragraph.contact_map.field_telephone
+field_name: field_telephone
+entity_type: paragraph
+bundle: contact_map
+label: Telephone
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

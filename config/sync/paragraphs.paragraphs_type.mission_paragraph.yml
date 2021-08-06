@@ -1,0 +1,10 @@
+uuid: 7e6b139b-af1a-4058-a991-4f7d37a7bf97
+langcode: en
+status: true
+dependencies: {  }
+id: mission_paragraph
+label: 'Mission paragraph'
+icon_uuid: null
+icon_default: null
+description: 'Big Red block'
+behavior_plugins: {  }

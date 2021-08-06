@@ -1,0 +1,29 @@
+uuid: 5e67f6a7-30f1-4ca7-983f-512c0574b8de
+langcode: en
+status: true
+dependencies:
+  module:
+    - sdt_commons
+  theme:
+    - openwt2018
+id: sdtfooteropenwt2018
+theme: openwt2018
+region: footer
+weight: 0
+provider: null
+plugin: sdtfooter_block
+settings:
+  id: sdtfooter_block
+  label: 'SDT Footer - OpenWT2018'
+  provider: sdt_commons
+  label_display: '0'
+  keep_in_touch: 'Let''s keep in touch!'
+  copyright: '© Copyright Swisscom Digital Technology SA '
+  instagram_url: 'https://www.instagram.com/openwt/'
+  facebook_url: 'https://www.facebook.com/OpenWebTechnology'
+  linkedin_url: 'https://www.linkedin.com/company/open-web-technology_3'
+  privacy_url: null
+  privacy_text: ''
+  impressum_url: null
+  impressum_text: ''
+visibility: {  }

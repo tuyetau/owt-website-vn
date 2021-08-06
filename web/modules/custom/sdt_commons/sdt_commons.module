@@ -1,0 +1,371 @@
+<?php
+
+/**
+ * @file
+ * Contains sdt_commons.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Path\PathMatcherInterface;
+use Drupal\Core\Mail\MailFormatHelper;
+use Drupal\sdt_commons\Mail\MailNotifier as Mail;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\Core\Database\Query\Condition;
+
+/**
+ * Implements hook_help().
+ */
+function sdt_commons_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the sdt_commons module.
+    case 'help.page.sdt_commons':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Common functionalities') . '</p>';
+      return $output;
+    default:
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function sdt_commons_mail($key, &$message, $params) {
+  if (!isset($params['from'])) { // Use default site url
+    $params['from'] = \Drupal::config('system.site')->get('mail');
+  }
+  switch ($key) {
+    case 'sdt_commons_mail':
+      $message['from']    = $params['from'];
+      $message['to']      = $params['to'];
+      $message['subject'] = $params['subject'];
+      $message['body'][]  = MailFormatHelper::htmlToText($params['message']);
+      $message['options'] = [];
+      if (isset($params['options']) && !empty($params['options'])) {
+        foreach ($params['options'] as $key => $value) {
+          $message['options'][$key] = $value;
+        }
+      }
+      break;
+  }
+}
+
+
+function sdt_commons_cron() {
+  //Cron is set-up to run every 3 hours
+  //Clear db Cache once a night
+  $daily_interval = 60 * 60 *24;
+  $weekly_interval = 60 * 60 *24 * 7;
+    $request_time = \Drupal::time()->getRequestTime();
+  $hour = date('H', $request_time);
+  $next_daily_execution = \Drupal::state()
+    ->get('cron_sdt_daily_cache_flush.next_execution');
+  $next_daily_execution = !empty($next_daily_execution) ? $next_daily_execution : 0;
+  if (($hour > 22 || $hour < 5 ) && $request_time >= $next_daily_execution) {
+    $tables = [
+      "cache_config",
+      "cache_container",
+      "cache_data",
+      "cache_default",
+      "cache_discovery",
+      "cache_dynamic_page_cache",
+      "cache_entity",
+      "cache_menu",
+      "cache_page",
+      "cache_render",
+      "cache_toolbar",
+      "cachetags"];
+    $database = \Drupal::database();
+    foreach ($tables as $table) {
+      try {
+        $database->truncate($table)->execute();
+        \Drupal::logger('sdt')->notice( 'Table ' .  $table . ' flushed.');
+      } catch (Exception $e) {
+        \Drupal::logger('sdt')->notice( 'Caught exception: ',  $e->getMessage());
+      }
+    }
+    \Drupal::state()
+      ->set('cron_sdt_daily_cache_flush.next_execution', $request_time + $daily_interval);
+  }
+
+  //Reset everything once a week
+  $next_weekly_execution = \Drupal::state()
+    ->get('cron_sdt_weekly_cache_flush.next_execution');
+  $next_weekly_execution = !empty($next_weekly_execution) ? $next_weekly_execution : 0;
+  if (($hour > 22 || $hour < 5 ) && $request_time >= $next_weekly_execution) {
+    drupal_flush_all_caches();
+    \Drupal::state()
+      ->set('cron_sdt_weekly_cache_flush.next_execution', $request_time + $weekly_interval);
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function sdt_commons_menu() {
+  $items['admin/config/system/sdt_commons'] = [
+    'title' => 'SDT Commons - Google Optimize Support',
+    'description' => 'Inject Google Optimize tags into the head on specific pages',
+    'route_name' => 'sdt_commons.config',
+  ];
+  return $items;
+}
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function sdt_commons_page_attachments(array &$attachments) {
+  $current_path = \Drupal::service('path.current')->getPath();
+  $settings = \Drupal::config('sdt_commons.settings');
+  $opt_enabled = $settings->get('sdt_commons_google_optimize_on');
+  $gtm_enabled = $settings->get('sdt_commons_google_tag_manager_on');
+  $pages = $settings->get('sdt_commons_google_optimize_page');
+  $style_tag = $settings->get('sdt_commons_google_optimize_style_tag');
+  $opt_script_tag = $settings->get('sdt_commons_google_optimize_script_tag');
+  $gtm_script_tag = $settings->get('sdt_commons_google_tag_manager_script_tag');
+  if ($opt_enabled || $gtm_enabled) {
+    if (\Drupal::currentUser()->isAnonymous()) {
+      $attachments['#cache']['contexts'][] = 'route';
+
+      if ($opt_enabled && \Drupal::service('path.matcher')->matchPath($current_path, $pages)) {
+        //add Google Optimize style script
+        $attachments['#attached']['html_head'][] = [
+          [
+            '#type' => 'html_tag',
+            '#tag' => 'style',
+            '#value' => $style_tag,
+
+          ],
+          'google-optimizer-css',
+        ];
+        $attachments['#attached']['html_head'][] = [
+          [
+            '#type' => 'html_tag',
+            '#tag' => 'script',
+            '#value' => $opt_script_tag,
+          ],
+          'google-optimizer-js',
+        ];
+
+        // Add config settings cacheability metadata.
+        /** @var Drupal\Core\Render\Renderer $renderer */
+        $renderer = \Drupal::service('renderer');
+        $renderer->addCacheableDependency($attachments, $settings);
+
+      }
+      if ($gtm_enabled) {
+        //Add GTM script (must be after optimize tags)
+        $attachments['#attached']['html_head'][] = [
+          [
+            '#type' => 'html_tag',
+            '#tag' => 'script',
+            '#value' => $gtm_script_tag,
+          ],
+          'google-tag-manager-js',
+        ];
+
+      }
+
+    }
+  }
+
+}
+
+/**
+ * Implements hook_page_top().
+ */
+function sdt_commons_page_top(&$page) {
+  $settings = \Drupal::config('sdt_commons.settings');
+  $gtm_enabled = $settings->get('sdt_commons_google_tag_manager_on');
+  $gtm_id = $settings->get('sdt_commons_google_tag_manager_id');
+  $noscript = <<<EOS
+<noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=$gtm_id" height="0" width="0" title="Google Tag Manager">Google Tag Manager</iframe></noscript> 
+EOS;
+
+  if ($gtm_enabled && \Drupal::currentUser()->isAnonymous()) {
+    $page['google_tag_noscript_tag'] = [
+      '#markup' => $noscript,
+      '#allowed_tags' => ['noscript', 'iframe'],
+      '#weight' => -10,
+      '#cache' => ['contexts' => ['route']],
+    ];
+  }
+
+
+}
+
+
+function getTaxonomyTermsNameAndId($machine_name,$terms_id = []) {
+
+  if(empty($terms_id)){
+    $query = \Drupal::entityQuery('taxonomy_term');
+    $query->condition('vid', $machine_name);
+    $terms_id = $query->execute();
+  }
+
+  $lang =  getLanguageCode();
+  $terms = \Drupal\taxonomy\Entity\Term::loadMultiple($terms_id);
+  $termsArray = [];
+
+  foreach ($terms as $item) {
+    if($item->getVocabularyId() == $machine_name){
+      $term['id'] = $item->id();
+      $term_translated =  \Drupal::service('entity.repository')->getTranslationFromContext($item, $lang);
+      $term['name'] = $term_translated->label();
+      array_push($termsArray, $term);
+    }
+  }
+
+  usort($termsArray, function($a, $b) {
+    return $a['name'] <=> $b['name'];
+  });
+  return $termsArray;
+}
+
+function getTagsIdFormViewItem($viewItems,$field_name){
+  $tags_id = [];
+  foreach($viewItems as $item){
+    if ( $item->_entity->hasField($field_name)){
+
+      $tags = $item->_entity->get($field_name)->getValue();
+      foreach ($tags as $tag){
+
+        if (!in_array($tag['target_id'], $tags_id)){
+          array_push($tags_id, $tag['target_id']);
+        }
+      }
+    }
+  }
+
+  return $tags_id;
+}
+
+function getViewItems($viewName, $displayId = NULL) {
+  return views_get_view_result($viewName, $displayId);
+}
+
+function getLanguageCode() {
+  $langcode = \Drupal::languageManager()
+    ->getCurrentLanguage(\Drupal\Core\Language\LanguageInterface::TYPE_URL)
+    ->getId();
+  return $langcode;
+}
+
+function get_highlighted_current() {
+  $current_path = \Drupal::service('path.current')->getPath();
+
+  if (preg_match('/node\/(\d+)/', $current_path, $matches)) {
+    $entities = \Drupal::entityTypeManager()->getStorage("node");
+    $node = $entities->load($matches[1]);
+    $paragraphs = $node->field_paragraphs->getValue();
+
+    foreach ($paragraphs as $paragraph) {
+      $p = \Drupal\paragraphs\Entity\Paragraph::load($paragraph['target_id']);
+
+      if ($p->getType() == 'news_highlighted') {
+        $para_highlighted = \Drupal\paragraphs\Entity\Paragraph::load($paragraph['target_id']);
+      }
+
+    }
+
+    if (!empty($para_highlighted)) {
+      $hl = $para_highlighted->field_highlighted_news->getValue();
+      $hl_name = $hl[0]['display_id'];
+      $report = views_get_view_result('highlighted_news', $hl_name);
+      $highlightedId = $report[0]->nid;
+    }
+  }
+  
+  return $highlightedId;
+}
+
+/**
+ * Implements hook_views_query_alter() to add custom filters to view.
+ */
+function sdt_commons_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+
+    $current_display = $view->current_display;
+
+    if ($current_display == 'news_page') {
+      $tempstore = \Drupal::service('user.private_tempstore')->get('sdt_commons');
+      $hl_id = $tempstore->get('news_highlighted_node_id');
+      $hl_temp = get_highlighted_current();
+
+      if (isset($hl_temp) && !empty($hl_temp)) {
+        if ($hl_temp !== $hl_id) {
+          $highlightedId = $hl_temp;
+          $tempstore = \Drupal::service('user.private_tempstore')->get('sdt_commons');
+          $tempstore->set('news_highlighted_node_id', $hl_temp);
+        }else {
+          $highlightedId = $hl_id;
+        }
+       
+      }else {
+        $highlightedId = $hl_id;
+      }
+      
+   
+      if (!empty($highlightedId)) {
+        $query->addWhere('0',
+          'node_field_data.nid',
+          $highlightedId,
+          '!='
+        );
+      }
+    }
+
+    if($current_display == 'related_cases_block') {
+      $node = \Drupal::routeMatch()->getParameter('node');
+      $nodeId = $node->id();
+      $blog_tags = $node->field_blog_tags->getValue();
+
+      for ($i = 0; $i < count($query->where); $i++) {
+        foreach($query->where[$i]['conditions'] as $k => $condition) {
+          if(strpos($condition['field'], 'field_blog_tags') !== false || strpos($condition['field'], 'node_field_data.nid') !== false) {
+            unset($query->where[$i]['conditions'][$k]);
+          }
+        }
+      }
+
+      for ($i = 0; $i < 3 && $i < count($blog_tags); $i++) {
+        $query->addWhere(1, 'node__field_blog_tags.field_blog_tags_target_id', $blog_tags[$i]['target_id'], '=');
+
+        if (count($query->query(true)->execute()->fetchAll()) >= 3) {
+          break;
+        } else {
+          array_pop($query->where[1]['conditions']);
+        }
+      }
+
+      // Skip current case
+      $query->addWhere('0', 'node_field_data.nid', $nodeId, '!=');
+    }
+}
+
+/**
+ * Implements hook_form_alter() to alter forms.
+ */
+
+function sdt_commons_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  switch($form_id) {
+    case 'system_performance_settings':
+      /**
+       * Add more page_cache_maximum_age form options to maximum 12 months instead of 1 day
+       */
+      $period = [0, 60, 180, 300, 600, 900, 1800, 2700, 3600, 10800, 21600, 32400, 43200, 86400, 2 * 86400, 3 * 86400, 4 * 86400, 5 * 86400, 6 * 86400, 7 * 86400, 14 * 86400, 21 * 86400, 28 * 86400, 6 * 30 * 86400, 12 * 30 * 86400];
+      $date_formatter = \Drupal::service('date.formatter');
+      $config = \Drupal::config('system.performance');
+      $period = array_map([$date_formatter, 'formatInterval'], array_combine($period, $period));
+      $period[0] = '<' . t('no caching') . '>';
+      $form['caching']['page_cache_maximum_age'] = [
+        '#type' => 'select',
+        '#title' => t('Browser and proxy cache maximum age'),
+        '#default_value' => $config->get('cache.page.max_age'),
+        '#options' => $period,
+        '#description' => t('This is used as the value for max-age in Cache-Control headers.'),
+      ];
+      break;
+  }
+}

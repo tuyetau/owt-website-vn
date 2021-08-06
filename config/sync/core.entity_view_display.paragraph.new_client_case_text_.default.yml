@@ -1,0 +1,30 @@
+uuid: 8d11d66f-565b-4ee6-93a9-e6537ed15cf3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.new_client_case_text_.field_case_text
+    - field.field.paragraph.new_client_case_text_.field_case_title
+    - paragraphs.paragraphs_type.new_client_case_text_
+  module:
+    - text
+id: paragraph.new_client_case_text_.default
+targetEntityType: paragraph
+bundle: new_client_case_text_
+mode: default
+content:
+  field_case_text:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_case_title:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

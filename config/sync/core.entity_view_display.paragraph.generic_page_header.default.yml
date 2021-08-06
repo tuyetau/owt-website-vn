@@ -1,0 +1,46 @@
+uuid: f34674d1-f622-46ad-b32c-eaa763c60c9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.generic_page_header.field_header_content
+    - field.field.paragraph.generic_page_header.field_header_img
+    - field.field.paragraph.generic_page_header.field_header_page_title
+    - paragraphs.paragraphs_type.generic_page_header
+  module:
+    - svg_image_field
+    - text
+id: paragraph.generic_page_header.default
+targetEntityType: paragraph
+bundle: generic_page_header
+mode: default
+content:
+  field_header_content:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_header_img:
+    weight: 2
+    label: hidden
+    settings:
+      inline: false
+      apply_dimensions: true
+      width: 25
+      height: 25
+      enable_alt: true
+      enable_title: true
+      link: ''
+    third_party_settings: {  }
+    type: svg_image_field_formatter
+    region: content
+  field_header_page_title:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

@@ -1,0 +1,7 @@
+{% if (attributes.type == 'text') %}
+    <input{{ attributes }} placeholder="Search job by title.."/>
+{% else %}
+    <input{{ attributes }} />
+{% endif %}
+
+{{ children }}

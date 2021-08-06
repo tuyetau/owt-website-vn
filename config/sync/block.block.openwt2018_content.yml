@@ -1,0 +1,22 @@
+uuid: c7f04ce7-d345-4a4d-8042-1eed03d63449
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - openwt2018
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: openwt2018_content
+theme: openwt2018
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

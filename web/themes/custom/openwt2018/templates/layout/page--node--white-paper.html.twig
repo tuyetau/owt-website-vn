@@ -4,7 +4,7 @@
     <nav class="nav">
       <div class="container-fluid-header nav__content">
         <div>
-          <a href="{{ front_page }}" title="{{ 'Home' |t }}" rel="home" class="no-link">
+          <a href={{ front_page }} title="{{ 'Home' |t }}" rel="home" class="no-link">
             <div class="nav__logo"></div>
           </a>
         </div>
@@ -42,7 +42,7 @@
       <main id="content" class="column main-content" role="main">
         <div class="news-content row">
           <div class="content-wrapper col-lg-8 col-md-12 col-sm-12">
-            {{ page.content }}
+            <div class="content-job">{{ page.content }}</div>
           </div>
           <div class="right-panel col-lg-4 col-md-7 col-sm-12">
             <div class="share">

@@ -1,0 +1,28 @@
+uuid: 313da25a-9589-4626-9034-c29039fe97ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_choose_related_cases
+    - node.type.blog
+    - node.type.page
+id: node.blog.field_choose_related_cases
+field_name: field_choose_related_cases
+entity_type: node
+bundle: blog
+label: 'Choose related cases'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      page: page
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

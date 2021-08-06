@@ -1,0 +1,19 @@
+uuid: 18b93b08-53bb-4b09-ba65-842b30570026
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_open_positions
+    - paragraphs.paragraphs_type.numbers
+id: paragraph.numbers.field_open_positions
+field_name: field_open_positions
+entity_type: paragraph
+bundle: numbers
+label: 'Open positions'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

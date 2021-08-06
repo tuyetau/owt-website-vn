@@ -1,0 +1,7 @@
+openwt_seo_for_page.form:
+  title: 'Seo for trends, cases, news'
+  route_name: openwt_seo_for_page.form
+  description: 'A description for the menu entry'
+  parent: system.admin_config_system
+  weight: 99
+

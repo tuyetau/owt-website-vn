@@ -1,0 +1,19 @@
+uuid: 964492f4-ea00-4b7a-a0c9-0f1c253a5381
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_page_title
+    - node.type.paragraph_page
+id: node.paragraph_page.field_page_title
+field_name: field_page_title
+entity_type: node
+bundle: paragraph_page
+label: 'Page title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

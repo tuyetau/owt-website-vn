@@ -3,7 +3,7 @@
   <nav class="nav">
     <div class="container-fluid-header nav__content">
       <div>
-        <a href="{{ front_page }}" title="{{ 'Home' |t }}" rel="home" class="no-link">
+        <a href={{ front_page }} title="{{ 'Home' |t }}" rel="home" class="no-link">
           <div class="nav__logo"></div>
         </a>
       </div>
@@ -20,7 +20,7 @@
   <div id="page-wrapper" class="layout-main-wrapper layout-container page clearfix">
     <div id="main" class="layout-main clearfix">
       <main id="content" class="column main-content" role="main">
-        {{ page.content }}
+        <div class="content-job">{{ page.content }}</div>
         {{ page.footer }}
         <div class="remodal remodal__newsletter" data-remodal-id="modal-newsletter">
           <button data-remodal-action="close" class="remodal-close"></button>

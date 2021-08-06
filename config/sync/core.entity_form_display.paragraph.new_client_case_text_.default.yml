@@ -1,0 +1,34 @@
+uuid: be9adb05-31a5-4b4c-9b94-557d6f953773
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.new_client_case_text_.field_case_text
+    - field.field.paragraph.new_client_case_text_.field_case_title
+    - paragraphs.paragraphs_type.new_client_case_text_
+  module:
+    - text
+id: paragraph.new_client_case_text_.default
+targetEntityType: paragraph
+bundle: new_client_case_text_
+mode: default
+content:
+  field_case_text:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_case_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+hidden:
+  created: true
+  status: true

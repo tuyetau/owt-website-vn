@@ -1,0 +1,10 @@
+openwt_seo_for_page.form:
+  path: '/admin/config/openwt_seo_for_page/form'
+  defaults:
+    _form: '\Drupal\openwt_seo_for_page\Form\Form'
+    _title: 'Form'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+

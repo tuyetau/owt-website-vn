@@ -1,0 +1,29 @@
+uuid: 1a9977f2-3447-46eb-8865-9e0667ce79e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_skills
+    - node.type.job
+    - taxonomy.vocabulary.skills
+id: node.job.field_job_skills
+field_name: field_job_skills
+entity_type: node
+bundle: job
+label: Skills
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      skills: skills
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: news_type
+field_type: entity_reference

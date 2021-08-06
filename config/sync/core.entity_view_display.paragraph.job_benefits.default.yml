@@ -1,0 +1,22 @@
+uuid: 0ff6a0c7-ac3f-461f-8936-f401cc7268f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.job_benefits.field_j_benefits_content
+    - paragraphs.paragraphs_type.job_benefits
+  module:
+    - text
+id: paragraph.job_benefits.default
+targetEntityType: paragraph
+bundle: job_benefits
+mode: default
+content:
+  field_j_benefits_content:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

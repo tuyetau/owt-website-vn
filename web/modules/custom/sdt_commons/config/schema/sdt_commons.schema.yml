@@ -1,0 +1,56 @@
+sdt_commons.settings:
+  type: config_object
+  label: 'Sdt Commons config.'
+  mapping:
+    sdt_commons_google_optimize_on:
+      type: boolean
+      label: 'Turn Google Optimize on or off'
+    sdt_commons_google_tag_manager_on:
+      type: boolean
+      label: 'Turn Google Tag Manager on or off'
+    sdt_commons_google_optimize_page:
+      type: string
+      label: 'Location'
+    sdt_commons_google_optimize_style_tag:
+      type: string
+      label: 'Google Optimize Style tag'
+    sdt_commons_google_optimize_script_tag:
+      type: string
+      label: 'Google Optimize Script tag'
+    sdt_commons_google_tag_manager_script_tag:
+      type: string
+      label: 'Google Tag Manager Script tag'
+    sdt_commons_google_tag_manager_id:
+      type: string
+      label: 'Google Tag Manager Account ID'
+block.settings.sdtfooter_block:
+  type: block_settings
+  label: 'SDT Footer - OpenWT2018'
+  mapping:
+    keep_in_touch:
+      type: label
+      label: 'Keep in touch'
+    instagram_url:
+      type: label
+      label: 'Instagram URL'
+    facebook_url:
+      type: label
+      label: 'Facebook URL'
+    linkedin_url:
+      type: label
+      label: 'LinkedIn URL'
+    copyright:
+      type: string
+      label: 'Copyright'
+    privacy_url:
+      type: string
+      label: 'Privacy URL'
+    privacy_text:
+      type: label
+      label: 'Privacy TEXT'
+    impressum_url:
+      type: string
+      label: 'Impressum URL'
+    impressum_text:
+      type: label
+      label: 'Impressum TEXT'

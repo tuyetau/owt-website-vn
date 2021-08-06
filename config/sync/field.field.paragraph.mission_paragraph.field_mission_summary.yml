@@ -1,0 +1,21 @@
+uuid: d98bd891-0931-4967-ad61-edb651944c7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mission_summary
+    - paragraphs.paragraphs_type.mission_paragraph
+  module:
+    - text
+id: paragraph.mission_paragraph.field_mission_summary
+field_name: field_mission_summary
+entity_type: paragraph
+bundle: mission_paragraph
+label: Summary
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

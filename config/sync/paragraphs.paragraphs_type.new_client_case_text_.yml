@@ -1,0 +1,10 @@
+uuid: d1480472-2af9-4850-8e11-c46b3ef014a3
+langcode: en
+status: true
+dependencies: {  }
+id: new_client_case_text_
+label: 'New Client Case - Text '
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

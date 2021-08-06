@@ -1,0 +1,21 @@
+uuid: 42aaf703-52a9-45c4-84ab-643dea0d228d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_location_title
+    - paragraphs.paragraphs_type.contact_map
+  module:
+    - text
+id: paragraph.contact_map.field_location_title
+field_name: field_location_title
+entity_type: paragraph
+bundle: contact_map
+label: 'Location Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

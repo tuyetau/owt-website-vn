@@ -1,0 +1,23 @@
+uuid: f2e5ae67-e59e-43f2-9dd1-abe7f7bf161b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_coming_soon
+    - node.type.blog
+id: node.blog.field_coming_soon
+field_name: field_coming_soon
+entity_type: node
+bundle: blog
+label: 'Coming Soon'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

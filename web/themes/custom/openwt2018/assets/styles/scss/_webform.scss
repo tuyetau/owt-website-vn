@@ -2,12 +2,9 @@
   label {
     color: $blue-marine;
     font-weight: bold;
-    &::after {
-      color: $blue-marine !important;
-    }
   }
   textarea {
-    margin: 12px 0 24px 0;
+    margin: 12px 0 8px 0;
     resize: none;
     width: 100%;
     height: 100px;
@@ -26,9 +23,9 @@
       color: $blue-marine;
     }
   }
-  input[type=email], input[type=text] {
+  input[type=email], input[type=text], input[type=tel] {
     width: 100%;
-    margin: 12px 0 24px 0;
+    margin: 12px 0 8px 0;
     color: $blue-marine;
     border: 1px solid #c1d6db !important;
     border-radius: 5px;
@@ -41,7 +38,25 @@
       box-shadow: none !important;
     }
     &::placeholder {
-      color: $blue-marine;
+      color: transparent;
     }
+  }
+  .form-managed-file {
+    border: dashed 2px #c1d6db;
+    padding: 25px;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background: #fff;
+  }
+  .field-optional:after {
+    content: '(Optional)';
+    margin-left: 5px;
+    color: #000!important;
+    font-weight: 100;
+  }
+  .webform-required {
+    margin: 15px 0;
   }
 }

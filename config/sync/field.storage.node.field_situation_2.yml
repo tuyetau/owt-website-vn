@@ -1,0 +1,19 @@
+uuid: 4f8fbc0e-9286-4336-b12b-729ec5a78ca3
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_situation_2
+field_name: field_situation_2
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

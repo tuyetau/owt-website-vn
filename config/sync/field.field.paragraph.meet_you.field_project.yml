@@ -1,0 +1,19 @@
+uuid: 02cd9071-4853-4d8b-b95d-f7bb13cd1d6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_project
+    - paragraphs.paragraphs_type.meet_you
+id: paragraph.meet_you.field_project
+field_name: field_project
+entity_type: paragraph
+bundle: meet_you
+label: Project
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

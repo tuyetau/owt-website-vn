@@ -1,0 +1,21 @@
+uuid: bc0231e7-232e-4f9e-a3b3-a1b3bf77e4a0
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_meet_you
+field_name: field_meet_you
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

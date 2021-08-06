@@ -10,8 +10,6 @@ use Drupal\Core\Url;
  * Preprocess HTML
  */
 
-
-
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
@@ -63,13 +61,13 @@ function openwt2018_theme_suggestions_node_alter(array &$suggestions, array $var
     // Add template suggestions based on the current view mode.
     $node = \Drupal::routeMatch()->getParameter('node');
   $type = (!is_null($node)) ? $node->getType() : FALSE;
-    if ($node->hasField('field_blog_type')) {
-        $metatag_kw = $node->get('field_blog_type')->value;
-        if ($metatag_kw == 'cases' || $metatag_kw == 'news' || $metatag_kw == 'trends') {
-            $suggestions[] = 'node__blog__' . $metatag_kw;
-        }
+    //if ($node->hasField('field_blog_type')) {
+       // $metatag_kw = $node->get('field_blog_type')->value;
+       // if ($metatag_kw == 'cases' || $metatag_kw == 'news' || $metatag_kw == 'trends') {
+       //     $suggestions[] = 'node__blog__' . $metatag_kw;
+       // }
 
-    }
+   // }
   if ($type === 'new_client_case') {
     $suggestions[] = 'node__new_client_case';
   }

@@ -1,0 +1,29 @@
+uuid: 22c60d5e-74ed-4a1d-af20-8c0949376362
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_theming
+    - node.type.paragraph_page
+    - taxonomy.vocabulary.tags
+id: node.paragraph_page.field_theming
+field_name: field_theming
+entity_type: node
+bundle: paragraph_page
+label: theming
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tags: tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

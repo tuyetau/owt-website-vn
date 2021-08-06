@@ -1,0 +1,19 @@
+uuid: caf5b8c3-3508-4c03-b804-87955d22a831
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_job
+    - paragraphs.paragraphs_type.meet_you
+id: paragraph.meet_you.field_job
+field_name: field_job
+entity_type: paragraph
+bundle: meet_you
+label: Job
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

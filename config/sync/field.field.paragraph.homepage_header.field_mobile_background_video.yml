@@ -1,0 +1,26 @@
+uuid: a118a05a-1f79-4aa6-b43d-e09c0ba1d223
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mobile_background_video
+    - paragraphs.paragraphs_type.homepage_header
+  module:
+    - video
+id: paragraph.homepage_header.field_mobile_background_video
+field_name: field_mobile_background_video
+entity_type: paragraph
+bundle: homepage_header
+label: 'Mobile Background video'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_extensions: ''
+  file_directory: 'videos/[date:custom:Y]-[date:custom:m]'
+  max_filesize: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: video

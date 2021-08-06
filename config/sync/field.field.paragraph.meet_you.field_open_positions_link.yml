@@ -1,0 +1,23 @@
+uuid: 9ed2c547-aa8d-4a69-bc35-c1c1232851c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_open_positions_link
+    - paragraphs.paragraphs_type.meet_you
+  module:
+    - link
+id: paragraph.meet_you.field_open_positions_link
+field_name: field_open_positions_link
+entity_type: paragraph
+bundle: meet_you
+label: 'Open positions link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

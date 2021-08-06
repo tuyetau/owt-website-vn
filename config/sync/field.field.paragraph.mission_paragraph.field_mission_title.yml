@@ -1,0 +1,19 @@
+uuid: 2dcbcee6-154b-4815-ad75-0efdeb91cba7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mission_title
+    - paragraphs.paragraphs_type.mission_paragraph
+id: paragraph.mission_paragraph.field_mission_title
+field_name: field_mission_title
+entity_type: paragraph
+bundle: mission_paragraph
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

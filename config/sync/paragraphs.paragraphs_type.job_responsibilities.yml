@@ -1,0 +1,10 @@
+uuid: 798948e8-178b-4473-a61f-cdcf9a2a5910
+langcode: en
+status: true
+dependencies: {  }
+id: job_responsibilities
+label: 'Job Responsibilities'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

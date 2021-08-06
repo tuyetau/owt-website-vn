@@ -1,0 +1,8 @@
+sdt_captcha_extension.config:
+  path: '/admin/config/system/sdt_captcha_configuration'
+  defaults:
+    _title: 'Captcha configuration'
+    _form: 'Drupal\sdt_captcha_extension\Form\SdtCaptchaConfigurationForm'
+  requirements:
+    _permission: 'Administer the SDT Captcha extension module'
+

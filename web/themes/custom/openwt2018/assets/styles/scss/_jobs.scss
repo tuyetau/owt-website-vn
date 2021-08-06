@@ -197,3 +197,100 @@
 		}
 	}
 }
+
+.content-job {
+	padding: 0 13vw;
+
+	@media (max-width: 768px) {
+		padding: 0 5vw;
+	}
+	.item-list {
+		ul {
+			list-style-type: none;
+			padding-inline-start: 0;
+		}
+	}
+	.job-card {
+		.job-tile {
+			position: relative;
+			margin-top: 16px;
+			top: 0;
+			transition: top ease 0.5s;
+			.card {
+					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+					width: 100%;
+					height: 100px;
+					background: #263d6c;
+					justify-content: space-between;
+					border-radius: 10px;
+					padding: 24px 24px;
+					display: flex;
+					align-items: center;
+					cursor: pointer;
+			}
+			.icon {
+					width: 36px;
+					height: 36px;
+					margin-right: 16px;
+			}
+			a {
+					font-size: 20px;
+					font-weight: 700;
+					color: white;
+			}
+			.center-flex {
+					display: flex;
+					align-items: center;
+					a:not(.btn):not(.tag):not(.no-link):not(.case-link):not(.atlwdg-trigger):not(.toolbar-icon):after {
+						background: transparent;
+					}
+					.field-job-location {
+						color: #fff;
+						font-weight: 400;
+					}
+			}
+		}
+	
+		.select__arrow {
+			position: unset;
+			.arrow--right {
+				transform: rotate(-45deg);
+				border-color: #fff;
+			}
+		}
+		
+		.job-tile:hover {
+			top: -8px;
+		}
+	}
+}
+
+.job-node {
+	background: #fff;
+	align-items: center;
+	.block {
+			margin-top: 32px;
+	}
+	.btn-apply {
+		.btn-primary {
+			text-align: center;
+			display: inline-block;
+			cursor: pointer;
+			position: relative;
+			padding: 8px 48px;
+			width: 100%;
+			margin-top: 48px;
+			border-radius: 10px;
+			text-decoration: none;
+			border: none;
+			outline: 0;
+			overflow: hidden;
+			font-weight: 700;
+			background: #263d6c;
+    	color: #fff;
+		}
+	}
+}
+.job-card:not(.btn):not(.tag):not(.no-link):not(.case-link):not(.atlwdg-trigger):not(.toolbar-icon):focus:after {
+	background-color: transparent;
+}

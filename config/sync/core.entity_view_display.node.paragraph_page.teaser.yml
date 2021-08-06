@@ -1,0 +1,28 @@
+uuid: 10487426-82a4-4398-9c49-986e27539a7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.paragraph_page.field_metatags
+    - field.field.node.paragraph_page.field_page_title
+    - field.field.node.paragraph_page.field_paragraphs
+    - field.field.node.paragraph_page.field_theming
+    - node.type.paragraph_page
+  module:
+    - user
+id: node.paragraph_page.teaser
+targetEntityType: node
+bundle: paragraph_page
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_metatags: true
+  field_page_title: true
+  field_paragraphs: true
+  field_theming: true

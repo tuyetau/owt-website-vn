@@ -1,0 +1,42 @@
+uuid: c49ef106-1909-4c3f-bdd4-eb3727ac4143
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.missions_paragraph.field_button_text
+    - field.field.paragraph.missions_paragraph.field_mission_paragraph
+    - field.field.paragraph.missions_paragraph.field_missions_title
+    - paragraphs.paragraphs_type.missions_paragraph
+  module:
+    - entity_reference_revisions
+id: paragraph.missions_paragraph.default
+targetEntityType: paragraph
+bundle: missions_paragraph
+mode: default
+content:
+  field_button_text:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_mission_paragraph:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_missions_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

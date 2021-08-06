@@ -1,0 +1,23 @@
+uuid: 08687d57-f764-4e92-952c-4a8628c8bad8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link_to_story
+    - paragraphs.paragraphs_type.highlight_story
+  module:
+    - link
+id: paragraph.highlight_story.field_link_to_story
+field_name: field_link_to_story
+entity_type: paragraph
+bundle: highlight_story
+label: 'Link to story'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

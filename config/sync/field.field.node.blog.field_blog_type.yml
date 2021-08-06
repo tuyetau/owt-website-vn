@@ -1,0 +1,21 @@
+uuid: ffe05491-5744-428a-bbea-5d7471355b0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_blog_type
+    - node.type.blog
+  module:
+    - options
+id: node.blog.field_blog_type
+field_name: field_blog_type
+entity_type: node
+bundle: blog
+label: blog_type
+description: "news|news\r\ncases|cases\r\ntrends|trends\r\nvideo|video"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

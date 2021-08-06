@@ -1,0 +1,22 @@
+uuid: 1c094e5e-90bc-4c83-b783-b692308fadfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.job_responsibilities.field_j_responsibilities_content
+    - paragraphs.paragraphs_type.job_responsibilities
+  module:
+    - text
+id: paragraph.job_responsibilities.default
+targetEntityType: paragraph
+bundle: job_responsibilities
+mode: default
+content:
+  field_j_responsibilities_content:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

@@ -1,0 +1,15 @@
+<div class="job-card" {{fields.attributes}} onclick="location.href='/node/{{ row._entity.id }}';">
+    <div class="job-tile">
+        <div class="card">
+            <div class="center-flex">
+                <img class="icon" src="/{{ directory }}/dist/images/svg/icon-job.svg" />
+                <div>{{ fields.title.content }} <br> 
+                  <span class="field-job-location">{{ fields.field_location.content }}</span>
+                </div>
+            </div>
+            <span class='select__arrow'>
+              <i class="arrow arrow--right"></i>
+            </span>        
+          </div>
+    </div>
+</div>

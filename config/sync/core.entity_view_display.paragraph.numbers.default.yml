@@ -1,0 +1,84 @@
+uuid: 970f5884-8ad3-4d37-8dd6-24535a67a6de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.numbers.field_avg_employees_age
+    - field.field.paragraph.numbers.field_avg_employees_age_number
+    - field.field.paragraph.numbers.field_offices
+    - field.field.paragraph.numbers.field_offices_number
+    - field.field.paragraph.numbers.field_open_positions
+    - field.field.paragraph.numbers.field_open_positions_number
+    - field.field.paragraph.numbers.field_projects
+    - field.field.paragraph.numbers.field_projects_number
+    - paragraphs.paragraphs_type.numbers
+id: paragraph.numbers.default
+targetEntityType: paragraph
+bundle: numbers
+mode: default
+content:
+  field_avg_employees_age:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_avg_employees_age_number:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_offices:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_offices_number:
+    weight: 5
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_open_positions:
+    weight: 6
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_open_positions_number:
+    weight: 7
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_projects:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_projects_number:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

@@ -16,7 +16,7 @@
 #intro-video {
   width: 100%;
 }
-#block-openwt2018-tabs ul {
+#block-openwt2018-tabs, #block-openwt2018-local-tasks ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -103,7 +103,7 @@
         }
       }
     }
-		.news {
+		.views-element-container {
 			position: relative;
 
 			.views_slideshow_cycle_main {
@@ -141,7 +141,7 @@
 			.views-slideshow-controls-bottom {
 				position: absolute;
         right: 0;
-        top: -60px;
+        top: -80px;
 				.views_slideshow_controls_text {
 					span:hover {
 						text-decoration: none;
@@ -603,4 +603,7 @@ iframe {
       background-color: $radio;
     }
   }
+}
+.main-page-title {
+  display: none;
 }

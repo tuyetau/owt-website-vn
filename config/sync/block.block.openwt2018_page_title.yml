@@ -1,0 +1,20 @@
+uuid: a38aaefc-0424-41c5-9618-734b8d473ea1
+langcode: en
+status: true
+dependencies:
+  theme:
+    - openwt2018
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: openwt2018_page_title
+theme: openwt2018
+region: content
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,45 @@
+uuid: 76d33bc7-b025-40e3-b931-c37072081436
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.generic_page_header.field_header_content
+    - field.field.paragraph.generic_page_header.field_header_img
+    - field.field.paragraph.generic_page_header.field_header_page_title
+    - paragraphs.paragraphs_type.generic_page_header
+  module:
+    - svg_image_field
+    - text
+id: paragraph.generic_page_header.default
+targetEntityType: paragraph
+bundle: generic_page_header
+mode: default
+content:
+  field_header_content:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_header_img:
+    weight: 3
+    settings:
+      progress_indicator: throbber
+      preview_image_max_width: 300
+      preview_image_max_height: 300
+    third_party_settings: {  }
+    type: svg_image_field_widget
+    region: content
+  field_header_page_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+hidden:
+  created: true
+  status: true

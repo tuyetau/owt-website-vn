@@ -1,0 +1,19 @@
+uuid: 623e4c02-7fef-4522-8d5f-fe8a5ec3158f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_choose_related_cases
+field_name: field_choose_related_cases
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

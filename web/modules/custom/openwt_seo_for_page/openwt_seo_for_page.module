@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains openwt_seo_for_page.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function openwt_seo_for_page_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the openwt_seo_for_page module.
+    case 'help.page.openwt_seo_for_page':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Seo for trends, cases, news') . '</p>';
+      return $output;
+
+    default:
+  }
+}

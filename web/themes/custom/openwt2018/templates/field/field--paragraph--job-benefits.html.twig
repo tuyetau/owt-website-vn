@@ -1,0 +1,10 @@
+<section {{ attributes }}>
+    <div>
+        <h4><b>Benefits</b></h4>
+    </div>
+    <div>
+      {% for item in items %}
+        {{ item.content }}
+      {% endfor %}
+    </div>
+</section>

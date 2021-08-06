@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * The installation instructions for Google Workable connector.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function google_workable_connector_uninstall() {
+  $config = \Drupal::service('config.factory');
+  $oldConfig = $config->getEditable('google_workable_connector.Admin');
+  $oldConfig->delete();
+  $google_workable_connector_config = $config->getEditable('google_workable_connector.settings');
+  $google_workable_connector_config->delete();
+}
+
+/**
+ * Google Workable connector update : adding configuration settings
+ */
+function google_workable_connector_update_8001() {
+  $config = \Drupal::service('config.factory');
+  //erase old config
+  $oldConfig = $config->getEditable('google_workable_connector.Admin');
+  $oldConfig->delete();
+
+  $google_workable_connector_config = $config->getEditable('google_workable_connector.settings');
+
+  $google_workable_connector_config->set('workable_api_key', "4dfa1bd086a71c71a5be6013f4fb20133680d15c6dbb24733c96f956617df475");
+  $google_workable_connector_config->set('workable_subdomain', "openwt");
+  $google_workable_connector_config->set('workable_jobs_state', "published");
+  $google_workable_connector_config->set('workable_cache_lifetime', "3");
+
+  $google_workable_connector_config->save(TRUE);
+
+}

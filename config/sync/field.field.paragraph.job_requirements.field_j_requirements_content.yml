@@ -1,0 +1,23 @@
+uuid: beda6417-699f-4549-88e0-a93d5a5a0442
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_j_requirements_content
+    - paragraphs.paragraphs_type.job_requirements
+  module:
+    - text
+id: paragraph.job_requirements.field_j_requirements_content
+field_name: field_j_requirements_content
+entity_type: paragraph
+bundle: job_requirements
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

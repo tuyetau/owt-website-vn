@@ -1,0 +1,64 @@
+uuid: 1b390e0f-fa2c-451d-bb90-0e27e34ff61b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_benefits
+    - node.type.job
+    - paragraphs.paragraphs_type.job_benefits
+  module:
+    - entity_reference_revisions
+id: node.job.field_job_benefits
+field_name: field_job_benefits
+entity_type: node
+bundle: job
+label: Benefits
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      job_benefits: job_benefits
+    target_bundles_drag_drop:
+      client_cases:
+        weight: 9
+        enabled: false
+      highlight_story:
+        weight: 10
+        enabled: false
+      homepage_header:
+        weight: 11
+        enabled: false
+      job_benefits:
+        enabled: true
+        weight: 16
+      job_description:
+        weight: 17
+        enabled: false
+      job_requirements:
+        weight: 18
+        enabled: false
+      job_responsibilities:
+        weight: 19
+        enabled: false
+      keep_in_touch:
+        weight: 12
+        enabled: false
+      meet_you:
+        weight: 13
+        enabled: false
+      mission_paragraph:
+        weight: 14
+        enabled: false
+      missions_paragraph:
+        weight: 15
+        enabled: false
+      numbers:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

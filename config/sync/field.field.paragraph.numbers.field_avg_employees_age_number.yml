@@ -1,0 +1,19 @@
+uuid: da5f44a3-b8c4-4da0-b40f-12fee9dffd57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_avg_employees_age_number
+    - paragraphs.paragraphs_type.numbers
+id: paragraph.numbers.field_avg_employees_age_number
+field_name: field_avg_employees_age_number
+entity_type: paragraph
+bundle: numbers
+label: 'Avg. employees age number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

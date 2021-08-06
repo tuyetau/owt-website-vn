@@ -1,0 +1,21 @@
+uuid: f37b8ac3-91ed-4472-b505-eec99725be14
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.paragraph_page
+  module:
+    - metatag
+id: node.paragraph_page.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: paragraph_page
+label: Metatags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

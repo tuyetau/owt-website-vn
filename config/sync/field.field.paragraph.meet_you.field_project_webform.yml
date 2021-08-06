@@ -1,0 +1,25 @@
+uuid: a13a13c0-228b-4a77-91fd-db0c05323dc1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_project_webform
+    - paragraphs.paragraphs_type.meet_you
+  module:
+    - webform
+id: paragraph.meet_you.field_project_webform
+field_name: field_project_webform
+entity_type: paragraph
+bundle: meet_you
+label: 'Project Webform'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

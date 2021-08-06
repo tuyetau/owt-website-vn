@@ -1,0 +1,71 @@
+uuid: 465ca664-15e3-4dbb-8013-e5533c58549f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.meet_you.field_contact_us
+    - field.field.paragraph.meet_you.field_job
+    - field.field.paragraph.meet_you.field_meet_you
+    - field.field.paragraph.meet_you.field_open_positions_link
+    - field.field.paragraph.meet_you.field_project
+    - field.field.paragraph.meet_you.field_project_webform
+    - paragraphs.paragraphs_type.meet_you
+  module:
+    - link
+    - webform
+id: paragraph.meet_you.default
+targetEntityType: paragraph
+bundle: meet_you
+mode: default
+content:
+  field_contact_us:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_job:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_meet_you:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_open_positions_link:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_project:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_project_webform:
+    weight: 0
+    settings:
+      default_data: true
+      webforms: {  }
+    third_party_settings: {  }
+    type: webform_entity_reference_select
+    region: content
+hidden:
+  created: true
+  status: true

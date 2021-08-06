@@ -1,0 +1,14 @@
+{
+  "name": "drupal/openwt_seo_for_page",
+  "type": "drupal-module",
+  "description": "Add seo for page cases, news, trends",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/openwt_seo_for_page",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/openwt_seo_for_page",
+    "source": "http://cgit.drupalcode.org/openwt_seo_for_page"
+  },
+  "require": { }
+}

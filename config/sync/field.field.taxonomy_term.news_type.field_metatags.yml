@@ -1,0 +1,21 @@
+uuid: fdf45866-6773-4fc5-ba0a-4d2cbe7bb713
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_metatags
+    - taxonomy.vocabulary.news_type
+  module:
+    - metatag
+id: taxonomy_term.news_type.field_metatags
+field_name: field_metatags
+entity_type: taxonomy_term
+bundle: news_type
+label: Metatags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

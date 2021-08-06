@@ -152,9 +152,166 @@ i.arrow {
   float: left;
   margin: 0 0 20px 0;
   text-align: left;
-  font-weight: bold;
+  font-weight: normal;
+  font-size: 14px;
 }
 //hide header error msg as inline error msg is allready enabled
 div[role="alert"] {
   display: none;
+}
+
+.form-search {
+  .views-exposed-form {
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+      grid-template-areas:
+          "a a a a a a a"
+          "b c . . . . .";
+      gap: 10px;
+      margin-bottom: 25px;
+      @media (max-width: 500px) {
+        grid-template-areas:
+          "a a""b .""c .";
+      }
+      .form-item-title {
+          width: 100%;
+          grid-area: a;
+          input {
+              width: 100%;
+              box-shadow: 0 0 8px -2px #979797;
+              border-radius: 50px;
+              padding: 10px 24px;
+              border: none;
+              &:focus {
+                outline: none;
+              }
+          }
+          input:hover {
+              outline: none;
+              box-shadow: 0 0 8px -2px #000000;
+          }
+      }
+      .form-item-field-job-skills-target-id {
+        grid-area: b;
+      }
+      .form-item-field-location-target-id {
+        grid-area: c;
+      }
+      .form-actions {
+          margin: 0;
+          .button {
+              padding: 10px;
+              border-radius: 10px;
+              border: none;
+              background: #263D6C;
+              color: #fff;
+              box-shadow: 0 0 8px -2px #979797;
+          }
+      }
+      select {
+          height: 100%;
+          width: 70%;
+          border: none;
+          padding: 5px 5px 5px 0;
+          border-bottom: #e41919 2px dashed;
+          &:focus {
+            outline: none;
+          }
+          @media (max-width: 768px) {
+            width: 90%;
+          }
+          @media (max-width: 500px) {
+            width: 50%;
+          }
+          @media (max-width: 450px) {
+            width: 70%;
+          }
+      }
+      .form-item-field-skills-target-id {
+          display: grid;
+      }
+      select option {
+          color: #000;
+          font-size: 16px;
+          font-weight: 400;
+      }
+      select:not(:checked) {
+          color: #e41919;
+          font-size: 22px;
+          font-weight: 700;
+      }
+  }
+}
+
+.w3-black {
+  background-color: white;
+  position: -webkit-sticky;
+  box-shadow: 0 0 8px -2px #979797;
+  transition: transform 0.3s ease-out;
+  text-align: center;
+  margin-bottom: 30px;
+  height: 48px;
+}
+.w3-black .w3-button {
+  padding: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.w3-black .btn-active, .w3-button:focus {
+  border-bottom: 3px solid #263d6c;
+  color: #263d6c;
+  font-weight: 700;
+}
+.w3-black .btn-active {
+  margin-right: -5px;
+}
+#application {
+  display: none;
+}
+.form-app {
+  padding: 30px !important;
+}
+.form-app input::placeholder {
+  color: transparent;
+}
+.form-app .form-managed-file {
+  width: 100%;     
+  border: dashed 1px;     
+  padding: 30px;     
+  text-align: center;     
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.form-app input[type="file"] {
+  display: unset;
+}
+.form-app #file-upload-button {
+  background: transparent;
+}
+
+.form-app input[type="submit"]:hover {
+  border-color: #204d74 !important;
+  background-color: #286090 !important;
+}
+@media screen and (max-width: 470px) {
+  .form-app .form-managed-file {
+    padding: 20px 5px 20px 5px;
+  }
+  .form-app input[type="file"] {
+    font-size: 11px;
+  }
+}
+
+.webform-submission-application-form {
+  padding: 0 10vw;
+ 
+  @media (max-width: 600px) {
+    padding: 0 5vw;
+  }
+  
+  @media (max-width: 450px) {
+    padding: 0;
+  }
 }

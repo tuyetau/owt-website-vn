@@ -1,0 +1,12 @@
+name: Google Workable Connector
+type: module
+description: Make a request to Workable API. Retrieve the count of the active jobs. Get the published jobs listing.
+core: 8.x
+package: Swisscom Digital Technology SA
+version: '8.x-1.1'
+
+# core: 8.x
+configure: google_workable_connector.config
+hidden: false
+datestamp: 1480321486
+

@@ -1,0 +1,22 @@
+uuid: 0b21bba7-a63a-4fd1-9482-0092c4581d25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.job_requirements.field_j_requirements_content
+    - paragraphs.paragraphs_type.job_requirements
+  module:
+    - text
+id: paragraph.job_requirements.default
+targetEntityType: paragraph
+bundle: job_requirements
+mode: default
+content:
+  field_j_requirements_content:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

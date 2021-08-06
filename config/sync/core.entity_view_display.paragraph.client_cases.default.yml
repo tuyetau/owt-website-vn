@@ -1,0 +1,67 @@
+uuid: ab3e6398-20a5-4994-8d45-05228396f2f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.client_cases.field_client_cases
+    - field.field.paragraph.client_cases.field_highlight_story
+    - field.field.paragraph.client_cases.field_it_s_not_over
+    - field.field.paragraph.client_cases.field_more_about_our_projects
+    - field.field.paragraph.client_cases.field_title
+    - paragraphs.paragraphs_type.client_cases
+  module:
+    - entity_reference_revisions
+    - link
+    - viewsreference
+id: paragraph.client_cases.default
+targetEntityType: paragraph
+bundle: client_cases
+mode: default
+content:
+  field_client_cases:
+    weight: 1
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    type: viewsreference_formatter
+    region: content
+  field_highlight_story:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_it_s_not_over:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_more_about_our_projects:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

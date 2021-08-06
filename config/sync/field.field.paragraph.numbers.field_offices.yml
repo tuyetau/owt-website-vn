@@ -1,0 +1,19 @@
+uuid: 12e0de3b-2c52-47a8-aefc-9f3d2f7c2028
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_offices
+    - paragraphs.paragraphs_type.numbers
+id: paragraph.numbers.field_offices
+field_name: field_offices
+entity_type: paragraph
+bundle: numbers
+label: Offices
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

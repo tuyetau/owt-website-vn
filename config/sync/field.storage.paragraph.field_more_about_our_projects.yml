@@ -1,0 +1,19 @@
+uuid: 2c5c093e-4442-469f-84f6-6063557061ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+id: paragraph.field_more_about_our_projects
+field_name: field_more_about_our_projects
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

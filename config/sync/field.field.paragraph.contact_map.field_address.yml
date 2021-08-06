@@ -1,0 +1,21 @@
+uuid: 8d9d136f-14e3-4de0-af09-01893e944cb5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_address
+    - paragraphs.paragraphs_type.contact_map
+  module:
+    - text
+id: paragraph.contact_map.field_address
+field_name: field_address
+entity_type: paragraph
+bundle: contact_map
+label: Address
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

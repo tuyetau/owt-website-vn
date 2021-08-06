@@ -1,0 +1,73 @@
+uuid: e62ab03f-4c5c-42eb-9fc7-c63d38bd010e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.meet_you.field_contact_us
+    - field.field.paragraph.meet_you.field_job
+    - field.field.paragraph.meet_you.field_meet_you
+    - field.field.paragraph.meet_you.field_open_positions_link
+    - field.field.paragraph.meet_you.field_project
+    - field.field.paragraph.meet_you.field_project_webform
+    - paragraphs.paragraphs_type.meet_you
+  module:
+    - link
+    - webform
+id: paragraph.meet_you.default
+targetEntityType: paragraph
+bundle: meet_you
+mode: default
+content:
+  field_contact_us:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_job:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_meet_you:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_open_positions_link:
+    weight: 5
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_project:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_project_webform:
+    weight: 0
+    label: hidden
+    settings:
+      source_entity: true
+    third_party_settings: {  }
+    type: webform_entity_reference_entity_view
+    region: content
+hidden: {  }

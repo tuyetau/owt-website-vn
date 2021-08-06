@@ -3,7 +3,7 @@
 		<nav class="nav">
 			<div class="container-fluid-header nav__content">
 				<div>
-					<a href="{{ front_page }}" title="{{ 'Home' |t }}" rel="home" class="no-link">
+					<a href={{ front_page }} title="{{ 'Home' |t }}" rel="home" class="no-link">
             <div class="nav__logo"></div>
 					</a>
 				</div>
@@ -34,7 +34,7 @@
 
 					<main id="content" class="column main-content main-content--event" role="main">
 						<div class="container">
-							{{ page.content }}
+							<div class="content-job">{{ page.content }}</div>
 						</div>
 
 						{{ page.footer }}

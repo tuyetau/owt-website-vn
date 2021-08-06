@@ -1,0 +1,10 @@
+uuid: de2d9495-5028-46ee-9e51-3529ef65ae12
+langcode: en
+status: true
+dependencies: {  }
+id: job_requirements
+label: 'Job - Requirements'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

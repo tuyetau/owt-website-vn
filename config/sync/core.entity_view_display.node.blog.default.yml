@@ -1,0 +1,136 @@
+uuid: 3f37a0b6-0620-4351-a188-d545aaab417a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.blog.field_approach
+    - field.field.node.blog.field_attachment
+    - field.field.node.blog.field_blog_tags
+    - field.field.node.blog.field_blog_type
+    - field.field.node.blog.field_choose_related_cases
+    - field.field.node.blog.field_coming_soon
+    - field.field.node.blog.field_highlighted
+    - field.field.node.blog.field_illustration
+    - field.field.node.blog.field_manual_related_cases
+    - field.field.node.blog.field_metatags_blog
+    - field.field.node.blog.field_more_detail
+    - field.field.node.blog.field_news_tag
+    - field.field.node.blog.field_pages_title
+    - field.field.node.blog.field_result
+    - field.field.node.blog.field_situation_2
+    - field.field.node.blog.field_sub_heading
+    - field.field.node.blog.field_summary
+    - node.type.blog
+  module:
+    - image
+    - metatag
+    - text
+    - user
+id: node.blog.default
+targetEntityType: node
+bundle: blog
+mode: default
+content:
+  field_approach:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_blog_tags:
+    weight: 11
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_choose_related_cases:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_illustration:
+    weight: 3
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_manual_related_cases:
+    weight: 4
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_metatags_blog:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_more_detail:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_news_tag:
+    weight: 7
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_result:
+    weight: 8
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_situation_2:
+    weight: 9
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_sub_heading:
+    weight: 10
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_summary:
+    weight: 12
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_attachment: true
+  field_blog_type: true
+  field_coming_soon: true
+  field_highlighted: true
+  field_pages_title: true

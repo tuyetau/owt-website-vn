@@ -4,7 +4,7 @@
     <nav class="nav">
       <div class="container-fluid-header nav__content">
         <div>
-          <a href="{{ front_page }}" title="{{ 'Home' |t }}" rel="home" class="no-link">
+          <a href={{ front_page }} title="{{ 'Home' |t }}" rel="home" class="no-link">
             <div class="nav__logo"></div>
           </a>
         </div>
@@ -75,12 +75,12 @@
               {% if node.field_manual_related_cases.value %}
                 {% if node.field_choose_related_cases.isEmpty() != true %}
                 <p>{{ 'Related client cases'|trans }}</p>
-                  {{ drupal_entity('node', node.field_choose_related_cases.0.target_id, 'related_cases') }}
+                  {# {{ drupal_entity('node', node.field_choose_related_cases.0.target_id, 'related_cases') }}
                   {{ drupal_entity('node', node.field_choose_related_cases.1.target_id, 'related_cases') }}
-                  {{ drupal_entity('node', node.field_choose_related_cases.2.target_id, 'related_cases') }}
+                  {{ drupal_entity('node', node.field_choose_related_cases.2.target_id, 'related_cases') }} #}
                 {% endif %}
               {% else %}
-                {{ drupal_view('client_cases', '3_related_cases') }}
+                {# {{ drupal_view('client_cases', '3_related_cases') }} #}
               {% endif %}
             </div>
           </div>
@@ -94,18 +94,6 @@
       <img src="/{{ directory }}/dist/images/svg/arrow-left.svg" alt="Back" />
       <p>{{ 'Back to news'|trans }}</p>
     </a>
-  </div>
-
-  <div class="container contact-news-title">
-    <h2>{{ 'Get in touch with us !'|trans }}</h2>
-    <div class="red-line"></div>
-  </div>
-  <div class="webform container">
-    <div class="row">
-      <div class="contact-form">
-        {{ drupal_entity('webform', 'news_article_contact_form_webfor') }}
-      </div>
-    </div>
   </div>
 
   {{ page.footer }}

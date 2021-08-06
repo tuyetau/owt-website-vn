@@ -1,0 +1,10 @@
+uuid: 4969b0ad-4200-4e9a-8886-a5c4fcdfaeba
+langcode: en
+status: true
+dependencies: {  }
+id: highlight_story
+label: 'Homepage - Highlight story'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

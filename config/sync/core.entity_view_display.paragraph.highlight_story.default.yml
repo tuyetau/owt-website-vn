@@ -1,0 +1,56 @@
+uuid: ce337282-76e0-4dcb-b7f9-28f973f3f2dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.highlight_story.field_link_to_story
+    - field.field.paragraph.highlight_story.field_short_text
+    - field.field.paragraph.highlight_story.field_story_background_image
+    - field.field.paragraph.highlight_story.field_story_title
+    - paragraphs.paragraphs_type.highlight_story
+  module:
+    - image
+    - link
+id: paragraph.highlight_story.default
+targetEntityType: paragraph
+bundle: highlight_story
+mode: default
+content:
+  field_link_to_story:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_short_text:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_story_background_image:
+    weight: 3
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_story_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

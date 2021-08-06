@@ -798,3 +798,4 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 }
 
 $settings['config_sync_directory'] = '../config/sync';
+$settings['file_private_path'] = 'sites/default/files/private';

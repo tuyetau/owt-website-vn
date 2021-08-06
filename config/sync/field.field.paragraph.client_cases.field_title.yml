@@ -1,0 +1,19 @@
+uuid: 1b050cc3-ab23-4958-9a5a-334e28fc2ef0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.client_cases
+id: paragraph.client_cases.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: client_cases
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

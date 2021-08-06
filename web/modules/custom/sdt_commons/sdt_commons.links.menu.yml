@@ -1,0 +1,6 @@
+sdt_commons.config:
+  title: Google Optimize Support
+  route_name: sdt_commons.config
+  parent: system.admin_config_system
+  description: 'Inject Google Tag Manager and Google Optimize tags into the head on specific pages'
+  weight: -20

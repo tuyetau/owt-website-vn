@@ -79,3 +79,6 @@ menu:
 page:
   js:
     dist/scripts/page.js: {}
+tab:
+  js:
+    dist/scripts/tab.js: {}

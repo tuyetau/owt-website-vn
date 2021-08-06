@@ -1,0 +1,69 @@
+uuid: 849aecdb-080c-46b7-bdad-0990fc7899e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.client_cases.field_client_cases
+    - field.field.paragraph.client_cases.field_highlight_story
+    - field.field.paragraph.client_cases.field_it_s_not_over
+    - field.field.paragraph.client_cases.field_more_about_our_projects
+    - field.field.paragraph.client_cases.field_title
+    - paragraphs.paragraphs_type.client_cases
+  module:
+    - link
+    - paragraphs
+    - viewsreference
+id: paragraph.client_cases.default
+targetEntityType: paragraph
+bundle: client_cases
+mode: default
+content:
+  field_client_cases:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: viewsreference_autocomplete
+    region: content
+  field_highlight_story:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_it_s_not_over:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_more_about_our_projects:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

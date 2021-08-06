@@ -1,0 +1,43 @@
+uuid: 95017a29-cf83-49c9-9644-bdd1d79495b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_client_cases
+    - paragraphs.paragraphs_type.client_cases
+  module:
+    - viewsreference
+id: paragraph.client_cases.field_client_cases
+field_name: field_client_cases
+entity_type: paragraph
+bundle: client_cases
+label: 'Client cases'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: 0
+  plugin_types:
+    block: block
+    default: 0
+    page: 0
+    feed: 0
+  preselect_views:
+    block_content: 0
+    comment: 0
+    comments_recent: 0
+    content: 0
+    content_recent: 0
+    files: 0
+    frontpage: 0
+    taxonomy_term: 0
+    user_admin_people: 0
+    watchdog: 0
+    who_s_new: 0
+    who_s_online: 0
+field_type: viewsreference

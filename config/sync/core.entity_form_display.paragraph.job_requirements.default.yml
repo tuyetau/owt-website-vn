@@ -1,0 +1,27 @@
+uuid: f6c3774f-62ae-49aa-874c-c9e13928582b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.job_requirements.field_j_requirements_content
+    - paragraphs.paragraphs_type.job_requirements
+  module:
+    - text
+id: paragraph.job_requirements.default
+targetEntityType: paragraph
+bundle: job_requirements
+mode: default
+content:
+  field_j_requirements_content:
+    weight: 0
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+    region: content
+hidden:
+  created: true
+  status: true

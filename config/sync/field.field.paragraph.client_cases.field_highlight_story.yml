@@ -1,0 +1,43 @@
+uuid: 25bfd096-bfa3-4324-8d7c-2264b7420236
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_highlight_story
+    - paragraphs.paragraphs_type.client_cases
+    - paragraphs.paragraphs_type.highlight_story
+  module:
+    - entity_reference_revisions
+id: paragraph.client_cases.field_highlight_story
+field_name: field_highlight_story
+entity_type: paragraph
+bundle: client_cases
+label: 'Highlight story'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      highlight_story: highlight_story
+    target_bundles_drag_drop:
+      client_cases:
+        weight: 5
+        enabled: false
+      highlight_story:
+        enabled: true
+        weight: 7
+      homepage_header:
+        weight: 6
+        enabled: false
+      mission_paragraph:
+        weight: 7
+        enabled: false
+      missions_paragraph:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

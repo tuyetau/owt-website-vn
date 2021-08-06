@@ -1,0 +1,19 @@
+uuid: c34867cb-6cb5-49f2-b362-5f9b4ed2403f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pages_title
+    - node.type.blog
+id: node.blog.field_pages_title
+field_name: field_pages_title
+entity_type: node
+bundle: blog
+label: 'Page title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

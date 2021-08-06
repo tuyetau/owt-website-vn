@@ -1,0 +1,7 @@
+sdt_commons.config:
+  path: '/admin/config/system/sdt_commons'
+  defaults:
+    _title: 'SDT Commons - Google Tag Manager and Optimize Support'
+    _form: 'Drupal\sdt_commons\Form\SdtCommonsConfigForm'
+  requirements:
+    _permission: 'Administer the SDT Commons module'

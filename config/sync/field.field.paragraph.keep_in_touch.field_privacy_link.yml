@@ -1,0 +1,23 @@
+uuid: 094cc898-4fca-47e4-9fd6-17968c4879dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_privacy_link
+    - paragraphs.paragraphs_type.keep_in_touch
+  module:
+    - link
+id: paragraph.keep_in_touch.field_privacy_link
+field_name: field_privacy_link
+entity_type: paragraph
+bundle: keep_in_touch
+label: 'Privacy link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

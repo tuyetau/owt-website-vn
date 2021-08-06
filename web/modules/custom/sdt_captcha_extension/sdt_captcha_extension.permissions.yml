@@ -1,0 +1,3 @@
+administer sdt_captcha_extension module:
+  title: 'Administer the SDT Captcha extension module'
+  restrict access: true

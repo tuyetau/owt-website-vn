@@ -1,0 +1,64 @@
+uuid: 7c9dabf2-2594-4bec-9e82-f59ea5523b1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_responsibilities
+    - node.type.job
+    - paragraphs.paragraphs_type.job_responsibilities
+  module:
+    - entity_reference_revisions
+id: node.job.field_job_responsibilities
+field_name: field_job_responsibilities
+entity_type: node
+bundle: job
+label: Responsibilities
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      job_responsibilities: job_responsibilities
+    target_bundles_drag_drop:
+      client_cases:
+        weight: 13
+        enabled: false
+      highlight_story:
+        weight: 14
+        enabled: false
+      homepage_header:
+        weight: 15
+        enabled: false
+      job_benefits:
+        weight: 16
+        enabled: false
+      job_description:
+        weight: 17
+        enabled: false
+      job_requirements:
+        weight: 18
+        enabled: false
+      job_responsibilities:
+        enabled: true
+        weight: 19
+      keep_in_touch:
+        weight: 20
+        enabled: false
+      meet_you:
+        weight: 21
+        enabled: false
+      mission_paragraph:
+        weight: 23
+        enabled: false
+      missions_paragraph:
+        weight: 22
+        enabled: false
+      numbers:
+        weight: 24
+        enabled: false
+field_type: entity_reference_revisions

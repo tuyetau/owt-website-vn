@@ -1,0 +1,8 @@
+uuid: e05eaae3-b632-4585-950c-8b33011d946c
+langcode: en
+status: true
+dependencies: {  }
+name: 'Client case'
+vid: project_type
+description: ''
+weight: 0

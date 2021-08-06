@@ -1,0 +1,22 @@
+uuid: f0921a00-498a-477b-a010-4d94e62b8309
+langcode: en
+status: true
+dependencies:
+  theme:
+    - openwt2018
+_core:
+  default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
+id: openwt2018_local_tasks
+theme: openwt2018
+region: content
+weight: -40
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

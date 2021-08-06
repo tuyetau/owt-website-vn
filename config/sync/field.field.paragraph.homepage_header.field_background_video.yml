@@ -1,0 +1,26 @@
+uuid: c9134f7b-bbdc-43b1-9ff1-c4a86761ecc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_background_video
+    - paragraphs.paragraphs_type.homepage_header
+  module:
+    - video
+id: paragraph.homepage_header.field_background_video
+field_name: field_background_video
+entity_type: paragraph
+bundle: homepage_header
+label: 'Background video'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_extensions: ''
+  file_directory: 'videos/[date:custom:Y]-[date:custom:m]'
+  max_filesize: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: video

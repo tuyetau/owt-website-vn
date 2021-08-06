@@ -1,0 +1,6 @@
+name: SDT Commons
+type: module
+description: Common functionalities
+core: 8.x
+package: Swisscom Digital Technology SA
+configure: sdt_commons.config

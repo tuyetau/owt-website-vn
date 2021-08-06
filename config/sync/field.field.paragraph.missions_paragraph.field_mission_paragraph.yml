@@ -1,0 +1,37 @@
+uuid: a752effe-e4dd-47a6-b34c-1b69ad3c26f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mission_paragraph
+    - paragraphs.paragraphs_type.mission_paragraph
+    - paragraphs.paragraphs_type.missions_paragraph
+  module:
+    - entity_reference_revisions
+id: paragraph.missions_paragraph.field_mission_paragraph
+field_name: field_mission_paragraph
+entity_type: paragraph
+bundle: missions_paragraph
+label: 'Mission paragraph'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      mission_paragraph: mission_paragraph
+    target_bundles_drag_drop:
+      homepage_header:
+        weight: 3
+        enabled: false
+      mission_paragraph:
+        enabled: true
+        weight: 5
+      missions_paragraph:
+        weight: 4
+        enabled: false
+field_type: entity_reference_revisions

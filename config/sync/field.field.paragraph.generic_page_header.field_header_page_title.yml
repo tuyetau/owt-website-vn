@@ -1,0 +1,21 @@
+uuid: 443856ba-9bd1-4e14-9e60-2b5a5c7c2117
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_header_page_title
+    - paragraphs.paragraphs_type.generic_page_header
+  module:
+    - text
+id: paragraph.generic_page_header.field_header_page_title
+field_name: field_header_page_title
+entity_type: paragraph
+bundle: generic_page_header
+label: 'Header title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

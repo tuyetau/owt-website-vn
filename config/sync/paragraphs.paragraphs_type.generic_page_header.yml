@@ -1,0 +1,10 @@
+uuid: 6077062d-a8bb-438b-832d-57f7855a2232
+langcode: en
+status: true
+dependencies: {  }
+id: generic_page_header
+label: 'Generic - Page header'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

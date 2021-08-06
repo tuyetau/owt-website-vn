@@ -1,0 +1,23 @@
+uuid: e75a1d6e-9a48-465c-bc31-a128d5df9ca6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_learn_more_link
+    - paragraphs.paragraphs_type.homepage_header
+  module:
+    - link
+id: paragraph.homepage_header.field_learn_more_link
+field_name: field_learn_more_link
+entity_type: paragraph
+bundle: homepage_header
+label: 'Learn more link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

@@ -1,0 +1,30 @@
+{{ attach_library('openwt2018/tab') }}
+<div{{ attributes }}>
+  <div class="job-node">
+   <div class="w3-bar w3-black">
+      <button class="w3-bar-item w3-button btn-active" onclick="openTab(event, 'overview')">Overview</button>
+      <button class="w3-bar-item w3-button" id="defaultOpen" onclick="openTab(event, 'application')">Application</button>
+    </div>
+    <div class="container tab-page" id="overview">
+      <div{{ content_attributes }}>
+        {{ content.field_job_description }}
+      </div>
+      <div{{ content_attributes }} class="block">
+        {{ content.field_job_responsibilities }}
+      </div>
+      <div{{ content_attributes }} class="block">
+        {{ content.field_job_requirements }}
+      </div>
+      <div{{ content_attributes }} class="block">
+        {{ content.field_job_benefits }}
+      </div>
+      <div class="btn-apply">
+        <a class="btn-primary" onclick="openApplication()">Apply now</a>
+      </div>
+    </div> 
+    <div class="container tab-page" id="application">
+      {{ content.field_application_form }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+uuid: c5c114f2-ceb9-4c60-a57c-49988203a317
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_job
+field_name: field_job
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

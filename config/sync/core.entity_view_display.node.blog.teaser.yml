@@ -1,0 +1,54 @@
+uuid: 9679bfcb-e683-454b-a8ed-e76c12aaeb21
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.blog.field_approach
+    - field.field.node.blog.field_attachment
+    - field.field.node.blog.field_blog_tags
+    - field.field.node.blog.field_blog_type
+    - field.field.node.blog.field_choose_related_cases
+    - field.field.node.blog.field_coming_soon
+    - field.field.node.blog.field_highlighted
+    - field.field.node.blog.field_illustration
+    - field.field.node.blog.field_manual_related_cases
+    - field.field.node.blog.field_metatags_blog
+    - field.field.node.blog.field_more_detail
+    - field.field.node.blog.field_news_tag
+    - field.field.node.blog.field_pages_title
+    - field.field.node.blog.field_result
+    - field.field.node.blog.field_situation_2
+    - field.field.node.blog.field_sub_heading
+    - field.field.node.blog.field_summary
+    - node.type.blog
+  module:
+    - user
+id: node.blog.teaser
+targetEntityType: node
+bundle: blog
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_approach: true
+  field_attachment: true
+  field_blog_tags: true
+  field_blog_type: true
+  field_choose_related_cases: true
+  field_coming_soon: true
+  field_highlighted: true
+  field_illustration: true
+  field_manual_related_cases: true
+  field_metatags_blog: true
+  field_more_detail: true
+  field_news_tag: true
+  field_pages_title: true
+  field_result: true
+  field_situation_2: true
+  field_sub_heading: true
+  field_summary: true

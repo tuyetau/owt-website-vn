@@ -1,0 +1,4 @@
+administer sdt_commons module:
+  title: 'Administer the SDT Commons module'
+  description: 'Perform administration tasks for Google Tag Manager and Optimize Support provided by the SDT Commons module.'
+  restrict access: true

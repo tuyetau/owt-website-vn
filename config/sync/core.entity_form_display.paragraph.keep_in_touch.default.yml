@@ -1,0 +1,70 @@
+uuid: f654510e-8044-417c-96b7-8adf2a0b5c81
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.keep_in_touch.field_copyright
+    - field.field.paragraph.keep_in_touch.field_facebook_link
+    - field.field.paragraph.keep_in_touch.field_keep_in_touch
+    - field.field.paragraph.keep_in_touch.field_linkedin_link
+    - field.field.paragraph.keep_in_touch.field_privacy_link
+    - field.field.paragraph.keep_in_touch.field_twitter_link
+    - paragraphs.paragraphs_type.keep_in_touch
+  module:
+    - link
+id: paragraph.keep_in_touch.default
+targetEntityType: paragraph
+bundle: keep_in_touch
+mode: default
+content:
+  field_copyright:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_facebook_link:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_keep_in_touch:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_linkedin_link:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_privacy_link:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_twitter_link:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

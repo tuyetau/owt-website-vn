@@ -1,0 +1,54 @@
+uuid: a80f7ed9-ee6c-4f78-b206-3d73e5a671c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.mission_paragraph.field_mission_dark_icon
+    - field.field.paragraph.mission_paragraph.field_mission_light_icon
+    - field.field.paragraph.mission_paragraph.field_mission_summary
+    - field.field.paragraph.mission_paragraph.field_mission_title
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.mission_paragraph
+  module:
+    - image
+    - text
+id: paragraph.mission_paragraph.default
+targetEntityType: paragraph
+bundle: mission_paragraph
+mode: default
+content:
+  field_mission_dark_icon:
+    weight: 2
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_mission_light_icon:
+    weight: 3
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_mission_summary:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_mission_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,86 @@
+uuid: 4bee1046-a9a5-4565-9965-d33b1d12332d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.numbers.field_avg_employees_age
+    - field.field.paragraph.numbers.field_avg_employees_age_number
+    - field.field.paragraph.numbers.field_offices
+    - field.field.paragraph.numbers.field_offices_number
+    - field.field.paragraph.numbers.field_open_positions
+    - field.field.paragraph.numbers.field_open_positions_number
+    - field.field.paragraph.numbers.field_projects
+    - field.field.paragraph.numbers.field_projects_number
+    - paragraphs.paragraphs_type.numbers
+id: paragraph.numbers.default
+targetEntityType: paragraph
+bundle: numbers
+mode: default
+content:
+  field_avg_employees_age:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_avg_employees_age_number:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_offices:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_offices_number:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_open_positions:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_open_positions_number:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_projects:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_projects_number:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

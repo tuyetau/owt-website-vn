@@ -1,0 +1,34 @@
+uuid: 15052095-4e23-41f1-8591-d126ddf91aef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_header_img
+    - paragraphs.paragraphs_type.generic_page_header
+  module:
+    - svg_image_field
+id: paragraph.generic_page_header.field_header_img
+field_name: field_header_img
+entity_type: paragraph
+bundle: generic_page_header
+label: 'Header Img'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: svg
+  max_filesize: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: svg_image_field

@@ -1,0 +1,105 @@
+uuid: 34e8d86d-ed2b-4246-b267-9ee3f5369edd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.homepage_header.field_background_video
+    - field.field.paragraph.homepage_header.field_banner_background_image
+    - field.field.paragraph.homepage_header.field_header_highlight
+    - field.field.paragraph.homepage_header.field_header_news_feed
+    - field.field.paragraph.homepage_header.field_header_see_more_link
+    - field.field.paragraph.homepage_header.field_header_text
+    - field.field.paragraph.homepage_header.field_header_title
+    - field.field.paragraph.homepage_header.field_learn_more_link
+    - field.field.paragraph.homepage_header.field_mobile_background_video
+    - paragraphs.paragraphs_type.homepage_header
+  module:
+    - image
+    - link
+    - text
+    - video
+    - viewsreference
+id: paragraph.homepage_header.default
+targetEntityType: paragraph
+bundle: homepage_header
+mode: default
+content:
+  field_background_video:
+    weight: 7
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: video_url
+    region: content
+  field_banner_background_image:
+    weight: 6
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_header_highlight:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_header_news_feed:
+    weight: 4
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    type: viewsreference_formatter
+    region: content
+  field_header_see_more_link:
+    weight: 5
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_header_text:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_header_title:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_learn_more_link:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_mobile_background_video:
+    weight: 8
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: video_url
+    region: content
+hidden: {  }

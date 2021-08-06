@@ -1,0 +1,54 @@
+uuid: d06cccac-74bf-469f-8752-8d33dd55c8fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_map.field_address
+    - field.field.paragraph.contact_map.field_email
+    - field.field.paragraph.contact_map.field_googlemap
+    - field.field.paragraph.contact_map.field_location_title
+    - field.field.paragraph.contact_map.field_telephone
+    - paragraphs.paragraphs_type.contact_map
+  module:
+    - text
+id: paragraph.contact_map.default
+targetEntityType: paragraph
+bundle: contact_map
+mode: default
+content:
+  field_address:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_email:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_googlemap:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_location_title:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_telephone:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

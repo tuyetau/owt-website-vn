@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * @file
+ * The installation instructions for Sdt Commons - Google Optimize Support.
+ */
+use Drupal\redirect\Entity\Redirect;
+use Drupal\Core\Language\Language;
+
+/**
+ * Implements hook_uninstall().
+ */
+function sdt_commons_uninstall() {
+  $config = \Drupal::service('config.factory');
+  $sdt_commons_config = $config->getEditable('sdt_commons.settings');
+  $sdt_block_config = $config->getEditable('block.settings.sdtfooter_block');
+
+  // Cleaning garbage.
+  $sdt_commons_config->delete();
+  $sdt_block_config->delete();
+}
+
+/**
+ * SDT Commons update : adding configuration settings
+ */
+function sdt_commons_update_8001() {
+  $config = \Drupal::service('config.factory');
+  $sdt_commons_config = $config->getEditable('sdt_commons.settings');
+
+  $sdt_commons_config->set('sdt_commons_google_optimize_on', FALSE);
+  $sdt_commons_config->set('sdt_commons_google_tag_manager_on', FALSE);
+  $sdt_commons_config->set('sdt_commons_google_optimize_page', '');
+  $sdt_commons_config->set('sdt_commons_google_optimize_style_tag', '');
+  $sdt_commons_config->set('sdt_commons_google_optimize_script_tag', '');
+  $sdt_commons_config->set('sdt_commons_google_tag_manager_id', '');
+  $sdt_commons_config->set('sdt_commons_google_tag_manager_script_tag', '');
+
+  $sdt_commons_config->save(TRUE);
+
+}
+
+/**
+ * SDT Commons update : path redirect import
+ */
+function sdt_commons_update_8002() {
+  $real_path = \Drupal::moduleHandler()->getModule('sdt_commons')->getPath();
+  $files = file_scan_directory($real_path, '/.csv$/');
+
+  foreach($files as $file) {
+    if ($file->name == 'redirect_301') {
+      $fp = fopen($file->uri, 'r');
+
+      while (($import_row = fgetcsv($fp, 1000, ",")) !== FALSE) {
+
+        if (isset($import_row[1])) {
+          $path = \Drupal::service('path.alias_manager')->getPathByAlias('/' . $import_row[1]);
+          if(preg_match('/node\/(\d+)/', $path, $matches)) {
+            $node_id = $matches[1];
+          }
+        }else {
+          $node_id = '';
+        }
+
+        Redirect::create([
+          'redirect_source' => stripLeadingSlash($import_row[0]),
+          'redirect_redirect' => !empty($node_id) ? 'entity:node/' . $node_id : NULL,
+          'language' => isset($import_row[3]) ? $import_row[3] : Language::LANGCODE_NOT_SPECIFIED,
+          'status_code' => $import_row[2]
+        ])->save();
+      }
+      fclose($fp);
+    }
+  }
+}
+
+
+/**
+ * SDT Commons delete old node to redirect
+ */
+function sdt_commons_update_8003() {
+  $node_array = [450, 451, 452, 459];
+
+  $node = \Drupal::entityTypeManager()->getStorage("node");
+  $entities = $node->loadMultiple($node_array);
+  if (!empty($entities)) {
+    $node->delete($entities);
+  }
+}
+
+/**
+ * Remove leading slash, if present.
+ *
+ * @param string $path
+ *    A user-supplied URL path.
+ *
+ * @return string
+ *    A URL without the leading slash.
+ */
+function stripLeadingSlash($path) {
+  if (strpos($path, '/') === 0) {
+    return substr($path, 1);
+  }
+  return $path;
+}

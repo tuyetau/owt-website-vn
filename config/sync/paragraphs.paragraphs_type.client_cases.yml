@@ -1,0 +1,10 @@
+uuid: 8f453c39-2f9e-4eaa-a5a1-a30fc33330ea
+langcode: en
+status: true
+dependencies: {  }
+id: client_cases
+label: 'Homepage - Client cases'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

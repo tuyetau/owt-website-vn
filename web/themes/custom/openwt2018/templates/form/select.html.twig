@@ -1,17 +1,5 @@
-{#
-/**
- * @file
- * Theme override for a select element.
- *
- * Available variables:
- * - attributes: HTML attributes for the select tag.
- * - options: The option element children.
- *
- * @see template_preprocess_select()
- */
-#}
 {% spaceless %}
-    <select{{ attributes }} style="display:none;">
+  <select{{ attributes }}>
     {% for option in options %}
       {% if option.type == 'optgroup' %}
         <optgroup label="{{ option.label }}">
@@ -20,29 +8,8 @@
           {% endfor %}
         </optgroup>
       {% elseif option.type == 'option' %}
-        <option value="{{ option.value }}"{{ option.selected ? ' selected="selected"' }}>{{ option.label }}</option>
+        <option class="{{ option.selected ? "red" : "black" }}" value="{{ option.value }}"{{ option.selected ? ' selected="selected"' }}>{{ option.label }}</option>
       {% endif %}
     {% endfor %}
   </select>
-
-  <div class="select select--h3">
-    <input type="hidden" class="select__input" id="" name="" value="" />
-    {% set value = "all industries" %}
-    {% for option in options %}
-      {% if option.selected == true %}
-        {% set value = option.label %}
-      {% endif %}
-    {% endfor %}
-    <span class="select__value">{{ value }}</span>
-    <span class='select__arrow'>
-      <i class="arrow arrow--down"></i>
-    </span>
-    <ul{{ attributes }}>
-      {% for option in options %}
-        {% if option.type == 'option' %}
-          <li value="{{ option.value }}">{{ option.label }}</li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </div>
 {% endspaceless %}

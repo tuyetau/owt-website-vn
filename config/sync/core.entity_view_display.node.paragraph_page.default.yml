@@ -1,0 +1,43 @@
+uuid: dbde6dfd-5243-4167-87eb-f8b2394360c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.paragraph_page.field_metatags
+    - field.field.node.paragraph_page.field_page_title
+    - field.field.node.paragraph_page.field_paragraphs
+    - field.field.node.paragraph_page.field_theming
+    - node.type.paragraph_page
+  module:
+    - entity_reference_revisions
+    - metatag
+    - user
+id: node.paragraph_page.default
+targetEntityType: node
+bundle: paragraph_page
+mode: default
+content:
+  field_metatags:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_page_title: true
+  field_theming: true

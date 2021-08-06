@@ -1,0 +1,19 @@
+uuid: e2ad7426-5657-4ddb-ab62-538b4f8ccd83
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_googlemap
+    - paragraphs.paragraphs_type.contact_map
+id: paragraph.contact_map.field_googlemap
+field_name: field_googlemap
+entity_type: paragraph
+bundle: contact_map
+label: googlemap
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

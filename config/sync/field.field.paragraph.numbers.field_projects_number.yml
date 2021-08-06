@@ -1,0 +1,19 @@
+uuid: b888f042-fa69-4c69-9d8c-d7e45b286969
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_projects_number
+    - paragraphs.paragraphs_type.numbers
+id: paragraph.numbers.field_projects_number
+field_name: field_projects_number
+entity_type: paragraph
+bundle: numbers
+label: 'Projects number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

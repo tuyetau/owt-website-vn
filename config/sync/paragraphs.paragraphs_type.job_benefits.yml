@@ -1,0 +1,10 @@
+uuid: 26fa892a-cb78-4efa-a129-992ff3c160b7
+langcode: en
+status: true
+dependencies: {  }
+id: job_benefits
+label: 'Job - Benefits'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

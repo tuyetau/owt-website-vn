@@ -1,0 +1,21 @@
+uuid: 8cbe2d2c-1208-41dd-8bd8-68b879a7b04e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_case_text
+    - paragraphs.paragraphs_type.new_client_case_text_
+  module:
+    - text
+id: paragraph.new_client_case_text_.field_case_text
+field_name: field_case_text
+entity_type: paragraph
+bundle: new_client_case_text_
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,23 @@
+uuid: 3655b630-21b2-4914-bab1-49fde26d8145
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_more_about_our_projects
+    - paragraphs.paragraphs_type.client_cases
+  module:
+    - link
+id: paragraph.client_cases.field_more_about_our_projects
+field_name: field_more_about_our_projects
+entity_type: paragraph
+bundle: client_cases
+label: 'More about our projects'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

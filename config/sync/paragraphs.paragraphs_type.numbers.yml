@@ -1,0 +1,10 @@
+uuid: 02e83e86-2964-4e73-a8d9-ce3bae52dbbd
+langcode: en
+status: true
+dependencies: {  }
+id: numbers
+label: 'Homepage - Numbers'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

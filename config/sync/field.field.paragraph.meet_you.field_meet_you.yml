@@ -1,0 +1,19 @@
+uuid: 79601b01-27cc-4630-89c9-e6c052ced24e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_meet_you
+    - paragraphs.paragraphs_type.meet_you
+id: paragraph.meet_you.field_meet_you
+field_name: field_meet_you
+entity_type: paragraph
+bundle: meet_you
+label: 'Meet you'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
