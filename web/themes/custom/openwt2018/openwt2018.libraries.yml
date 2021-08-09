@@ -20,9 +20,6 @@ js-footer:
 homepage:
   js:
     dist/scripts/homepage.js: {}
-methodology:
-  js:
-    dist/scripts/methodology.js: {}
 clientcases:
   js:
     dist/scripts/client-cases.js: {}
@@ -33,43 +30,24 @@ jobs:
   css:
     theme:
       https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css: {type: external, minified: true}
-team:
-  js:
-    dist/scripts/team.js: {}
 news:
   js:
     dist/scripts/news.js: {}
 meet-you:
   js:
     dist/scripts/meet-you.js: {}
-discover:
-  js:
-    dist/scripts/discover.js: {}
 newclientcase:
   js:
     dist/scripts/newclientcase.js: {}
 redirect:
   js:
     dist/scripts/redirect.js: {}
-health:
-  js:
-    dist/scripts/health.js: {}
-    https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js: {type: external, minified: true}
-  css:
-    theme:
-      https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css: {type: external, minified: true}
-white-paper:
-  js:
-    dist/scripts/white-paper.js: {}
 taxonomy:
   js:
     dist/scripts/taxonomy.js: {}
 event-webform:
   js:
     dist/scripts/event-webform.js: {}
-expertise:
-  js:
-    dist/scripts/expertise.js: {}
 hover:
   js:
     dist/scripts/hover.js: {}    

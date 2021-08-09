@@ -23,6 +23,7 @@
         "drupal/core-recommended": "^8.8",
         "drupal/entity_reference_revisions": "^1.8",
         "drupal/metatag": "^1.12",
+        "drupal/officialfacebookpixel": "^1.1",
         "drupal/paragraphs": "^1.11",
         "drupal/smtp": "1.0@beta",
         "drupal/svg_image_field": "^1.2",

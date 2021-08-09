@@ -271,6 +271,9 @@
     	color: #fff;
 		}
 	}
+	#job-id {
+		display: none;
+	}
 }
 .job-card:not(.btn):not(.tag):not(.no-link):not(.case-link):not(.atlwdg-trigger):not(.toolbar-icon):focus:after {
 	background-color: transparent;

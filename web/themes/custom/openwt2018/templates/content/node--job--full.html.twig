@@ -1,4 +1,5 @@
 {{ attach_library('openwt2018/tab') }}
+{{ attach_library('openwt2018/jobs') }}
 <div{{ attributes }}>
   <div class="job-node">
    <div class="w3-bar w3-black">
@@ -18,7 +19,8 @@
       <div{{ content_attributes }} class="block">
         {{ content.field_job_benefits }}
       </div>
-      <div class="btn-apply">
+      <div id="job-id">{{ node.id }}</div>
+      <div class="btn-apply btn-apply-job">
         <a class="btn-primary" onclick="openApplication()">Apply now</a>
       </div>
     </div> 

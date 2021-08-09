@@ -529,7 +529,7 @@ function openwt2018_preprocess_links__language_block(&$variables) {
 /**
  * Preprocess "event form" webform
  */
-function openwt2018_preprocess_webform__event_webform(array &$variables) {
+function openwt2018_preprocess_webform__application(array &$variables) {
   $variables['#attached']['library'][] = 'openwt2018/event-webform';
 }
 /**
