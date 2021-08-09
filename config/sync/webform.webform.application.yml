@@ -203,9 +203,9 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: aulu@novahub.vn
+      to_mail: hr@novahub.vn
       to_options: {  }
-      cc_mail: ''
+      cc_mail: ytran@openwt.com
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
